@@ -28,8 +28,8 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 - [ ] **NAV-01**: Sticky navbar that transitions from transparent to solid background on scroll
 - [ ] **NAV-02**: Logo swaps from white (over hero) to colored (on scroll) version
 - [ ] **NAV-03**: Mobile hamburger menu for screens ≤900px
-- [ ] **NAV-04**: Primary CTA button ("Registruotis į apžiūrą") always visible in navbar
-- [ ] **NAV-05**: Navigation links to page sections and future pages (Meniu dropdown, Rinktis butą)
+- [ ] **NAV-04**: Primary CTA button ("Registruotis i apziura") always visible in navbar
+- [ ] **NAV-05**: Navigation links to page sections and future pages (Meniu dropdown, Rinktis buta)
 
 ### About
 
@@ -53,7 +53,7 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Timeline
 
-- [ ] **TIME-01**: Construction progress timeline with quarterly milestones (Q4 2024 – Q4 2026)
+- [ ] **TIME-01**: Construction progress timeline with quarterly milestones (Q4 2024 -- Q4 2026)
 - [ ] **TIME-02**: Visual progress line indicator showing current position
 - [ ] **TIME-03**: Construction photo background
 - [ ] **TIME-04**: PHP marker for backend to update progress dynamically
@@ -61,7 +61,7 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 ### Contact
 
 - [ ] **CONT-01**: Contact form with fields: name, email, phone, message, terms consent checkbox
-- [ ] **CONT-02**: Form uses `<form method="post" action="URL">` — no AJAX, no fetch
+- [ ] **CONT-02**: Form uses `<form method="post" action="URL">` -- no AJAX, no fetch
 - [ ] **CONT-03**: Five sales agent cards with photo, name, phone (tel: link), email (mailto: link)
 - [ ] **CONT-04**: PHP markers on form action URL and agent data areas
 
@@ -81,16 +81,16 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 ### Responsive
 
 - [ ] **RESP-01**: Desktop layout matches Webflow design (faithful adaptation via Bootstrap grid)
-- [ ] **RESP-02**: Tablet styles in ipad.css (768-1024px) — loaded via media attribute in HTML
-- [ ] **RESP-03**: Mobile styles in iphone.css (≤900px) — loaded via media attribute in HTML
-- [ ] **RESP-04**: No media queries inside override.css — all responsive rules in separate files
+- [ ] **RESP-02**: Tablet styles in ipad.css (768-1024px) -- loaded via media attribute in HTML
+- [ ] **RESP-03**: Mobile styles in iphone.css (<=900px) -- loaded via media attribute in HTML
+- [ ] **RESP-04**: No media queries inside override.css -- all responsive rules in separate files
 - [ ] **RESP-05**: Video background disabled on mobile, replaced with poster image
 - [ ] **RESP-06**: All interactive elements touch-friendly on mobile
 
 ### Localization
 
 - [ ] **LANG-01**: All visible text content in Lithuanian
-- [ ] **LANG-02**: Correct Lithuanian characters (ą, č, ę, ė, į, š, ų, ū, ž) rendered properly
+- [ ] **LANG-02**: Correct Lithuanian characters rendered properly
 - [ ] **LANG-03**: HTML lang attribute set to "lt"
 
 ### Handoff
@@ -136,66 +136,66 @@ Deferred to future phases of this milestone or future milestones.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | — | Pending |
-| FOUN-02 | — | Pending |
-| FOUN-03 | — | Pending |
-| FOUN-04 | — | Pending |
-| FOUN-05 | — | Pending |
-| HERO-01 | — | Pending |
-| HERO-02 | — | Pending |
-| HERO-03 | — | Pending |
-| HERO-04 | — | Pending |
-| HERO-05 | — | Pending |
-| NAV-01 | — | Pending |
-| NAV-02 | — | Pending |
-| NAV-03 | — | Pending |
-| NAV-04 | — | Pending |
-| NAV-05 | — | Pending |
-| ABOU-01 | — | Pending |
-| ABOU-02 | — | Pending |
-| ABOU-03 | — | Pending |
-| ABOU-04 | — | Pending |
-| DISC-01 | — | Pending |
-| DISC-02 | — | Pending |
-| DISC-03 | — | Pending |
-| LOCN-01 | — | Pending |
-| LOCN-02 | — | Pending |
-| LOCN-03 | — | Pending |
-| LOCN-04 | — | Pending |
-| TIME-01 | — | Pending |
-| TIME-02 | — | Pending |
-| TIME-03 | — | Pending |
-| TIME-04 | — | Pending |
-| CONT-01 | — | Pending |
-| CONT-02 | — | Pending |
-| CONT-03 | — | Pending |
-| CONT-04 | — | Pending |
-| FOOT-01 | — | Pending |
-| FOOT-02 | — | Pending |
-| FOOT-03 | — | Pending |
-| ANIM-01 | — | Pending |
-| ANIM-02 | — | Pending |
-| ANIM-03 | — | Pending |
-| ANIM-04 | — | Pending |
-| RESP-01 | — | Pending |
-| RESP-02 | — | Pending |
-| RESP-03 | — | Pending |
-| RESP-04 | — | Pending |
-| RESP-05 | — | Pending |
-| RESP-06 | — | Pending |
-| LANG-01 | — | Pending |
-| LANG-02 | — | Pending |
-| LANG-03 | — | Pending |
-| HAND-01 | — | Pending |
-| HAND-02 | — | Pending |
-| HAND-03 | — | Pending |
-| HAND-04 | — | Pending |
+| FOUN-01 | Phase 1 | Pending |
+| FOUN-02 | Phase 1 | Pending |
+| FOUN-03 | Phase 1 | Pending |
+| FOUN-04 | Phase 1 | Pending |
+| FOUN-05 | Phase 1 | Pending |
+| HERO-01 | Phase 1 | Pending |
+| HERO-02 | Phase 1 | Pending |
+| HERO-03 | Phase 1 | Pending |
+| HERO-04 | Phase 1 | Pending |
+| HERO-05 | Phase 1 | Pending |
+| NAV-01 | Phase 3 | Pending |
+| NAV-02 | Phase 3 | Pending |
+| NAV-03 | Phase 3 | Pending |
+| NAV-04 | Phase 3 | Pending |
+| NAV-05 | Phase 3 | Pending |
+| ABOU-01 | Phase 2 | Pending |
+| ABOU-02 | Phase 2 | Pending |
+| ABOU-03 | Phase 2 | Pending |
+| ABOU-04 | Phase 2 | Pending |
+| DISC-01 | Phase 2 | Pending |
+| DISC-02 | Phase 2 | Pending |
+| DISC-03 | Phase 2 | Pending |
+| LOCN-01 | Phase 2 | Pending |
+| LOCN-02 | Phase 2 | Pending |
+| LOCN-03 | Phase 2 | Pending |
+| LOCN-04 | Phase 2 | Pending |
+| TIME-01 | Phase 2 | Pending |
+| TIME-02 | Phase 2 | Pending |
+| TIME-03 | Phase 2 | Pending |
+| TIME-04 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| FOOT-01 | Phase 2 | Pending |
+| FOOT-02 | Phase 2 | Pending |
+| FOOT-03 | Phase 2 | Pending |
+| ANIM-01 | Phase 3 | Pending |
+| ANIM-02 | Phase 3 | Pending |
+| ANIM-03 | Phase 3 | Pending |
+| ANIM-04 | Phase 3 | Pending |
+| RESP-01 | Phase 4 | Pending |
+| RESP-02 | Phase 4 | Pending |
+| RESP-03 | Phase 4 | Pending |
+| RESP-04 | Phase 4 | Pending |
+| RESP-05 | Phase 4 | Pending |
+| RESP-06 | Phase 4 | Pending |
+| LANG-01 | Phase 4 | Pending |
+| LANG-02 | Phase 4 | Pending |
+| LANG-03 | Phase 4 | Pending |
+| HAND-01 | Phase 4 | Pending |
+| HAND-02 | Phase 4 | Pending |
+| HAND-03 | Phase 4 | Pending |
+| HAND-04 | Phase 4 | Pending |
 
 **Coverage:**
-- v1 requirements: 51 total
-- Mapped to phases: 0
-- Unmapped: 51 ⚠️
+- v1 requirements: 54 total
+- Mapped to phases: 54
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-03-13*
-*Last updated: 2026-03-13 after initial definition*
+*Last updated: 2026-03-13 after roadmap phase mapping*
