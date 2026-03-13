@@ -29,7 +29,29 @@ $(document).ready(function () {
       heroTimer = setInterval(nextSlide, slideInterval);
     }
 
+    function prevSlide() {
+      goToSlide((currentSlide - 1 + slideCount) % slideCount);
+    }
+
+    // Navigation arrow buttons
+    $('.hero-nav-prev').on('click', function () {
+      clearInterval(heroTimer);
+      prevSlide();
+      startHeroAutoplay();
+    });
+
+    $('.hero-nav-next').on('click', function () {
+      clearInterval(heroTimer);
+      nextSlide();
+      startHeroAutoplay();
+    });
+
     startHeroAutoplay();
+  }
+
+  // Initialize Lucide icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
   }
 
   // -----------------------------------------------
@@ -44,6 +66,26 @@ $(document).ready(function () {
       }, 800);
     }
   });
+
+  // -----------------------------------------------
+  // About -- Digit-train counter animation
+  // -----------------------------------------------
+  var $counterWrap = $('.counter-cards-wrap');
+  if ($counterWrap.length) {
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          $(entry.target).find('.counter-train').each(function () {
+            var target = parseInt($(this).data('target'), 10);
+            var pct = target * 100;
+            $(this).css('transform', 'translate3d(0, -' + pct + '%, 0)');
+          });
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    counterObserver.observe($counterWrap[0]);
+  }
 
   // -----------------------------------------------
   // Load mock apartment data (dev only)
