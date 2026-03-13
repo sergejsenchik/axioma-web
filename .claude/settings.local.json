@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/sergej/DEV/MY/axioma-web status)",
+      "Bash(git add:*)"
+    ]
+  }
+}
