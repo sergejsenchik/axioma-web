@@ -1,0 +1,393 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Fri Mar 13 2026 10:36:01 GMT+0000 (Coordinated Universal Time)  -->
+<html data-wf-page="69b3e21b68238a359333726a" data-wf-site="69b3e21b68238a3593337130" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Arnexo - Webflow HTML website template</title>
+  <meta content="Oops! The page you’re looking for isn’t here. Return to Arnexo’s homepage to explore more." name="description">
+  <meta content="Arnexo - Webflow HTML website template" property="og:title">
+  <meta content="Oops! The page you’re looking for isn’t here. Return to Arnexo’s homepage to explore more." property="og:description">
+  <meta content="https://cdn.prod.website-files.com/68b8034dcd26f776ff323567/691d6fa90a64bb6329b04d5a_Link%20Thumbnail%20(1).webp" property="og:image">
+  <meta content="Arnexo - Webflow HTML website template" property="twitter:title">
+  <meta content="Oops! The page you’re looking for isn’t here. Return to Arnexo’s homepage to explore more." property="twitter:description">
+  <meta content="https://cdn.prod.website-files.com/68b8034dcd26f776ff323567/691d6fa90a64bb6329b04d5a_Link%20Thumbnail%20(1).webp" property="twitter:image">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css" rel="stylesheet" type="text/css">
+  <link href="css/axioma-v-2-72080f118b1b1c08cd2bbfc5d084.webflow.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+  <script type="text/javascript">WebFont.load({  google: {    families: ["Inter Tight:300,400,500,600,700","Metal:300,400,500,600,700"]  }});</script>
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="images/webclip.png" rel="apple-touch-icon">
+  <style>
+:root {
+  --color-white: #ffffff;
+  --color-black: #0B2641;
+}
+/* text container */
+.text-wrap {
+  position: relative;        /* match your text height */
+  overflow: hidden;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+/* both texts stacked */
+.text {
+  white-space: nowrap;
+  transition: transform .35s ease, opacity .35s ease;
+}
+/* second text starts below */
+.alt-text {
+position: absolute;
+left:0;
+  transform: translateY(120%);
+  opacity: 0;
+}
+/* Wrapper (hidden initially) */
+.popup-container {
+  position: fixed;
+  right: 0px;
+  bottom: 5vh;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* hide by default */
+  transform: translateY(120px);
+  opacity: 0;
+  pointer-events: auto;
+  transition: transform .45s ease, opacity .45s ease;
+}
+.pop-one{
+    background: linear-gradient(130deg, #5B50FF 0%, #F4604A 100%);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:7px;
+    margin-top:5px;
+    border-radius: 6px 0px 0px 6px;
+    font-size:12px;
+    position: relative;
+  	overflow: hidden;
+  	transition: background 0.4s ease, color 0.4s ease;
+  	color:#fff;
+}
+.pop-one:hover{
+  background:linear-gradient(130deg, #fff 0%, #fff 100%);;
+  color:#0B2641;
+  --color-white: #0B2641;
+  --color-black: #ffffff;
+  box-shadow: 0 4px 50px rgba(0, 0, 0, 0.04);
+}
+.pop-one svg{
+  transition: .3s;
+}
+/* lottie container */
+.confetti{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transition:.3s ease;
+  }
+  .confetti svg {
+  width:100% !important;
+  height:100% !important;
+}
+/* show on hover */
+.pop-one:hover .confetti{
+  opacity:1;
+}
+.pop-two{
+    background-color: #15151F;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:7px;
+    margin-top:5px;
+    border-radius: 6px 0px 0px 6px;
+    font-size:12px;
+}
+.popup-image{
+box-shadow: 0 4px 50px rgba(0, 0, 0, 0.04);
+border-radius:6px 0px 0px 6px;
+overflow:hidden;
+}
+/* When visible */
+.popup-container.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Options animation remains the same */
+.popup-option {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: .45s ease;
+}
+.popup-container.show .popup-option {
+  transform: translateY(0);
+  opacity: 1;
+}
+.popup-option:nth-child(2) { transition-delay: .12s; }
+.popup-option:nth-child(3) { transition-delay: .24s; }
+@media (max-width: 998px) {
+  .popup-container {
+    display: none;
+  }
+}
+</style>
+</head>
+<body class="rt-color-white">
+  <div data-animation="default" class="rt-navbar w-nav" data-easing2="ease" data-wf--rt-navbar-v1--variant="base" data-easing="ease" data-collapse="medium" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f0b" role="banner" data-duration="400">
+    <div class="rt-container-large w-container">
+      <div class="w-layout-hflex rt-navbar-wrap">
+        <div class="rt-navbar-logo-wrap">
+          <a href="#" class="rt-brand-logo w-nav-brand"><img width="103" height="25" alt="logo" src="images/Arnexo-.svg" loading="lazy" class="rt-landscape-full-image"></a>
+        </div>
+        <div id="w-node-_78fbb624-52c7-1961-8884-5c14f98b7f11-f98b7f0b" class="w-layout-vflex rt-nav-menu-main">
+          <nav role="navigation" class="rt-navbar-menu w-nav-menu">
+            <div class="w-layout-vflex rt-navbar-menu-wrap">
+              <div class="w-layout-hflex rt-navbar-menu-block">
+                <div data-delay="0" data-hover="true" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f13" class="rt-navbar-dropdown w-dropdown">
+                  <div class="dropdown-menu-toggle w-dropdown-toggle">
+                    <div class="rt-nav-menu">Home</div>
+                    <div class="icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="rt-dropdown-list w-dropdown-list">
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Home one</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Home two</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Home three</a>
+                  </nav>
+                </div>
+                <div data-delay="0" data-hover="true" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f1f" class="rt-navbar-dropdown w-dropdown">
+                  <div class="dropdown-menu-toggle w-dropdown-toggle">
+                    <div class="rt-nav-menu">service</div>
+                    <div class="icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="rt-dropdown-list w-dropdown-list">
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Service one</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Service two</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Service three</a>
+                  </nav>
+                </div>
+                <div data-delay="0" data-hover="true" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f2b" class="rt-navbar-dropdown rt-mega-menu w-dropdown">
+                  <div class="dropdown-menu-toggle rt-mega-menu w-dropdown-toggle">
+                    <div class="rt-nav-menu">pages</div>
+                    <div class="icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="rt-dropdown-list rt-mega-menu w-dropdown-list">
+                    <div class="w-layout-hflex rt-page-dropdown-wrap">
+                      <div class="rt-page-dropdown-link-wrap rt-landskape-display-off">
+                        <div class="rt-page-dropdown-image"><img src="images/arnexo-blog-two-modern-architecture-card-image.webp" loading="lazy" sizes="100vw" srcset="images/arkitok-blog-two-modern-architecture-card-image-p-500.webp 500w, images/arkitok-blog-two-modern-architecture-card-image-p-800.webp 800w, images/arkitok-blog-two-modern-architecture-card-image-p-1080.webp 1080w, images/arnexo-blog-two-modern-architecture-card-image.webp 1260w" alt="Arnexo-blog-two-modern-architecture-card-image"></div>
+                      </div>
+                      <div class="rt-mega-menu-wrapper">
+                        <div class="rt-page-dropdown-link-wrap">
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">About one</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">About two</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">About three</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Portfolio one</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Portfolio two</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Portfolio Three</a>
+                          <a href="https://arnexo.webflow.io/portfolio-details/powersurge" class="rt-dropdown-link w-dropdown-link">Portfolio details</a>
+                        </div>
+                        <div class="rt-page-dropdown-link-wrap">
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Pricing one</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Pricing two</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Pricing three</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Blog one</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Blog two</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Blog three</a>
+                          <a href="https://arnexo.webflow.io/blog-post/the-role-of-architecture-in-climate-change" class="rt-dropdown-link w-dropdown-link">Blog post</a>
+                        </div>
+                        <div class="rt-page-dropdown-link-wrap rt-last">
+                          <a href="https://arnexo.webflow.io/401" class="rt-dropdown-link w-dropdown-link">Password protected</a>
+                          <a href="https://arnexo.webflow.io/404" class="rt-dropdown-link w-dropdown-link">404</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">License</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Changelog</a>
+                          <a href="#" class="rt-dropdown-link w-dropdown-link">Style guide</a>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                </div>
+                <div data-delay="0" data-hover="true" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f43" class="rt-navbar-dropdown w-dropdown">
+                  <div class="dropdown-menu-toggle w-dropdown-toggle">
+                    <div class="rt-nav-menu">Blog</div>
+                    <div class="icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="rt-dropdown-list w-dropdown-list">
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Blog one</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Blog two</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Blog three</a>
+                    <a href="https://arnexo.webflow.io/blog-post/the-role-of-architecture-in-climate-change" class="rt-dropdown-link w-dropdown-link">Blog post</a>
+                  </nav>
+                </div>
+                <div data-delay="0" data-hover="true" data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f51" class="rt-navbar-dropdown w-dropdown">
+                  <div class="dropdown-menu-toggle w-dropdown-toggle">
+                    <div class="rt-nav-menu">contact</div>
+                    <div class="icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="rt-dropdown-list w-dropdown-list">
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Contact one</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Contact two</a>
+                    <a href="#" class="rt-dropdown-link w-dropdown-link">Contact three</a>
+                  </nav>
+                </div>
+              </div>
+              <div class="rt-mobile-menu-wrapper rt-full-width">
+                <a data-w-id="8ba50a40-f38d-cb78-ec8a-b0ce6637fb99" href="#" class="rt-navbar-button w-inline-block">
+                  <div class="w-layout-hflex rt-button-text-wrap rt-position-relative">
+                    <div class="rt-button-text rt-in rt-text-color-white">Get a quote</div>
+                    <div class="rt-button-text rt-out rt-text-color-white">Get a quote</div>
+                  </div>
+                  <div class="rt-navbar-button-icon-wrap"><img width="11" height="9" alt="" src="images/arnexo-home-one-features-arrow-icon.svg" loading="lazy" class="rt-button-v2-arrow"></div>
+                </a>
+              </div>
+              <div class="w-layout-vflex rt-mobile-menu-part rt-full-width">
+                <div class="w-layout-vflex rt-mobile-menu-link">
+                  <div class="rt-text-style-h5">Follow us</div>
+                  <div class="w-layout-hflex rt-social-link-wrap">
+                    <a href="https://www.instagram.com/" class="w-inline-block">
+                      <div><img width="17" height="16" alt="Arnexo-team-icon" src="images/arnexo-team-icon.svg" loading="lazy"></div>
+                    </a>
+                    <a href="https://x.com/" class="w-inline-block">
+                      <div><img width="14" height="14" alt="" src="images/kloudera-mega-menu-icon.svg" loading="lazy"></div>
+                    </a>
+                    <a href="https://www.linkedin.com/" class="w-inline-block">
+                      <div><img width="14" height="15" alt="" src="images/kloudera-mega-menu-icon_1.svg" loading="lazy"></div>
+                    </a>
+                    <a href="https://www.facebook.com/" class="w-inline-block">
+                      <div><img width="10" height="16" alt="" src="images/Kloudera-team-icon.svg" loading="lazy"></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="w-layout-vflex rt-mobile-menu-main">
+                  <a href="tel:8884567890" class="rt-text-style-h5">(888) 456 7890</a>
+                  <a href="mailto:info@example.com" class="rt-text-style-h5">info@example.com<br></a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div class="w-layout-hflex rt-navbar-button-wrap">
+          <div class="rt-tab-display-none">
+            <a data-w-id="78fbb624-52c7-1961-8884-5c14f98b7f5f" href="#" class="rt-navbar-button w-inline-block">
+              <div class="w-layout-hflex rt-button-text-wrap rt-position-relative">
+                <div class="rt-button-text rt-in rt-text-color-white">Get a quote</div>
+                <div class="rt-button-text rt-out rt-text-color-white">Get a quote</div>
+              </div>
+            </a>
+          </div>
+          <div class="rt-menu-button w-nav-button">
+            <div data-w-id="1a884442-9c0b-dcc9-07b4-f689141a260f" class="rt-menu-button-main w-nav-button">
+              <div class="rt-menu-line rt-top-line"></div>
+              <div class="rt-menu-line rt-middle-line"></div>
+              <div class="rt-menu-line rt-bottom-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <main class="rt-main">
+    <div class="rt-utility-wrap rt-change">
+      <div class="utility-page-content rt-not-found-page-wrapper rt-position-relative">
+        <div class="rt-not-found-image"><img src="images/arnexo-404.svg" alt="" width="555" class="image"></div>
+        <h2 class="rt-gap-off">Oops! page not found</h2>
+        <div>Sorry, the page you are looking for doesn’t exist or has been moved.</div>
+        <div class="rt-button-wrap">
+          <a data-wf--rt-button-v1--variant="base" data-w-id="3add5d40-022b-a71c-76be-3ddc421c6112" href="#" class="rt-button-main rt-position-relative w-inline-block">
+            <div class="w-layout-hflex rt-button-style rt-change-border">
+              <div class="w-layout-hflex rt-button-text-wrap rt-position-relative">
+                <div class="rt-button-text rt-in">Go back to home</div>
+                <div class="rt-button-text rt-out">Go back to home</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <section id="w-node-_5eb0eeb2-45df-8e3f-195a-797650025f29-50025f29" class="rt-footer rt-overflow-hidden">
+    <div class="w-layout-blockcontainer rt-container-xl w-container">
+      <div class="rt-footer-wrap texture-purple">
+        <div class="rt-footer-block">
+          <div class="rt-footer-top"><img width="203" loading="lazy" alt="" src="images/axioma-logo-full.svg" class="fiiter-top-logo"></div>
+          <div class="w-layout-hflex rt-footer-links-container">
+            <div class="w-layout-vflex rt-footer-links-block">
+              <div class="rt-sub-text">Quick links</div>
+              <div class="w-layout-hflex rt-footer-links-wrap">
+                <a href="#" class="menu_link arrow-dropdown w-inline-block">
+                  <div class="menu_p">About</div>
+                  <div class="menu-p-hide">About</div>
+                </a>
+                <a href="#" class="menu_link arrow-dropdown w-inline-block">
+                  <div class="menu_p">Apartments</div>
+                  <div class="menu-p-hide">Apartments</div>
+                </a>
+                <a href="#" class="menu_link arrow-dropdown w-inline-block">
+                  <div class="menu_p">Location</div>
+                  <div class="menu-p-hide">Location</div>
+                </a>
+                <a href="#" class="menu_link arrow-dropdown w-inline-block">
+                  <div class="menu_p">Gallery</div>
+                  <div class="menu-p-hide">Gallery</div>
+                </a>
+                <a href="#" class="menu_link arrow-dropdown w-inline-block">
+                  <div class="menu_p">Contacts</div>
+                  <div class="menu-p-hide">Contacts</div>
+                </a>
+              </div>
+            </div>
+            <div class="div-vertical"></div>
+            <div class="w-layout-vflex rt-footer-links-block">
+              <div class="rt-sub-text">Follow Us</div>
+              <div class="w-layout-hflex rt-footer-social-icon-wrap">
+                <a href="https://www.facebook.com" class="rt-social-icon w-inline-block">
+                  <div class="rt-footer-social-icon-block rt-facebook"><img width="7" height="14" alt="" src="images/arnexo-home-one-footer-facebook-icon.webp" loading="lazy"></div>
+                  <div class="rt-description">facebook</div>
+                </a>
+                <a href="https://www.instagram.com" class="rt-social-icon w-inline-block">
+                  <div class="rt-footer-social-icon-block"><img width="14" height="14" alt="" src="images/arnexo-home-one-footer-instagram-icon.webp" loading="lazy"></div>
+                  <div class="rt-description">instagram</div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="w-layout-hflex rt-footer-main">
+            <div class="w-layout-hflex rt-footer-links">
+              <div class="w-layout-vflex rt-footer-link-wrap">
+                <div class="rt-sub-text">Our other projects:</div>
+                <div class="w-layout-hflex rt-footer-projects-icon-wrap">
+                  <a href="#" class="w-inline-block"><img src="images/riverland.svg" loading="lazy" alt="" class="footer-project-logo"></a>
+                  <a href="#" class="w-inline-block"><img src="images/porto-franko.svg" loading="lazy" alt="" class="footer-project-logo"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-layout-hflex rt-footer-bottom">
+            <div class="rt-text-color-light-grey rt-mobile-text-center rt-mobile-no-shrink">© 2026 Axioma. All rights reserved. <a href="#" class="rt-text-color-light-grey rt-footer-text-link">Privacy Policy</a>
+            </div>
+            <div class="rt-text-color-light-grey rt-mobile-no-shrink">The project is being developed by: <a href="https://ntligence.lt/" class="rt-text-color-light-grey rt-footer-text-link">UAB NTligence</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=69b3e21b68238a3593337130" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="js/webflow.js" type="text/javascript"></script>
+</body>
+</html>
