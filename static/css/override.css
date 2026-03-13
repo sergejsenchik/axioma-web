@@ -940,3 +940,198 @@ body {
   line-height: var(--line-height-body);
   margin-bottom: 0;
 }
+
+/* -----------------------------------------------
+   Contact section
+   ----------------------------------------------- */
+
+.contact-section {
+  padding-top: var(--section-gap-small);
+  padding-bottom: var(--section-gap-small);
+  background-color: var(--color-bg);
+}
+
+.contact-form-main {
+  display: flex;
+  gap: 50px;
+  height: 740px;
+  margin: var(--section-gap-small) 0;
+}
+
+.contact-form-left {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-form-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-form-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-form-heading h3 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h3);
+  font-style: italic;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-h3);
+  letter-spacing: var(--letter-spacing-h3);
+  color: var(--color-text);
+  margin-bottom: 2rem;
+}
+
+.form-input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.75rem 0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+.form-input::placeholder {
+  color: var(--color-text-light);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-row-2col {
+  --bs-gutter-x: 1.5rem;
+}
+
+.form-checkbox-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-field input[type="checkbox"] {
+  accent-color: var(--color-accent);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text);
+}
+
+.checkbox-link {
+  color: var(--color-text);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.checkbox-link:hover {
+  color: var(--color-accent);
+}
+
+.btn-cta-dark {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-cta-dark:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.agent-cards-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem 0;
+}
+
+.agent-card {
+  text-align: center;
+  flex: 1;
+  padding: 35px;
+}
+
+.agent-photo-wrap {
+  margin-bottom: 1rem;
+}
+
+.agent-photo {
+  width: 100%;
+  max-width: 320px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.agent-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.agent-phone {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.agent-phone:hover {
+  color: var(--color-accent);
+}
+
+.agent-email {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.agent-email:hover {
+  color: var(--color-accent);
+}
+
+.agent-border {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-accent);
+  margin-top: 1rem;
+}
