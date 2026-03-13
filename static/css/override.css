@@ -1,32 +1,96 @@
 /* Axioma — Main Override Styles */
 
 :root {
-  /* Colors — update with actual brand colors */
-  --color-primary: #2c3e50;
-  --color-secondary: #e67e22;
-  --color-accent: #3498db;
-  --color-text: #333333;
+  /* Brand colors (extracted from Webflow) */
+  --color-primary: #0B2641;
+  --color-accent: #e07f60;
+  --color-purple: #5e186e;
+  --color-bg: #fefaf9;
+  --color-dark: #15151F;
+  --color-text: #0B2641;
   --color-text-light: #666666;
-  --color-bg: #ffffff;
-  --color-bg-light: #f8f9fa;
   --color-border: #dee2e6;
+  --color-white: #ffffff;
 
-  /* Status colors */
+  /* Status colors (keep for future apartment pages) */
   --color-available: #27ae60;
   --color-reserved: #f39c12;
   --color-sold: #e74c3c;
 
-  /* Typography */
-  --font-primary: 'Inter', sans-serif;
-  --font-size-base: 16px;
-  --line-height-base: 1.6;
+  /* Font families */
+  --font-body: 'Inter Tight', sans-serif;
+  --font-display: 'Metal', 'Inter Tight', sans-serif;
+
+  /* Heading 1 (hero headings) */
+  --font-size-h1: 4.5rem;
+  --line-height-h1: 108.33%;
+  --letter-spacing-h1: -0.3rem;
+  --font-weight-h1: 400;
+
+  /* Heading 2 */
+  --font-size-h2: 3.2rem;
+  --line-height-h2: 125%;
+  --letter-spacing-h2: -0.09rem;
+
+  /* Heading 3 */
+  --font-size-h3: 2rem;
+  --line-height-h3: 120%;
+  --letter-spacing-h3: -0.05rem;
+
+  /* Heading 4 */
+  --font-size-h4: 1.375rem;
+  --line-height-h4: 141.67%;
+  --letter-spacing-h4: -0.0275rem;
+
+  /* Body text */
+  --font-size-body: 0.8rem;
+  --line-height-body: 162.5%;
+  --font-weight-normal: 400;
+
+  /* Sub text */
+  --font-size-sub: 1.5rem;
+  --line-height-sub: 171.43%;
+
+  /* Button text */
+  --font-size-button: 0.6875rem;
+  --font-weight-button: 600;
+
+  /* Nav menu text */
+  --font-size-nav: 1rem;
+  --letter-spacing-nav: 0.0875rem;
+
+  /* Spacing */
+  --gutter: 1.5rem;
+  --section-gap: 8.125rem;
+  --section-gap-small: 7.5rem;
 }
 
 body {
-  font-family: var(--font-primary);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* Bootstrap container override to match Webflow 940px design */
+.container {
+  max-width: 940px;
+}
+@media (min-width: 576px) {
+  .container { max-width: 940px; }
+}
+@media (min-width: 768px) {
+  .container { max-width: 940px; }
+}
+@media (min-width: 992px) {
+  .container { max-width: 940px; }
+}
+@media (min-width: 1200px) {
+  .container { max-width: 940px; }
+}
+@media (min-width: 1400px) {
+  .container { max-width: 940px; }
 }
 
 /* Status badges */
