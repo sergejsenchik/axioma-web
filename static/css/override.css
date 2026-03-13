@@ -1,0 +1,51 @@
+/* Axioma — Main Override Styles */
+
+:root {
+  /* Colors — update with actual brand colors */
+  --color-primary: #2c3e50;
+  --color-secondary: #e67e22;
+  --color-accent: #3498db;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-bg: #ffffff;
+  --color-bg-light: #f8f9fa;
+  --color-border: #dee2e6;
+
+  /* Status colors */
+  --color-available: #27ae60;
+  --color-reserved: #f39c12;
+  --color-sold: #e74c3c;
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+}
+
+/* Status badges */
+.status-available { color: var(--color-available); }
+.status-reserved { color: var(--color-reserved); }
+.status-sold { color: var(--color-sold); }
+
+.tr-status-available { border-left: 3px solid var(--color-available); }
+.tr-status-reserved { border-left: 3px solid var(--color-reserved); }
+.tr-status-sold { border-left: 3px solid var(--color-sold); }
+
+/* SVG map apartment polygons */
+.apartment-polygon {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.apartment-polygon:hover {
+  opacity: 0.7;
+}
+.apartment-polygon.status-available { fill: var(--color-available); fill-opacity: 0.4; }
+.apartment-polygon.status-reserved { fill: var(--color-reserved); fill-opacity: 0.4; }
+.apartment-polygon.status-sold { fill: var(--color-sold); fill-opacity: 0.4; }
