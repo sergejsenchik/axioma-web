@@ -378,6 +378,66 @@
       </div>
     </section>
 
+    <!-- Location section -->
+    <section class="location-section">
+      <div class="location-container">
+        <div class="location-wrapper">
+          <div class="location-heading-wrap">
+            <h2>Matuojama minutėmis</h2>
+          </div>
+          <div class="location-circle-wrapper">
+            <!-- Rotating text labels -->
+            <div class="location-heading-wrapper">
+              <div class="location-heading-inner">
+                <!-- Line 1: "IKI" (static prefix) -->
+                <div class="heading-mask">
+                  <h6 class="location-h6">IKI</h6>
+                </div>
+                <!-- Line 2: rotating second word pairs -->
+                <div class="heading-mask horizontal-flex">
+                  <h6 class="location-h6">&nbsp;</h6>
+                  <div class="heading-mask width-applied">
+                    <h6 class="location-h6 location-text-item active" data-step="0">PARKO</h6>
+                    <h6 class="location-h6 location-text-item" data-step="1">MIESTO CENTRO</h6>
+                    <h6 class="location-h6 location-text-item" data-step="2">ARTIMIAUSIO</h6>
+                    <h6 class="location-h6 location-text-item" data-step="3">GIMNAZIJOS</h6>
+                    <h6 class="location-h6 location-text-item" data-step="4">ORO UOSTO</h6>
+                  </div>
+                </div>
+                <!-- Line 3: rotating third line -->
+                <div class="heading-mask width-applied-2">
+                  <h6 class="location-h6 location-text-item-2 active" data-step="0">PRIE UPĖS</h6>
+                  <h6 class="location-h6 location-text-item-2" data-step="1">PĖSČIOMIS</h6>
+                  <h6 class="location-h6 location-text-item-2" data-step="2">PREKYBOS CENTRO</h6>
+                  <h6 class="location-h6 location-text-item-2" data-step="3">KAMPUSO</h6>
+                  <h6 class="location-h6 location-text-item-2" data-step="4">AUTOMOBILIU</h6>
+                </div>
+              </div>
+            </div>
+            <!-- Number circles: 5, 8, 10, 15, 20 minutes -->
+            <div class="circle-numbers-wrapper">
+              <!-- PHP: walking/driving times may need verification -->
+              <div class="circle-numbers-inner">
+                <div class="circle-number active" data-step="0">5</div>
+              </div>
+              <div class="circle-numbers-inner">
+                <div class="circle-number" data-step="1">8</div>
+              </div>
+              <div class="circle-number" data-step="2">10</div>
+              <div class="circle-number" data-step="3">15</div>
+              <div class="circle-number" data-step="4">20</div>
+            </div>
+            <!-- Static bottom text -->
+            <div class="circle-text-wrapper">
+              <div class="circle-text">MINUČIŲ PĖSČIOMIS IKI<br>ARTIMIAUSIO TAŠKO</div>
+            </div>
+            <!-- Lottie container -->
+            <div id="circle-loading" class="circle-loading"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PHP: dynamic content sections -->
   </main>
 
@@ -405,6 +465,9 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Lottie (for location section animation) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
 
   <!-- Project Scripts -->
   <script src="static/js/script.js"></script>

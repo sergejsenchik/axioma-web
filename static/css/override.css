@@ -632,3 +632,205 @@ body {
 .discover-card:hover .discover-arrow {
   filter: brightness(10);
 }
+
+/* -----------------------------------------------
+   Location / Measured in minutes
+   ----------------------------------------------- */
+
+.location-section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.location-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+.location-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-heading-wrap {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.location-heading-wrap h2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h2);
+  font-style: italic;
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-h2);
+  letter-spacing: var(--letter-spacing-h2);
+  color: var(--color-text);
+}
+
+.location-circle-wrapper {
+  position: relative;
+  width: 36em;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid #e07f604a;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-heading-wrapper {
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+}
+
+.location-heading-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading-mask {
+  overflow: hidden;
+}
+
+.heading-mask.horizontal-flex {
+  display: flex;
+  align-items: baseline;
+}
+
+.heading-mask.width-applied {
+  position: relative;
+  overflow: hidden;
+  height: 1.6em;
+}
+
+.heading-mask.width-applied-2 {
+  position: relative;
+  overflow: hidden;
+  height: 1.6em;
+}
+
+.location-h6 {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.location-text-item,
+.location-text-item-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.location-text-item.active,
+.location-text-item-2.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.circle-numbers-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.circle-number {
+  position: absolute;
+  font-size: 140px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  line-height: 1;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  color: var(--color-text);
+}
+
+.circle-number.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Position each number around the circle perimeter */
+.circle-number[data-step="0"] {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+}
+
+.circle-number[data-step="0"].active {
+  transform: translateX(-50%) scale(1);
+}
+
+.circle-number[data-step="1"] {
+  top: 30%;
+  right: 5%;
+}
+
+.circle-number[data-step="2"] {
+  bottom: 10%;
+  right: 15%;
+}
+
+.circle-number[data-step="3"] {
+  bottom: 10%;
+  left: 15%;
+}
+
+.circle-number[data-step="4"] {
+  top: 30%;
+  left: 5%;
+}
+
+.circle-text-wrapper {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.circle-text {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(11, 38, 65, 0.5);
+  line-height: 1.6;
+}
+
+#circle-loading.circle-loading {
+  position: absolute;
+  inset: 0;
+  width: 101%;
+  height: 101%;
+  top: -0.5%;
+  left: -0.5%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#circle-loading.circle-loading svg {
+  width: 100% !important;
+  height: 100% !important;
+}

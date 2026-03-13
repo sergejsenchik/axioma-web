@@ -88,6 +88,65 @@ $(document).ready(function () {
   }
 
   // -----------------------------------------------
+  // Location -- Lottie circle + text rotation
+  // -----------------------------------------------
+  var $locationSection = $('.location-section');
+  if ($locationSection.length && typeof lottie !== 'undefined') {
+    var circleAnim = lottie.loadAnimation({
+      container: document.getElementById('circle-loading'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: 'static/img/circle-loader.json'
+    });
+
+    var locationSteps = [
+      { frame: 6 },   // Step 0: Park / By the river (5 min)
+      { frame: 12 },  // Step 1: City center / On foot (8 min)
+      { frame: 18 },  // Step 2: Shopping mall (10 min)
+      { frame: 24 },  // Step 3: Highschool campus (15 min)
+      { frame: 30 }   // Step 4: Airport / With car (20 min)
+    ];
+
+    var currentLocationStep = 0;
+    var locationCycleTimer = null;
+
+    function advanceLocationStep() {
+      // Remove active from all
+      $('.location-text-item, .location-text-item-2, .circle-number').removeClass('active');
+
+      // Set current step active
+      var step = locationSteps[currentLocationStep];
+      $('.location-text-item[data-step="' + currentLocationStep + '"]').addClass('active');
+      $('.location-text-item-2[data-step="' + currentLocationStep + '"]').addClass('active');
+      $('.circle-number[data-step="' + currentLocationStep + '"]').addClass('active');
+
+      // Play Lottie from previous frame to current
+      var fromFrame = currentLocationStep === 0 ? 0 : locationSteps[currentLocationStep - 1].frame;
+      circleAnim.playSegments([fromFrame, step.frame], true);
+
+      currentLocationStep = (currentLocationStep + 1) % locationSteps.length;
+    }
+
+    function startLocationCycle() {
+      advanceLocationStep(); // Show first step immediately
+      locationCycleTimer = setInterval(advanceLocationStep, 3500); // 3.5s per step
+    }
+
+    // Trigger on scroll into viewport
+    var locationObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          startLocationCycle();
+          locationObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    locationObserver.observe($locationSection[0]);
+  }
+
+  // -----------------------------------------------
   // Load mock apartment data (dev only)
   // Backend will replace with PHP server-rendering
   // -----------------------------------------------
