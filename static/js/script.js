@@ -6,6 +6,46 @@
 $(document).ready(function () {
 
   // -----------------------------------------------
+  // Hero Slider -- Crossfade, 6s auto-advance
+  // -----------------------------------------------
+  var $heroSlides = $('.hero-slide');
+  if ($heroSlides.length > 1) {
+    var slideCount = $heroSlides.length;
+    var currentSlide = 0;
+    var slideInterval = 6000;
+    var heroTimer;
+
+    function goToSlide(index) {
+      $heroSlides.eq(currentSlide).removeClass('active');
+      currentSlide = index % slideCount;
+      $heroSlides.eq(currentSlide).addClass('active');
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function startHeroAutoplay() {
+      heroTimer = setInterval(nextSlide, slideInterval);
+    }
+
+    startHeroAutoplay();
+  }
+
+  // -----------------------------------------------
+  // Smooth scroll -- scroll-down indicator
+  // -----------------------------------------------
+  $('.scroll-down-link').on('click', function (e) {
+    e.preventDefault();
+    var target = $(this).attr('href');
+    if ($(target).length) {
+      $('html, body').animate({
+        scrollTop: $(target).offset().top
+      }, 800);
+    }
+  });
+
+  // -----------------------------------------------
   // Load mock apartment data (dev only)
   // Backend will replace with PHP server-rendering
   // -----------------------------------------------
