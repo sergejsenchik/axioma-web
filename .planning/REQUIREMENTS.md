@@ -9,11 +9,11 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Foundation
 
-- [ ] **FOUN-01**: HTML boilerplate uses Bootstrap 5.3.3 grid, jQuery 3.7.1, and all required CDN/local dependencies
-- [ ] **FOUN-02**: CSS custom properties extracted from Webflow (colors, typography, spacing) defined in `:root` in override.css
-- [ ] **FOUN-03**: Bootstrap container overridden to match Webflow's 940px content width
-- [ ] **FOUN-04**: Clean semantic HTML structure with no Webflow data-* attributes or w-* classes
-- [ ] **FOUN-05**: File structure matches backend developer's pattern (static/css/, static/js/, static/theme/, uploads/)
+- [x] **FOUN-01**: HTML boilerplate uses Bootstrap 5.3.3 grid, jQuery 3.7.1, and all required CDN/local dependencies
+- [x] **FOUN-02**: CSS custom properties extracted from Webflow (colors, typography, spacing) defined in `:root` in override.css
+- [x] **FOUN-03**: Bootstrap container overridden to match Webflow's 940px content width
+- [x] **FOUN-04**: Clean semantic HTML structure with no Webflow data-* attributes or w-* classes
+- [x] **FOUN-05**: File structure matches backend developer's pattern (static/css/, static/js/, static/theme/, uploads/)
 
 ### Hero
 
@@ -136,11 +136,11 @@ Deferred to future phases of this milestone or future milestones.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FOUN-01 | Phase 1 | Pending |
-| FOUN-02 | Phase 1 | Pending |
-| FOUN-03 | Phase 1 | Pending |
-| FOUN-04 | Phase 1 | Pending |
-| FOUN-05 | Phase 1 | Pending |
+| FOUN-01 | Phase 1 | Complete |
+| FOUN-02 | Phase 1 | Complete |
+| FOUN-03 | Phase 1 | Complete |
+| FOUN-04 | Phase 1 | Complete |
+| FOUN-05 | Phase 1 | Complete |
 | HERO-01 | Phase 1 | Pending |
 | HERO-02 | Phase 1 | Pending |
 | HERO-03 | Phase 1 | Pending |
