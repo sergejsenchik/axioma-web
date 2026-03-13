@@ -147,6 +147,20 @@ $(document).ready(function () {
   }
 
   // -----------------------------------------------
+  // Timeline -- Progress line based on current date
+  // -----------------------------------------------
+  var $progressFill = $('.progress-line-fill');
+  if ($progressFill.length) {
+    var startDate = new Date(2024, 9, 1);  // Oct 2024 (Q4 2024 start)
+    var endDate = new Date(2026, 11, 31);   // Dec 2026 (Q4 2026 end)
+    var now = new Date();
+    var progress = Math.min(100, Math.max(0,
+      ((now - startDate) / (endDate - startDate)) * 100
+    ));
+    $progressFill.css('width', progress + '%');
+  }
+
+  // -----------------------------------------------
   // Load mock apartment data (dev only)
   // Backend will replace with PHP server-rendering
   // -----------------------------------------------
