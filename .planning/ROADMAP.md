@@ -12,8 +12,8 @@ Rebuild the Axioma residential complex homepage from a Webflow export into produ
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation + Hero** - HTML/CSS architecture and full-screen video hero section
-- [ ] **Phase 2: Content Sections** - All page sections from About through Footer
+- [x] **Phase 1: Foundation + Hero** - HTML/CSS architecture and full-screen video hero section
+- [x] **Phase 2: Content Sections** - All page sections from About through Footer
 - [ ] **Phase 3: Navigation + Animations** - Sticky navbar with logo swap, scroll animations, hover effects
 - [ ] **Phase 4: Responsive + Polish + Handoff** - Device breakpoints, localization verification, PHP markers
 
@@ -32,8 +32,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md -- Foundation: asset copy, HTML boilerplate update, CSS design tokens, 940px container override
-- [ ] 01-02-PLAN.md -- Hero: 3-slide video/image slider with crossfade, overlay text, CTA buttons, scroll-down indicator
+- [x] 01-01-PLAN.md -- Foundation: asset copy, HTML boilerplate update, CSS design tokens, 940px container override
+- [x] 01-02-PLAN.md -- Hero: 3-slide video/image slider with crossfade, overlay text, CTA buttons, scroll-down indicator
 
 ### Phase 2: Content Sections
 **Goal**: A complete scrollable homepage with all content sections rendered using Bootstrap grid layout
@@ -48,9 +48,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md -- Assets + About section (digit-train counters) + Discover section (2-layer hover cards)
-- [ ] 02-02-PLAN.md -- Location section (Lottie circle animation + text rotation) + Timeline section (milestone grid + progress line)
-- [ ] 02-03-PLAN.md -- Contact section (form + 5 agent cards) + Footer (logo, links, social, other projects, copyright)
+- [x] 02-01-PLAN.md -- Assets + About section (digit-train counters) + Discover section (2-layer hover cards)
+- [x] 02-02-PLAN.md -- Location section (Lottie circle animation + text rotation) + Timeline section (milestone grid + progress line)
+- [x] 02-03-PLAN.md -- Contact section (form + 5 agent cards) + Footer (logo, links, social, other projects, copyright)
 
 ### Phase 3: Navigation + Animations
 **Goal**: The page feels polished and interactive with a sticky navbar, scroll-triggered entrance animations, and hover effects on all interactive elements
@@ -89,7 +89,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation + Hero | 0/2 | Not started | - |
-| 2. Content Sections | 1/3 | In Progress|  |
+| 1. Foundation + Hero | 2/2 | Complete | 2026-03-13 |
+| 2. Content Sections | 3/3 | Complete | 2026-03-13 |
 | 3. Navigation + Animations | 0/2 | Not started | - |
 | 4. Responsive + Polish + Handoff | 0/2 | Not started | - |

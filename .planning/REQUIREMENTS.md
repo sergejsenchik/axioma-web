@@ -60,16 +60,16 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Contact
 
-- [ ] **CONT-01**: Contact form with fields: name, email, phone, message, terms consent checkbox
-- [ ] **CONT-02**: Form uses `<form method="post" action="URL">` -- no AJAX, no fetch
-- [ ] **CONT-03**: Five sales agent cards with photo, name, phone (tel: link), email (mailto: link)
-- [ ] **CONT-04**: PHP markers on form action URL and agent data areas
+- [x] **CONT-01**: Contact form with fields: name, email, phone, message, terms consent checkbox
+- [x] **CONT-02**: Form uses `<form method="post" action="URL">` -- no AJAX, no fetch
+- [x] **CONT-03**: Five sales agent cards with photo, name, phone (tel: link), email (mailto: link)
+- [x] **CONT-04**: PHP markers on form action URL and agent data areas
 
 ### Footer
 
-- [ ] **FOOT-01**: Footer with logo, quick navigation links, social media icons (Facebook, Instagram)
-- [ ] **FOOT-02**: Copyright, developer credit, privacy policy link
-- [ ] **FOOT-03**: Links to other project logos/sites if applicable
+- [x] **FOOT-01**: Footer with logo, quick navigation links, social media icons (Facebook, Instagram)
+- [x] **FOOT-02**: Copyright, developer credit, privacy policy link
+- [x] **FOOT-03**: Links to other project logos/sites if applicable
 
 ### Animations
 
@@ -166,13 +166,13 @@ Deferred to future phases of this milestone or future milestones.
 | TIME-02 | Phase 2 | Complete |
 | TIME-03 | Phase 2 | Complete |
 | TIME-04 | Phase 2 | Complete |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| FOOT-01 | Phase 2 | Pending |
-| FOOT-02 | Phase 2 | Pending |
-| FOOT-03 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Complete |
+| CONT-02 | Phase 2 | Complete |
+| CONT-03 | Phase 2 | Complete |
+| CONT-04 | Phase 2 | Complete |
+| FOOT-01 | Phase 2 | Complete |
+| FOOT-02 | Phase 2 | Complete |
+| FOOT-03 | Phase 2 | Complete |
 | ANIM-01 | Phase 3 | Pending |
 | ANIM-02 | Phase 3 | Pending |
 | ANIM-03 | Phase 3 | Pending |
