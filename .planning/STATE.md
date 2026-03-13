@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-03-13T14:06:05.128Z"
+stopped_at: Phase 2 context gathered
+last_updated: "2026-03-13T18:40:47.964Z"
 last_activity: 2026-03-13 -- Completed 01-01 Foundation + Assets
 progress:
   total_phases: 4
@@ -70,11 +70,11 @@ None yet.
 ### Blockers/Concerns
 
 - [Research]: Hero video files are portrait (1080x1920) -- may need landscape versions or object-fit:cover crop for desktop
-- [Research]: "Metal" font needs visual verification against Webflow preview -- may be template artifact
+- [Resolved]: Display font changed from "Metal" to "EB Garamond" (h1-h4 headings; h5-h6 use Inter Tight)
 - [Research]: Confetti Lottie JSON not included in Webflow export (deferred to v2 POPUP-02)
 
 ## Session Continuity
 
-Last session: 2026-03-13T14:06:05.126Z
-Stopped at: Completed 01-01-PLAN.md
-Resume file: None
+Last session: 2026-03-13T18:40:47.961Z
+Stopped at: Phase 2 context gathered
+Resume file: .planning/phases/02-content-sections/02-CONTEXT.md
