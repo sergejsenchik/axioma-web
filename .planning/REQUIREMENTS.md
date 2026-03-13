@@ -33,16 +33,16 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### About
 
-- [ ] **ABOU-01**: About section with project philosophy heading and descriptive text
-- [ ] **ABOU-02**: Animated stat counters that count up on scroll into viewport (units, area, year)
-- [ ] **ABOU-03**: Counter uses digit-train animation style matching Webflow design
-- [ ] **ABOU-04**: "About project" link/CTA for future about page
+- [x] **ABOU-01**: About section with project philosophy heading and descriptive text
+- [x] **ABOU-02**: Animated stat counters that count up on scroll into viewport (units, area, year)
+- [x] **ABOU-03**: Counter uses digit-train animation style matching Webflow design
+- [x] **ABOU-04**: "About project" link/CTA for future about page
 
 ### Discover
 
-- [ ] **DISC-01**: Three numbered content cards (01, 02, 03) presenting project pillars
-- [ ] **DISC-02**: Hover effect with image reveal/overlay animation on each card
-- [ ] **DISC-03**: Cards use Bootstrap grid for responsive layout
+- [x] **DISC-01**: Three numbered content cards (01, 02, 03) presenting project pillars
+- [x] **DISC-02**: Hover effect with image reveal/overlay animation on each card
+- [x] **DISC-03**: Cards use Bootstrap grid for responsive layout
 
 ### Location
 
@@ -151,13 +151,13 @@ Deferred to future phases of this milestone or future milestones.
 | NAV-03 | Phase 3 | Pending |
 | NAV-04 | Phase 3 | Pending |
 | NAV-05 | Phase 3 | Pending |
-| ABOU-01 | Phase 2 | Pending |
-| ABOU-02 | Phase 2 | Pending |
-| ABOU-03 | Phase 2 | Pending |
-| ABOU-04 | Phase 2 | Pending |
-| DISC-01 | Phase 2 | Pending |
-| DISC-02 | Phase 2 | Pending |
-| DISC-03 | Phase 2 | Pending |
+| ABOU-01 | Phase 2 | Complete |
+| ABOU-02 | Phase 2 | Complete |
+| ABOU-03 | Phase 2 | Complete |
+| ABOU-04 | Phase 2 | Complete |
+| DISC-01 | Phase 2 | Complete |
+| DISC-02 | Phase 2 | Complete |
+| DISC-03 | Phase 2 | Complete |
 | LOCN-01 | Phase 2 | Pending |
 | LOCN-02 | Phase 2 | Pending |
 | LOCN-03 | Phase 2 | Pending |
