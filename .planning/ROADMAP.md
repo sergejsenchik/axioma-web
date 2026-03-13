@@ -29,11 +29,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. The page uses Bootstrap 5.3.3 grid with a 940px container override, and all CSS custom properties (colors, typography, spacing) are defined in override.css
   4. The HTML source contains no Webflow data-* attributes, no w-* classes, and uses clean semantic markup
   5. A "scroll down" indicator is visible on the hero and smooth-scrolls to the content below
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
+- [ ] 01-01-PLAN.md -- Foundation: asset copy, HTML boilerplate update, CSS design tokens, 940px container override
+- [ ] 01-02-PLAN.md -- Hero: 3-slide video/image slider with crossfade, overlay text, CTA buttons, scroll-down indicator
 
 ### Phase 2: Content Sections
 **Goal**: A complete scrollable homepage with all content sections rendered using Bootstrap grid layout
