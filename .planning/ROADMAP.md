@@ -45,12 +45,12 @@ Plans:
   3. The Discover section shows three numbered cards (01, 02, 03) with image reveal hover effects, laid out on Bootstrap grid
   4. The contact form has all fields (name, email, phone, message, terms checkbox) and submits via POST (no AJAX); five sales agent cards display with clickable phone and email links
   5. The footer displays logo, navigation links, social icons, copyright, and privacy policy link
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
-- [ ] 02-03: TBD
+- [ ] 02-01-PLAN.md -- Assets + About section (digit-train counters) + Discover section (2-layer hover cards)
+- [ ] 02-02-PLAN.md -- Location section (Lottie circle animation + text rotation) + Timeline section (milestone grid + progress line)
+- [ ] 02-03-PLAN.md -- Contact section (form + 5 agent cards) + Footer (logo, links, social, other projects, copyright)
 
 ### Phase 3: Navigation + Animations
 **Goal**: The page feels polished and interactive with a sticky navbar, scroll-triggered entrance animations, and hover effects on all interactive elements
