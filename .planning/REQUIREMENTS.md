@@ -46,17 +46,17 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Location
 
-- [ ] **LOCN-01**: "Measured in minutes" section showing walking/driving times to amenities
-- [ ] **LOCN-02**: Animated circular progress indicators (Lottie or CSS)
-- [ ] **LOCN-03**: Rotating text labels for amenity names
-- [ ] **LOCN-04**: Expanding number circles for time values
+- [x] **LOCN-01**: "Measured in minutes" section showing walking/driving times to amenities
+- [x] **LOCN-02**: Animated circular progress indicators (Lottie or CSS)
+- [x] **LOCN-03**: Rotating text labels for amenity names
+- [x] **LOCN-04**: Expanding number circles for time values
 
 ### Timeline
 
-- [ ] **TIME-01**: Construction progress timeline with quarterly milestones (Q4 2024 -- Q4 2026)
-- [ ] **TIME-02**: Visual progress line indicator showing current position
-- [ ] **TIME-03**: Construction photo background
-- [ ] **TIME-04**: PHP marker for backend to update progress dynamically
+- [x] **TIME-01**: Construction progress timeline with quarterly milestones (Q4 2024 -- Q4 2026)
+- [x] **TIME-02**: Visual progress line indicator showing current position
+- [x] **TIME-03**: Construction photo background
+- [x] **TIME-04**: PHP marker for backend to update progress dynamically
 
 ### Contact
 
@@ -158,14 +158,14 @@ Deferred to future phases of this milestone or future milestones.
 | DISC-01 | Phase 2 | Complete |
 | DISC-02 | Phase 2 | Complete |
 | DISC-03 | Phase 2 | Complete |
-| LOCN-01 | Phase 2 | Pending |
-| LOCN-02 | Phase 2 | Pending |
-| LOCN-03 | Phase 2 | Pending |
-| LOCN-04 | Phase 2 | Pending |
-| TIME-01 | Phase 2 | Pending |
-| TIME-02 | Phase 2 | Pending |
-| TIME-03 | Phase 2 | Pending |
-| TIME-04 | Phase 2 | Pending |
+| LOCN-01 | Phase 2 | Complete |
+| LOCN-02 | Phase 2 | Complete |
+| LOCN-03 | Phase 2 | Complete |
+| LOCN-04 | Phase 2 | Complete |
+| TIME-01 | Phase 2 | Complete |
+| TIME-02 | Phase 2 | Complete |
+| TIME-03 | Phase 2 | Complete |
+| TIME-04 | Phase 2 | Complete |
 | CONT-01 | Phase 2 | Pending |
 | CONT-02 | Phase 2 | Pending |
 | CONT-03 | Phase 2 | Pending |
