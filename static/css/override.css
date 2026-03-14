@@ -212,10 +212,31 @@ body {
   white-space: nowrap;
 }
 
+/* Button text-swap hover animation (ANIM-03) */
+.btn-text-in {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
 .btn-text-out {
   position: absolute;
   transform: translateY(120%);
   opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Hover: text-in slides up and fades, text-out slides in from below */
+.btn-cta:hover .btn-text-in,
+.btn-cta-light:hover .btn-text-in,
+.btn-cta-dark:hover .btn-text-in {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.btn-cta:hover .btn-text-out,
+.btn-cta-light:hover .btn-text-out,
+.btn-cta-dark:hover .btn-text-out {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 /* Hero navigation arrows (flush bottom-right) */
