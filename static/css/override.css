@@ -1044,6 +1044,7 @@ body {
   display: flex;
   position: relative;
   overflow: hidden;
+  clip-path: inset(50%);  /* Start fully clipped -- JS scroll handler expands */
 }
 
 .timeline-image {
@@ -1079,6 +1080,8 @@ body {
   max-width: 100rem;
   padding: 7rem 2rem 6rem;
   display: flex;
+  transform-origin: top center;
+  /* Initial state for scroll-linked animation -- opacity and rotateX controlled by JS */
 }
 
 .timeline-progress-wrap {

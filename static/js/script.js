@@ -212,28 +212,76 @@ $(document).ready(function () {
   }
 
   // -----------------------------------------------
-  // Timeline -- Progress line based on current date
+  // Timeline -- Fixed progress line at 42%
+  // PHP: backend will set actual construction progress value
   // -----------------------------------------------
   var $progressFill = $('.progress-line-fill');
   if ($progressFill.length) {
-    var startDate = new Date(2024, 9, 1);  // Oct 2024 (Q4 2024 start)
-    var endDate = new Date(2026, 11, 31);   // Dec 2026 (Q4 2026 end)
-    var now = new Date();
-    var progress = Math.min(100, Math.max(0,
-      ((now - startDate) / (endDate - startDate)) * 100
-    ));
-
-    // Animate on scroll into view
-    var timelineObserver = new IntersectionObserver(function(entries) {
+    var timelineProgressObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          $progressFill.css('width', progress + '%');
-          timelineObserver.unobserve(entry.target);
+          $progressFill.css('width', '42%'); /* PHP: replace 42 with actual progress */
+          timelineProgressObserver.unobserve(entry.target);
         }
       });
     }, { threshold: 0.3 });
-    timelineObserver.observe($progressFill.closest('.timeline-section')[0]);
+    timelineProgressObserver.observe($progressFill.closest('.timeline-section')[0]);
   }
+
+  // -----------------------------------------------
+  // Timeline -- Scroll-linked perspective animation
+  // Background image expands from center (clip-path),
+  // purple overlay rotates in with 3D perspective (rotateX)
+  // -----------------------------------------------
+  var $timelineSection = $('.timeline-section');
+  var timelineCached = null;
+
+  function cacheTimelinePositions() {
+    if ($timelineSection.length) {
+      timelineCached = {
+        top: $timelineSection.offset().top,
+        height: $timelineSection.outerHeight()
+      };
+    }
+  }
+
+  $(window).on('resize', cacheTimelinePositions);
+  cacheTimelinePositions();
+
+  var timelineRafId = null;
+  $(window).on('scroll.timeline', function() {
+    if (!timelineCached) return;
+    if (timelineRafId) return;
+
+    timelineRafId = requestAnimationFrame(function() {
+      timelineRafId = null;
+      var scrollY = window.pageYOffset;
+      var viewH = window.innerHeight;
+      var start = timelineCached.top - viewH;
+      var end = timelineCached.top + timelineCached.height;
+
+      if (scrollY < start || scrollY > end) return;
+
+      var progress = (scrollY - start) / (end - start); // 0 to 1
+
+      // Background image: expand clip-path from center
+      // At progress=0 fully clipped (50%), at progress~0.5 fully visible (0%)
+      var clipInset = Math.max(0, 50 - (progress * 100));
+      $('.timeline-background-image').css(
+        'clip-path', 'inset(' + clipInset + '%)'
+      );
+
+      // Purple overlay: rotateX from tilted (15deg) to flat (0deg)
+      // Starts rotating in when progress > 0.2
+      var rotateProgress = Math.max(0, Math.min(1, (progress - 0.2) / 0.5));
+      var rotateX = 15 * (1 - rotateProgress);
+      var contentOpacity = Math.min(1, rotateProgress * 1.5);
+      $('.timeline-content').css({
+        'transform': 'rotateX(' + rotateX + 'deg)',
+        'opacity': contentOpacity
+      });
+    });
+  });
 
   // -----------------------------------------------
   // Load mock apartment data (dev only)
