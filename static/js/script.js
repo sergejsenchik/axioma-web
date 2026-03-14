@@ -68,17 +68,82 @@ $(document).ready(function () {
   });
 
   // -----------------------------------------------
+  // Smart header: hide on scroll down, show on scroll up
+  // -----------------------------------------------
+  var lastScrollY = 0;
+  var scrollThreshold = 50;
+
+  $(window).on('scroll', function () {
+    var currentScrollY = window.pageYOffset;
+
+    if (currentScrollY > scrollThreshold) {
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down -- hide navbar
+        $('.site-navbar').addClass('navbar-hidden');
+      } else {
+        // Scrolling up -- show navbar
+        $('.site-navbar').removeClass('navbar-hidden');
+      }
+    } else {
+      // At top of page -- always show
+      $('.site-navbar').removeClass('navbar-hidden');
+    }
+
+    lastScrollY = currentScrollY;
+  });
+
+  // -----------------------------------------------
+  // Scroll-triggered reveal animations
+  // Replicates Webflow IX2 fade-in-on-scroll behavior
+  // -----------------------------------------------
+  var $scrollRevealElements = $('.scroll-reveal, .scroll-reveal-simple');
+  if ($scrollRevealElements.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          $(entry.target).addClass('revealed');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    $scrollRevealElements.each(function () {
+      revealObserver.observe(this);
+    });
+  }
+
+  // -----------------------------------------------
   // About -- Digit-train counter animation
+  // Matches Webflow IX2 counter behavior:
+  // Each counter-train starts at translateY(0) and
+  // animates to its target position on scroll-into-view.
+  // The counter-box has overflow:hidden and clips to
+  // show only one digit height (3.4375rem).
   // -----------------------------------------------
   var $counterWrap = $('.counter-cards-wrap');
   if ($counterWrap.length) {
     var counterObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          $(entry.target).find('.counter-train').each(function () {
-            var target = parseInt($(this).data('target'), 10);
-            var pct = target * 100;
-            $(this).css('transform', 'translate3d(0, -' + pct + '%, 0)');
+          // Animate each counter-train to its target
+          $(entry.target).find('.counter-train').each(function (index) {
+            var $train = $(this);
+            var targetIndex = parseInt($train.data('target'), 10);
+            var digitCount = $train.find('.counter-digit').length;
+
+            // Each digit occupies 100%/digitCount of the train height
+            // We need to shift by (targetIndex / digitCount) * 100%
+            // But since translateY is relative to the element's own height,
+            // and each digit has the same height, moving by targetIndex * (100/digitCount)%
+            // In Webflow, the transform is percentage of the train's total height
+            // With N digits, moving to index I means translateY(-(I/N)*100%)
+            var pct = (targetIndex / digitCount) * 100;
+
+            // Small delay stagger per train for visual effect
+            var delay = index * 100;
+            setTimeout(function () {
+              $train.css('transform', 'translate3d(0, -' + pct + '%, 0)');
+            }, delay);
           });
           counterObserver.unobserve(entry.target);
         }
@@ -157,7 +222,17 @@ $(document).ready(function () {
     var progress = Math.min(100, Math.max(0,
       ((now - startDate) / (endDate - startDate)) * 100
     ));
-    $progressFill.css('width', progress + '%');
+
+    // Animate on scroll into view
+    var timelineObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          $progressFill.css('width', progress + '%');
+          timelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    timelineObserver.observe($progressFill.closest('.timeline-section')[0]);
   }
 
   // -----------------------------------------------

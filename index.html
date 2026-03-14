@@ -33,7 +33,33 @@
 <body>
 
   <!-- PHP: header include -->
-  <!-- Navbar deferred to Phase 3 -->
+  <nav class="site-navbar texture-purple">
+    <div class="container navbar-container">
+      <div class="navbar-left">
+        <!-- PHP: menu links -->
+        <span class="navbar-menu-text">Meniu</span>
+        <a href="#" class="navbar-link">Rinktis butą</a><!-- PHP: link to apartments page -->
+      </div>
+      <div class="navbar-center">
+        <a href="/" class="navbar-logo-link">
+          <img src="static/img/axioma-logo-white.svg" alt="Axioma" class="navbar-logo">
+        </a>
+      </div>
+      <div class="navbar-right">
+        <a href="#contact" class="btn-cta navbar-cta">
+          <span class="btn-text-wrap">
+            <span class="btn-text btn-text-in">Registruotis į apžiūrą</span>
+            <span class="btn-text btn-text-out">Registruotis į apžiūrą</span>
+          </span>
+        </a>
+      </div>
+      <!-- Mobile hamburger (hidden on desktop, modal menu deferred to future milestone) -->
+      <button class="navbar-hamburger" aria-label="Meniu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
 
   <main>
     <!-- Hero section -->
@@ -50,7 +76,7 @@
           </div>
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <div class="container-fluid px-4 px-lg-5">
+            <div class="container">
               <div class="hero-heading-wrap">
                 <h1>Racionalus gyvenimas sutinka aukščiausią komfortą</h1>
                 <div class="hero-cta-wrap">
@@ -71,7 +97,7 @@
           <div class="hero-slide-bg hero-slide-bg-img" style="background-image: url('static/img/hero-slide-2.jpg');"></div>
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <div class="container-fluid px-4 px-lg-5">
+            <div class="container">
               <div class="hero-heading-wrap">
                 <h1>Jūsų namai, sukurti išmintingai</h1>
                 <div class="hero-cta-wrap">
@@ -92,7 +118,7 @@
           <div class="hero-slide-bg hero-slide-bg-img" style="background-image: url('static/img/hero-slide-3.jpg');"></div>
           <div class="hero-overlay"></div>
           <div class="hero-content">
-            <div class="container-fluid px-4 px-lg-5">
+            <div class="container">
               <div class="hero-heading-wrap">
                 <h1>Kokybė, kurią galite pajusti</h1>
                 <div class="hero-cta-wrap">
@@ -122,12 +148,14 @@
 
       <!-- Scroll-down indicator -->
       <div class="hero-scroll-down">
-        <a href="#about" class="scroll-down-link">
-          <span class="scroll-down-text">Slinkite žemyn</span>
-          <span class="scroll-down-arrow">
-            <img src="static/img/arrow-down.webp" alt="" width="10" height="10">
-          </span>
-        </a>
+        <div class="container">
+          <a href="#about" class="scroll-down-link">
+            <span class="scroll-down-text">Slinkite žemyn</span>
+            <span class="scroll-down-arrow">
+              <img src="static/img/arrow-down.webp" alt="" width="10" height="10">
+            </span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -135,13 +163,13 @@
     <section id="about" class="about-section">
       <div class="container">
         <div class="divider-horizontal"></div>
-        <div class="row about-text-wrap">
+        <div class="about-text-wrap">
           <!-- Left col: heading in purple texture + CTA -->
-          <div class="col-lg-5 about-heading-wrap texture-purple">
+          <div class="about-heading-wrap texture-purple">
             <div class="about-heading">
-              <h3>Pagrindinė gyvenimo tiesa nereikalauja pagrindimo</h3>
+              <h3 class="scroll-reveal-simple">Pagrindinė gyvenimo tiesa nereikalauja pagrindimo</h3>
             </div>
-            <div class="about-cta-wrap">
+            <div class="about-cta-wrap scroll-reveal-simple">
               <a href="#" class="btn-cta btn-cta-light"><!-- PHP: link to Apie projektą page -->
                 <span class="btn-text-wrap">
                   <span class="btn-text btn-text-in">Apie projektą</span>
@@ -152,16 +180,16 @@
           </div>
           <div class="divider-vertical d-none d-lg-block"></div>
           <!-- Right col: two paragraphs -->
-          <div class="col-lg-6 offset-lg-1 about-paragraph-wrap">
-            <p>AXIOMA pastatyta ant principo, kad tobulumas nėra subjektyvus. Tai tikslių skaičiavimų, apgalvoto dizaino ir konstrukcinio vientisumo rezultatas.</p>
-            <p>Mes suteikiame pagrindą gyvenimui, gyvenamam tikslingai. Čia kiekviena architektūrinė detalė yra logiška konkrečios žmogaus poreikio išvada.</p>
+          <div class="about-paragraph-wrap">
+            <p class="scroll-reveal-simple">AXIOMA pastatyta ant principo, kad tobulumas nėra subjektyvus. Tai tikslių skaičiavimų, apgalvoto dizaino ir konstrukcinio vientisumo rezultatas.</p>
+            <p class="scroll-reveal-simple">Mes suteikiame pagrindą gyvenimui, gyvenamam tikslingai. Čia kiekviena architektūrinė detalė yra logiška konkrečios žmogaus poreikio išvada.</p>
           </div>
         </div>
         <div class="divider-horizontal"></div>
         <!-- Counter cards row: 3 counters separated by vertical dividers -->
-        <div class="row counter-cards-wrap">
+        <div class="counter-cards-wrap">
           <!-- Counter 1: "60+" residences -->
-          <div class="col-lg-4 counter-card">
+          <div class="counter-card scroll-reveal-simple">
             <div class="counter-box">
               <!-- Tens digit: train 7,1,2,3,4,5,6 -> target index 6 (lands on "6") -->
               <div class="counter-train-wrap">
@@ -197,7 +225,7 @@
           </div>
           <div class="divider-vertical d-none d-lg-block"></div>
           <!-- Counter 2: "1205" area m2 -->
-          <div class="col-lg-4 counter-card">
+          <div class="counter-card scroll-reveal-simple">
             <div class="counter-box">
               <!-- Thousands digit "1": train 1,2,3 -> target 0 (stays on "1") -->
               <div class="counter-train-wrap">
@@ -238,7 +266,7 @@
           </div>
           <div class="divider-vertical d-none d-lg-block"></div>
           <!-- Counter 3: "2025" year -->
-          <div class="col-lg-4 counter-card">
+          <div class="counter-card scroll-reveal-simple">
             <div class="counter-box">
               <!-- Digit "2": train 1,2 -> target 1 (lands on "2") -->
               <div class="counter-train-wrap">
@@ -289,28 +317,29 @@
 
     <!-- Discover section -->
     <section class="discover-section">
-      <div class="container-wide">
-        <div class="discover-main">
+      <div class="discover-main">
+        <div class="container">
           <div class="discover-heading-wrap">
-            <h2 class="text-center">Galutinis požiūris</h2>
+            <h2 class="scroll-reveal-simple text-center">Galutinis požiūris</h2>
           </div>
-          <div class="discover-card-wrap">
+        </div>
+        <div class="discover-card-wrap">
             <!-- Card 01 -->
-            <div class="discover-card">
+            <div class="discover-card scroll-reveal-simple">
               <div class="container">
-                <div class="row align-items-center discover-card-content">
-                  <div class="col-lg-3 discover-card-heading-wrap">
+                <div class="discover-card-content">
+                  <div class="discover-card-heading-wrap">
                     <div class="sub-text">01</div>
                     <h4>Matematinis erdvės komfortas</h4>
                   </div>
-                  <div class="col-lg-5 discover-card-image-wrap">
+                  <div class="discover-card-image-wrap">
                     <img src="static/img/discover-01.jpg" alt="" class="discover-card-image">
                     <div class="rt-image-overlay">
                       <div class="rt-imagr-appearance-layer-one"></div>
                       <div class="rt-imagr-appearance-layer-two"></div>
                     </div>
                   </div>
-                  <div class="col-lg-4 discover-card-paragraph-wrap">
+                  <div class="discover-card-paragraph-wrap">
                     <p>Planų skaičiavimai maksimaliai išnaudoja natūralią šviesą ir erdvę, kuriant aplinką, kuri jaučiasi intuityviai teisinga.</p>
                     <a href="#" class="discover-card-link"><!-- PHP: link to Apie projektą page -->
                       <span>Plačiau</span>
@@ -322,21 +351,21 @@
               <div class="discover-card-overlay texture-purple"></div>
             </div>
             <!-- Card 02 -->
-            <div class="discover-card">
+            <div class="discover-card scroll-reveal-simple">
               <div class="container">
-                <div class="row align-items-center discover-card-content">
-                  <div class="col-lg-3 discover-card-heading-wrap">
+                <div class="discover-card-content">
+                  <div class="discover-card-heading-wrap">
                     <div class="sub-text">02</div>
                     <h4>Inžinerija kaip konstanta</h4>
                   </div>
-                  <div class="col-lg-5 discover-card-image-wrap">
+                  <div class="discover-card-image-wrap">
                     <img src="static/img/discover-02.jpg" alt="" class="discover-card-image">
                     <div class="rt-image-overlay">
                       <div class="rt-imagr-appearance-layer-one"></div>
                       <div class="rt-imagr-appearance-layer-two"></div>
                     </div>
                   </div>
-                  <div class="col-lg-4 discover-card-paragraph-wrap">
+                  <div class="discover-card-paragraph-wrap">
                     <p>Naudojame aukštos kokybės medžiagas ir tikslius techninius sprendimus, užtikrinančius pastato ilgaamžiškumą ir konstrukcinį vientisumą.</p>
                     <a href="#" class="discover-card-link"><!-- PHP: link to Apie projektą page -->
                       <span>Plačiau</span>
@@ -348,21 +377,21 @@
               <div class="discover-card-overlay texture-purple"></div>
             </div>
             <!-- Card 03 -->
-            <div class="discover-card">
+            <div class="discover-card scroll-reveal-simple">
               <div class="container">
-                <div class="row align-items-center discover-card-content">
-                  <div class="col-lg-3 discover-card-heading-wrap">
+                <div class="discover-card-content">
+                  <div class="discover-card-heading-wrap">
                     <div class="sub-text">03</div>
                     <h4>Vietos aksioma</h4>
                   </div>
-                  <div class="col-lg-5 discover-card-image-wrap">
+                  <div class="discover-card-image-wrap">
                     <img src="static/img/discover-03.jpg" alt="" class="discover-card-image">
                     <div class="rt-image-overlay">
                       <div class="rt-imagr-appearance-layer-one"></div>
                       <div class="rt-imagr-appearance-layer-two"></div>
                     </div>
                   </div>
-                  <div class="col-lg-4 discover-card-paragraph-wrap">
+                  <div class="discover-card-paragraph-wrap">
                     <p>Artumas esminei infrastruktūrai yra ne prabanga, o pagrindinis šiuolaikinio profesionalo reikalavimas.</p>
                     <a href="#" class="discover-card-link"><!-- PHP: link to Apie projektą page -->
                       <span>Plačiau</span>
@@ -375,7 +404,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Location section -->
@@ -383,7 +411,7 @@
       <div class="location-container">
         <div class="location-wrapper">
           <div class="location-heading-wrap">
-            <h2>Matuojama minutėmis</h2>
+            <h2 class="scroll-reveal-simple">Matuojama minutėmis</h2>
           </div>
           <div class="location-circle-wrapper">
             <!-- Rotating text labels -->
@@ -391,26 +419,26 @@
               <div class="location-heading-inner">
                 <!-- Line 1: "IKI" (static prefix) -->
                 <div class="heading-mask">
-                  <h6 class="location-h6">IKI</h6>
+                  <h6 class="location-h6 location-first-item">IKI</h6>
                 </div>
                 <!-- Line 2: rotating second word pairs -->
                 <div class="heading-mask horizontal-flex">
                   <h6 class="location-h6">&nbsp;</h6>
                   <div class="heading-mask width-applied">
-                    <h6 class="location-h6 location-text-item active" data-step="0">PARKO</h6>
-                    <h6 class="location-h6 location-text-item" data-step="1">MIESTO CENTRO</h6>
-                    <h6 class="location-h6 location-text-item" data-step="2">ARTIMIAUSIO</h6>
-                    <h6 class="location-h6 location-text-item" data-step="3">GIMNAZIJOS</h6>
-                    <h6 class="location-h6 location-text-item" data-step="4">ORO UOSTO</h6>
+                    <h6 class="location-text-item active" data-step="0">PARKO</h6>
+                    <h6 class="location-text-item" data-step="1">MIESTO CENTRO</h6>
+                    <h6 class="location-text-item" data-step="2">ARTIMIAUSIO</h6>
+                    <h6 class="location-text-item" data-step="3">GIMNAZIJOS</h6>
+                    <h6 class="location-text-item" data-step="4">ORO UOSTO</h6>
                   </div>
                 </div>
                 <!-- Line 3: rotating third line -->
                 <div class="heading-mask width-applied-2">
-                  <h6 class="location-h6 location-text-item-2 active" data-step="0">PRIE UPĖS</h6>
-                  <h6 class="location-h6 location-text-item-2" data-step="1">PĖSČIOMIS</h6>
-                  <h6 class="location-h6 location-text-item-2" data-step="2">PREKYBOS CENTRO</h6>
-                  <h6 class="location-h6 location-text-item-2" data-step="3">KAMPUSO</h6>
-                  <h6 class="location-h6 location-text-item-2" data-step="4">AUTOMOBILIU</h6>
+                  <h6 class="location-text-item-2 active" data-step="0">PRIE UPĖS</h6>
+                  <h6 class="location-text-item-2" data-step="1">PĖSČIOMIS</h6>
+                  <h6 class="location-text-item-2" data-step="2">PREKYBOS CENTRO</h6>
+                  <h6 class="location-text-item-2" data-step="3">KAMPUSO</h6>
+                  <h6 class="location-text-item-2" data-step="4">AUTOMOBILIU</h6>
                 </div>
               </div>
             </div>
@@ -440,8 +468,7 @@
 
     <!-- Timeline / Construction progress section -->
     <section class="timeline-section">
-      <div class="container-wide">
-        <div class="timeline-wrapper">
+      <div class="timeline-wrapper">
           <div class="timeline-main">
             <!-- Construction photo background -->
             <div class="timeline-background-image">
@@ -449,53 +476,55 @@
               <div class="timeline-image-overlay"></div>
             </div>
             <!-- Timeline content overlay with purple texture -->
-            <div class="timeline-content texture-purple">
-              <div class="timeline-progress-wrap">
-                <div class="timeline-progress-header">
-                  <h2>Statybų<br>eiga</h2>
-                </div>
-                <!-- Progress line: animated width based on current date -->
-                <!-- PHP: construction progress percentage -->
-                <div class="progress-line">
-                  <div class="progress-line-fill"></div>
-                </div>
-                <!-- 6-column milestone grid -->
-                <div class="timeline-grid">
-                  <!-- PHP: milestone status -->
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2024 Q4</div>
-                      <p>Statybų pradžia</p>
-                    </div>
+            <div class="timeline-content-wrap">
+              <div class="timeline-content texture-purple">
+                <div class="timeline-progress-wrap">
+                  <div class="timeline-progress-header">
+                    <h2 class="scroll-reveal-simple">Statybų<br>eiga</h2>
                   </div>
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2025 Q3</div>
-                      <p>Požeminės automobilių aikštelės konstrukcijos</p>
-                    </div>
+                  <!-- Progress line: animated width based on current date -->
+                  <!-- PHP: construction progress percentage -->
+                  <div class="progress-line">
+                    <div class="progress-line-fill"></div>
                   </div>
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2026 Q1</div>
-                      <p>Antžeminės pastato dalies konstrukcijos</p>
+                  <!-- 6-column milestone grid -->
+                  <div class="timeline-grid">
+                    <!-- PHP: milestone status -->
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2024 Q4</div>
+                        <p class="scroll-reveal-simple">Statybų pradžia</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2026 Q2</div>
-                      <p>Stogas</p>
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2025 Q3</div>
+                        <p class="scroll-reveal-simple">Požeminės automobilių aikštelės konstrukcijos</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2026 Q3</div>
-                      <p>Fasadas</p>
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2026 Q1</div>
+                        <p class="scroll-reveal-simple">Antžeminės pastato dalies konstrukcijos</p>
+                      </div>
                     </div>
-                  </div>
-                  <div class="timeline-card">
-                    <div class="timeline-card-content">
-                      <div class="timeline-quarter">2026 Q4</div>
-                      <p>Statybų pabaiga</p>
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2026 Q2</div>
+                        <p class="scroll-reveal-simple">Stogas</p>
+                      </div>
+                    </div>
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2026 Q3</div>
+                        <p class="scroll-reveal-simple">Fasadas</p>
+                      </div>
+                    </div>
+                    <div class="timeline-card">
+                      <div class="timeline-card-content">
+                        <div class="timeline-quarter">2026 Q4</div>
+                        <p class="scroll-reveal-simple">Statybų pabaiga</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -503,7 +532,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- Contact section -->
@@ -511,7 +539,7 @@
       <div class="container">
         <div class="divider-horizontal"></div>
         <!-- Contact form area: image left + form right -->
-        <div class="contact-form-main">
+        <div class="contact-form-main scroll-reveal">
           <!-- Left: large image with 2-layer overlay (same pattern as Discover) -->
           <div class="contact-form-left">
             <img src="uploads/images/contact-form-image.jpg" alt="" class="contact-form-image">
@@ -524,7 +552,7 @@
           <!-- Right: form -->
           <div class="contact-form-right">
             <div class="contact-form-heading">
-              <h3>Susisiekite – pasikalbėsime</h3>
+              <h3 class="scroll-reveal">Susisiekite – pasikalbėsime</h3>
             </div>
             <form method="post" action="#">
               <!-- PHP: form action URL -->
@@ -624,9 +652,8 @@
 
   <!-- PHP: footer include -->
   <footer class="site-footer">
-    <div class="container-wide">
-      <div class="footer-wrap texture-purple">
-        <div class="footer-block">
+    <div class="footer-wrap texture-purple">
+      <div class="footer-block container">
           <!-- Logo -->
           <div class="footer-top">
             <img src="static/img/axioma-logo-full.svg" alt="Axioma" class="footer-logo">
@@ -681,7 +708,6 @@
           </div>
         </div>
       </div>
-    </div>
   </footer>
 
   <!-- jQuery 3.x -->
