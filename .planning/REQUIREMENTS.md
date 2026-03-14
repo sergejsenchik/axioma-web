@@ -25,11 +25,11 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Navigation
 
-- [ ] **NAV-01**: Sticky navbar that transitions from transparent to solid background on scroll
-- [ ] **NAV-02**: Logo swaps from white (over hero) to colored (on scroll) version
-- [ ] **NAV-03**: Mobile hamburger menu for screens ≤900px
-- [ ] **NAV-04**: Primary CTA button ("Registruotis i apziura") always visible in navbar
-- [ ] **NAV-05**: Navigation links to page sections and future pages (Meniu dropdown, Rinktis buta)
+- [x] **NAV-01**: Sticky navbar that transitions from transparent to solid background on scroll
+- [x] **NAV-02**: Logo swaps from white (over hero) to colored (on scroll) version
+- [x] **NAV-03**: Mobile hamburger menu for screens ≤900px
+- [x] **NAV-04**: Primary CTA button ("Registruotis i apziura") always visible in navbar
+- [x] **NAV-05**: Navigation links to page sections and future pages (Meniu dropdown, Rinktis buta)
 
 ### About
 
@@ -75,7 +75,7 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 - [ ] **ANIM-01**: Scroll-triggered fade-in + translateY entrance animations on all content sections
 - [ ] **ANIM-02**: Animations use IntersectionObserver + CSS transitions (no GSAP dependency)
-- [ ] **ANIM-03**: Button text-swap hover effect on all CTA buttons (text slides up, alternate slides in)
+- [x] **ANIM-03**: Button text-swap hover effect on all CTA buttons (text slides up, alternate slides in)
 - [ ] **ANIM-04**: Smooth, premium feel matching Webflow design intent
 
 ### Responsive
@@ -146,11 +146,11 @@ Deferred to future phases of this milestone or future milestones.
 | HERO-03 | Phase 1 | Pending |
 | HERO-04 | Phase 1 | Pending |
 | HERO-05 | Phase 1 | Pending |
-| NAV-01 | Phase 3 | Pending |
-| NAV-02 | Phase 3 | Pending |
-| NAV-03 | Phase 3 | Pending |
-| NAV-04 | Phase 3 | Pending |
-| NAV-05 | Phase 3 | Pending |
+| NAV-01 | Phase 3 | Complete |
+| NAV-02 | Phase 3 | Complete |
+| NAV-03 | Phase 3 | Complete |
+| NAV-04 | Phase 3 | Complete |
+| NAV-05 | Phase 3 | Complete |
 | ABOU-01 | Phase 2 | Complete |
 | ABOU-02 | Phase 2 | Complete |
 | ABOU-03 | Phase 2 | Complete |
@@ -175,7 +175,7 @@ Deferred to future phases of this milestone or future milestones.
 | FOOT-03 | Phase 2 | Complete |
 | ANIM-01 | Phase 3 | Pending |
 | ANIM-02 | Phase 3 | Pending |
-| ANIM-03 | Phase 3 | Pending |
+| ANIM-03 | Phase 3 | Complete |
 | ANIM-04 | Phase 3 | Pending |
 | RESP-01 | Phase 4 | Pending |
 | RESP-02 | Phase 4 | Pending |
