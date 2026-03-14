@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation + Hero** - HTML/CSS architecture and full-screen video hero section
 - [x] **Phase 2: Content Sections** - All page sections from About through Footer
-- [ ] **Phase 3: Navigation + Animations** - Sticky navbar with logo swap, scroll animations, hover effects
+- [ ] **Phase 3: Navigation + Animations** - Smart navbar with purple texture, scroll-linked timeline animation, button text-swap hover, staggered entrance animations
 - [ ] **Phase 4: Responsive + Polish + Handoff** - Device breakpoints, localization verification, PHP markers
 
 ## Phase Details
@@ -53,19 +53,20 @@ Plans:
 - [x] 02-03-PLAN.md -- Contact section (form + 5 agent cards) + Footer (logo, links, social, other projects, copyright)
 
 ### Phase 3: Navigation + Animations
-**Goal**: The page feels polished and interactive with a sticky navbar, scroll-triggered entrance animations, and hover effects on all interactive elements
+**Goal**: The page feels polished and interactive with a smart sticky navbar, scroll-linked timeline animation, and premium hover/entrance effects
 **Depends on**: Phase 2
 **Requirements**: NAV-01, NAV-02, NAV-03, NAV-04, NAV-05, ANIM-01, ANIM-02, ANIM-03, ANIM-04
 **Success Criteria** (what must be TRUE):
-  1. The navbar starts transparent over the hero, transitions to a solid background on scroll, and swaps the logo from white to colored
-  2. A primary CTA button ("Registruotis i apziura") is always visible in the navbar; navigation links anchor to page sections
-  3. All content sections fade in with translateY entrance animations as the user scrolls, triggered by IntersectionObserver with CSS transitions (no GSAP)
+  1. The navbar has a purple texture background at all times, hides on scroll down, and slides back in on scroll up (smart header)
+  2. A primary CTA button ("Registruotis i apziura") is always visible in the navbar; navigation links and menu text are placeholder stubs with PHP markers
+  3. All content sections fade in with staggered translateY entrance animations as the user scrolls, triggered by IntersectionObserver with CSS transitions (no GSAP)
   4. All CTA buttons have a text-swap hover effect where text slides up and alternate text slides in
-**Plans**: TBD
+  5. The timeline section has a scroll-linked animation: background image expands and purple overlay rotates in with 3D perspective distortion
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- Navbar HTML/CSS/JS (smart header, purple texture, white logo, CTA) + button text-swap hover on all CTAs
+- [ ] 03-02-PLAN.md -- Timeline scroll-linked perspective animation + staggered entrance animations across all sections
 
 ### Phase 4: Responsive + Polish + Handoff
 **Goal**: The homepage works correctly on desktop, tablet, and mobile, with all text in Lithuanian and PHP handoff markers in place
