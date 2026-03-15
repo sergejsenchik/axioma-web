@@ -153,135 +153,216 @@ $(document).ready(function () {
   }
 
   // -----------------------------------------------
-  // Location -- Lottie circle + text rotation
+  // Location -- Scroll-linked circle + text rotation
   // -----------------------------------------------
   var $locationSection = $('.location-section');
-  if ($locationSection.length && typeof lottie !== 'undefined') {
-    var circleAnim = lottie.loadAnimation({
-      container: document.getElementById('circle-loading'),
-      renderer: 'svg',
-      loop: false,
-      autoplay: false,
-      path: 'static/img/circle-loader.json'
-    });
+  if ($locationSection.length) {
+    var $circleArcFill = $('.circle-arc-fill');
+    var circleCircumference = 2054.87; // 2 * PI * 327
+    var locationActiveStep = -1;
 
+    // Steps: scroll ranges map to destination + arc percentage
+    // Arc percentages match Webflow: 20%, 30%, 40%, 60%, 100%
     var locationSteps = [
-      { frame: 6 },   // Step 0: Park / By the river (5 min)
-      { frame: 12 },  // Step 1: City center / On foot (8 min)
-      { frame: 18 },  // Step 2: Shopping mall (10 min)
-      { frame: 24 },  // Step 3: Highschool campus (15 min)
-      { frame: 30 }   // Step 4: Airport / With car (20 min)
+      { arc: 0.20 },  // Step 0: Park / By the river (5 min)
+      { arc: 0.30 },  // Step 1: City center / On foot (8 min)
+      { arc: 0.40 },  // Step 2: Shopping mall (10 min)
+      { arc: 0.60 },  // Step 3: Highschool campus (15 min)
+      { arc: 1.00 }   // Step 4: Airport / With car (20 min)
     ];
 
-    var currentLocationStep = 0;
-    var locationCycleTimer = null;
+    // Scroll keyframes (% of section scroll progress) matching Webflow
+    // Each step has a "hold" range and a "transition" range
+    var stepRanges = [
+      { start: 0.00, end: 0.20 },  // Step 0: 0-20%
+      { start: 0.20, end: 0.38 },  // Step 1: 20-38%
+      { start: 0.38, end: 0.56 },  // Step 2: 38-56%
+      { start: 0.56, end: 0.74 },  // Step 3: 56-74%
+      { start: 0.74, end: 1.00 }   // Step 4: 74-100%
+    ];
 
-    function advanceLocationStep() {
-      // Remove active from all
-      $('.location-text-item, .location-text-item-2, .circle-number').removeClass('active');
+    function setLocationStep(stepIndex) {
+      if (stepIndex === locationActiveStep) return;
+      var prevStep = locationActiveStep;
+      locationActiveStep = stepIndex;
 
-      // Set current step active
-      var step = locationSteps[currentLocationStep];
-      $('.location-text-item[data-step="' + currentLocationStep + '"]').addClass('active');
-      $('.location-text-item-2[data-step="' + currentLocationStep + '"]').addClass('active');
-      $('.circle-number[data-step="' + currentLocationStep + '"]').addClass('active');
+      // Remove all states
+      $('.location-text-item, .location-text-item-2, .circle-number').removeClass('active prev');
 
-      // Play Lottie from previous frame to current
-      var fromFrame = currentLocationStep === 0 ? 0 : locationSteps[currentLocationStep - 1].frame;
-      circleAnim.playSegments([fromFrame, step.frame], true);
+      // Mark previous step items as .prev (slide up and out)
+      if (prevStep >= 0) {
+        $('.location-text-item[data-step="' + prevStep + '"]').addClass('prev');
+        $('.location-text-item-2[data-step="' + prevStep + '"]').addClass('prev');
+        $('.circle-number[data-step="' + prevStep + '"]').addClass('prev');
+      }
 
-      currentLocationStep = (currentLocationStep + 1) % locationSteps.length;
+      // Mark current step items as .active (slide in from below)
+      $('.location-text-item[data-step="' + stepIndex + '"]').addClass('active');
+      $('.location-text-item-2[data-step="' + stepIndex + '"]').addClass('active');
+      $('.circle-number[data-step="' + stepIndex + '"]').addClass('active');
     }
 
-    function startLocationCycle() {
-      advanceLocationStep(); // Show first step immediately
-      locationCycleTimer = setInterval(advanceLocationStep, 3500); // 3.5s per step
-    }
-
-    // Trigger on scroll into viewport
-    var locationObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          startLocationCycle();
-          locationObserver.unobserve(entry.target);
+    function updateLocationArc(progress) {
+      // Determine which step we're in
+      var stepIndex = 0;
+      for (var i = 0; i < stepRanges.length; i++) {
+        if (progress >= stepRanges[i].start) {
+          stepIndex = i;
         }
-      });
-    }, { threshold: 0.3 });
+      }
 
-    locationObserver.observe($locationSection[0]);
+      setLocationStep(stepIndex);
+
+      // Interpolate arc within current step range
+      var range = stepRanges[stepIndex];
+      var stepProgress = Math.min(1, (progress - range.start) / (range.end - range.start));
+
+      // Ease the arc: lerp from previous arc to current arc
+      var prevArc = stepIndex > 0 ? locationSteps[stepIndex - 1].arc : 0;
+      var targetArc = locationSteps[stepIndex].arc;
+      var currentArc = prevArc + (targetArc - prevArc) * stepProgress;
+
+      // Set SVG stroke-dashoffset
+      var dashoffset = circleCircumference * (1 - currentArc);
+      $circleArcFill.attr('stroke-dashoffset', dashoffset);
+    }
+
+    // Cache section position
+    var locationCached = null;
+    function cacheLocationPosition() {
+      locationCached = {
+        top: $locationSection.offset().top,
+        height: $locationSection.outerHeight()
+      };
+    }
+    $(window).on('resize', cacheLocationPosition);
+    cacheLocationPosition();
+
+    // Set initial state
+    updateLocationArc(0);
+
+    // Scroll handler with rAF
+    var locationRafId = null;
+    $(window).on('scroll', function() {
+      if (!locationCached) return;
+      if (locationRafId) return;
+
+      locationRafId = requestAnimationFrame(function() {
+        locationRafId = null;
+        var scrollY = window.pageYOffset;
+        var viewH = window.innerHeight;
+        var start = locationCached.top;
+        var end = locationCached.top + locationCached.height - viewH;
+
+        if (scrollY < start || scrollY > end) return;
+
+        var progress = (scrollY - start) / (end - start);
+        progress = Math.max(0, Math.min(1, progress));
+
+        updateLocationArc(progress);
+      });
+    });
   }
 
   // -----------------------------------------------
-  // Timeline -- Fixed progress line at 42%
-  // PHP: backend will set actual construction progress value
-  // -----------------------------------------------
-  var $progressFill = $('.progress-line-fill');
-  if ($progressFill.length) {
-    var timelineProgressObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          $progressFill.css('width', '42%'); /* PHP: replace 42 with actual progress */
-          timelineProgressObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    timelineProgressObserver.observe($progressFill.closest('.timeline-section')[0]);
-  }
-
-  // -----------------------------------------------
-  // Timeline -- Scroll-linked perspective animation
-  // Background image expands from center (clip-path),
-  // purple overlay rotates in with 3D perspective (rotateX)
+  // Timeline -- Scroll-linked pinned animation
+  // Section is 400vh tall with sticky inner container (pinned for 300vh).
+  // Keyframes are scaled to fit within the pinned range (unpin at 80%).
+  //
+  // 1. Background image: grows 50%/60% → 100%/100%, scale 1.2→1.0 (32-60%)
+  // 2. Purple overlay: translateY 150→0% + rotateX 90→0deg (54-62%)
+  // 3. Progress line: translateX slides in to construction progress (62-76%)
+  //
+  // Webflow ref: a-249 "Discover Image Animation", a-282 "Progress line"
   // -----------------------------------------------
   var $timelineSection = $('.timeline-section');
-  var timelineCached = null;
+  if ($timelineSection.length) {
+    var $timelineBg = $timelineSection.find('.timeline-background-image');
+    var $timelineImg = $timelineSection.find('.timeline-image');
+    var $timelineContent = $timelineSection.find('.timeline-content');
+    var $progressFill = $timelineSection.find('.progress-line-fill');
+    var timelineCached = null;
 
-  function cacheTimelinePositions() {
-    if ($timelineSection.length) {
+    function cacheTimelinePositions() {
       timelineCached = {
         top: $timelineSection.offset().top,
         height: $timelineSection.outerHeight()
       };
     }
-  }
 
-  $(window).on('resize', cacheTimelinePositions);
-  cacheTimelinePositions();
+    $(window).on('resize', cacheTimelinePositions);
+    cacheTimelinePositions();
 
-  var timelineRafId = null;
-  $(window).on('scroll.timeline', function() {
-    if (!timelineCached) return;
-    if (timelineRafId) return;
+    // Linear interpolation helper
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
 
-    timelineRafId = requestAnimationFrame(function() {
-      timelineRafId = null;
-      var scrollY = window.pageYOffset;
-      var viewH = window.innerHeight;
-      var start = timelineCached.top - viewH;
-      var end = timelineCached.top + timelineCached.height;
+    // Map scroll progress within a keyframe range to 0-1
+    function rangeProgress(progress, start, end) {
+      if (progress <= start) return 0;
+      if (progress >= end) return 1;
+      return (progress - start) / (end - start);
+    }
 
-      if (scrollY < start || scrollY > end) return;
+    var timelineRafId = null;
+    $(window).on('scroll.timeline', function() {
+      if (!timelineCached) return;
+      if (timelineRafId) return;
 
-      var progress = (scrollY - start) / (end - start); // 0 to 1
+      timelineRafId = requestAnimationFrame(function() {
+        timelineRafId = null;
+        var scrollY = window.pageYOffset;
+        var viewH = window.innerHeight;
 
-      // Background image: expand clip-path from center
-      // At progress=0 fully clipped (50%), at progress~0.5 fully visible (0%)
-      var clipInset = Math.max(0, 50 - (progress * 100));
-      $('.timeline-background-image').css(
-        'clip-path', 'inset(' + clipInset + '%)'
-      );
+        // Progress matches Webflow SCROLLING_IN_VIEW (startsEntering: true):
+        // 0% = section top enters viewport from bottom
+        // 100% = section bottom exits viewport from top
+        var start = timelineCached.top - viewH;
+        var end = timelineCached.top + timelineCached.height;
 
-      // Purple overlay: rotateX from tilted (15deg) to flat (0deg)
-      // Starts rotating in when progress > 0.2
-      var rotateProgress = Math.max(0, Math.min(1, (progress - 0.2) / 0.5));
-      var rotateX = 15 * (1 - rotateProgress);
-      var contentOpacity = Math.min(1, rotateProgress * 1.5);
-      $('.timeline-content').css({
-        'transform': 'rotateX(' + rotateX + 'deg)',
-        'opacity': contentOpacity
+        if (scrollY < start || scrollY > end) return;
+
+        var progress = (scrollY - start) / (end - start);
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Convert to Webflow's 0-100 scroll percentage scale
+        var pct = progress * 100;
+
+        // --- 1. Background image size + scale (32-60%) ---
+        var bgT = rangeProgress(pct, 32, 60);
+        var bgW = lerp(50, 100, bgT);
+        var bgH = lerp(60, 100, bgT);
+        $timelineBg.css({ 'width': bgW + '%', 'height': bgH + '%' });
+        $timelineImg.css('transform', 'scale(' + lerp(1.2, 1.0, bgT) + ')');
+
+        // --- 2. Purple overlay animation (54-62%) ---
+        // translateY 150→0% + rotateX 90→0deg simultaneously
+        if (pct <= 54) {
+          $timelineContent.css('transform', 'translateY(150%) rotateX(90deg)');
+        } else if (pct <= 62) {
+          var t2 = rangeProgress(pct, 54, 62);
+          $timelineContent.css('transform', 'translateY(' + lerp(150, 0, t2) + '%) rotateX(' + lerp(90, 0, t2) + 'deg)');
+        } else {
+          $timelineContent.css('transform', 'translateY(0%) rotateX(0deg)');
+        }
+
+        // --- 3. Progress line fill animation (62-76%) ---
+        // PHP: backend sets progressTarget (42% done = translateX(-58%))
+        var progressTarget = -58;
+        var progressTranslateX;
+        if (pct <= 62) {
+          progressTranslateX = -100;
+        } else if (pct <= 76) {
+          progressTranslateX = lerp(-100, progressTarget, rangeProgress(pct, 62, 76));
+        } else {
+          progressTranslateX = progressTarget;
+        }
+
+        $progressFill.css('transform', 'translateX(' + progressTranslateX + '%)');
       });
     });
-  });
+  }
 
   // -----------------------------------------------
   // Load mock apartment data (dev only)

@@ -21,34 +21,49 @@
   --font-body: 'Inter Tight', sans-serif;
   --font-display: 'EB Garamond', 'Inter Tight', serif;
 
-  /* Heading 1 (hero headings) */
-  --font-size-h1: 4.5rem;
+  /* Fluid type scale: 375px → 1920px (Utopia approach)
+     Each heading scales fluidly with viewport width.
+     Formula: clamp(min, base + rate * 1vw, max)
+     Larger headings grow more aggressively (progressive scaling). */
+
+  /* Heading 1 (hero headings) — 40px → 96px, growth 2.4x */
+  --font-size-h1: clamp(2.5rem, 1.65rem + 3.63vw, 6rem);
   --line-height-h1: 108.33%;
   --letter-spacing-h1: -0.3rem;
   --font-weight-h1: 400;
 
-  /* Heading 2 */
-  --font-size-h2: 3.2rem;
+  /* Heading 2 (section titles) — 32px → 87px, growth 2.7x */
+  --font-size-h2: clamp(2rem, 1.17rem + 3.54vw, 5.4rem);
   --line-height-h2: 125%;
   --letter-spacing-h2: -0.09rem;
 
-  /* Heading 3 */
-  --font-size-h3: 2rem;
+  /* Heading 3 (sub-section headings) — 24px → 51px, growth 2.1x */
+  --font-size-h3: clamp(1.5rem, 1.09rem + 1.76vw, 3.2rem);
   --line-height-h3: 120%;
   --letter-spacing-h3: -0.05rem;
 
-  /* Heading 4 */
-  --font-size-h4: 1.375rem;
+  /* Heading 4 (card titles) — 20px → 36px, growth 1.8x */
+  --font-size-h4: clamp(1.25rem, 1.01rem + 1.04vw, 2.25rem);
   --line-height-h4: 141.67%;
   --letter-spacing-h4: -0.0275rem;
+
+  /* Heading 5 (sub-headings, labels) — 16px → 24px, growth 1.5x */
+  --font-size-h5: clamp(1rem, 0.88rem + 0.52vw, 1.5rem);
+  --line-height-h5: 150%;
+  --letter-spacing-h5: -0.0225rem;
+
+  /* Heading 6 (small labels) — 14px → 18px, growth 1.3x */
+  --font-size-h6: clamp(0.875rem, 0.81rem + 0.26vw, 1.125rem);
+  --line-height-h6: 156%;
+  --letter-spacing-h6: -0.02125rem;
 
   /* Body text */
   --font-size-body: 0.8rem;
   --line-height-body: 162.5%;
   --font-weight-normal: 400;
 
-  /* Sub text */
-  --font-size-sub: 1.5rem;
+  /* Sub text (section labels, footer labels) — 18px → 28px */
+  --font-size-sub: clamp(1.125rem, 0.97rem + 0.65vw, 1.75rem);
   --line-height-sub: 171.43%;
 
   /* Button text */
@@ -157,7 +172,7 @@ body {
 /* Heading wraps (from Webflow widths) */
 
 .hero-heading-wrap {
-  max-width: 30rem;
+  max-width: 36rem;
 }
 
 .hero-section h1 {
@@ -358,28 +373,58 @@ body {
   height: auto;
 }
 
-.navbar-menu-text {
-  font-family: var(--font-body);
-  font-size: var(--font-size-nav);
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-nav);
-  text-transform: uppercase;
-  color: var(--color-white);
+.navbar-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.navbar-burger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.navbar-burger-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background-color: var(--color-white);
+  transition: background-color 0.5s, transform 0.3s ease;
+}
+
+.navbar-menu-btn:hover .navbar-burger-icon {
+  gap: 2px;
+}
+
+.navbar-burger-icon {
+  transition: gap 0.3s ease;
+}
+
+.navbar-menu-btn:hover .navbar-burger-line {
+  background-color: var(--color-purple);
 }
 
 .navbar-link {
   font-family: var(--font-body);
-  font-size: var(--font-size-nav);
-  font-weight: 500;
-  letter-spacing: var(--letter-spacing-nav);
+  font-size: var(--font-size-button);
+  font-weight: var(--font-weight-button);
+  letter-spacing: 0.03125rem;
   text-transform: uppercase;
   color: var(--color-white);
   text-decoration: none;
   transition: opacity 0.3s ease;
 }
 
-.navbar-link:hover {
-  opacity: 0.7;
+.navbar-link:hover .btn-text-in {
+  transform: translateY(-120%);
+  opacity: 0;
+}
+
+.navbar-link:hover .btn-text-out {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .navbar-cta {
@@ -591,9 +636,9 @@ body {
 
 .counter-label {
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 156%;
-  letter-spacing: -0.02125rem;
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  letter-spacing: var(--letter-spacing-h6);
   text-align: center;
   margin-top: 1.5rem;
   color: var(--color-text);
@@ -614,6 +659,8 @@ body {
 
 .discover-heading-wrap {
   max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 3.0625rem;
 }
 
@@ -663,11 +710,11 @@ body {
 
 .discover-card-heading-wrap h4 {
   font-family: var(--font-display);
-  font-size: var(--font-size-h3);
+  font-size: var(--font-size-h4);
   font-style: italic;
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-h3);
-  letter-spacing: var(--letter-spacing-h3);
+  line-height: var(--line-height-h4);
+  letter-spacing: var(--letter-spacing-h4);
   color: var(--color-text);
   margin-bottom: 0;
   transition: color 0.3s ease;
@@ -798,6 +845,7 @@ body {
 .location-section {
   background-color: var(--color-bg);
   width: 100vw;
+  height: 300vh;
   position: relative;
   padding: 0;
 }
@@ -811,7 +859,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  position: relative;
+  position: sticky;
+  top: 0;
+  height: 100vh;
 }
 
 .location-wrapper {
@@ -821,9 +871,8 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 84vh;
+  height: 100%;
   display: flex;
-  position: relative;
 }
 
 .location-heading-wrap {
@@ -843,7 +892,6 @@ body {
 
 .location-circle-wrapper {
   aspect-ratio: 1;
-  border: 1px solid #e07f604a;
   border-radius: 350px;
   flex-flow: column;
   justify-content: center;
@@ -861,7 +909,7 @@ body {
   align-items: flex-start;
   display: flex;
   position: absolute;
-  inset: 0% auto 0% -55%;
+  inset: 0% auto 0% calc(-55% - 96px);
 }
 
 .location-heading-inner {
@@ -874,35 +922,30 @@ body {
 .heading-mask {
   grid-column-gap: 24px;
   grid-row-gap: 24px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   max-width: 900px;
-  padding-right: 16px;
   position: relative;
   overflow: hidden;
-}
-
-.heading-mask.horizontal-flex {
-  grid-column-gap: 2px;
-  grid-row-gap: 2px;
-  display: flex;
 }
 
 .heading-mask.width-applied {
   justify-content: flex-start;
   align-items: center;
-  width: 216.625px;
+  width: 320px;
+  height: var(--font-size-h4);
 }
 
 .heading-mask.width-applied-2 {
   justify-content: flex-start;
   align-items: center;
-  width: 259.563px;
+  width: 320px;
+  height: var(--font-size-h4);
 }
 
 .location-h6 {
   font-family: var(--font-display);
-  font-size: 35px;
+  font-size: var(--font-size-h4);
   font-weight: 500;
   color: var(--color-purple);
   margin-top: 0;
@@ -920,7 +963,7 @@ body {
 .location-text-item-2 {
   white-space: nowrap;
   font-family: var(--font-display);
-  font-size: 35px;
+  font-size: var(--font-size-h4);
   font-weight: 500;
   color: var(--color-accent);
   letter-spacing: -0.02em;
@@ -940,6 +983,13 @@ body {
   transform: translateY(0);
 }
 
+/* Slide up and out (counter effect) */
+.location-text-item.prev,
+.location-text-item-2.prev {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
 .circle-numbers-wrapper {
   text-align: center;
   justify-content: center;
@@ -951,22 +1001,13 @@ body {
   overflow: hidden;
 }
 
-.circle-numbers-inner {
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 180px;
-  display: flex;
-  position: absolute;
-}
-
 .circle-number {
   color: var(--color-accent);
-  text-align: right;
+  text-align: center;
   letter-spacing: -0.03em;
   justify-content: center;
   align-items: center;
-  margin-top: -15px;
+  margin-top: 0;
   margin-bottom: 0;
   font-family: var(--font-body);
   font-size: 140px;
@@ -976,11 +1017,19 @@ body {
   position: absolute;
   inset: 0%;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: translateY(100%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .circle-number.active {
   opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide up and out (counter effect) */
+.circle-number.prev {
+  opacity: 0;
+  transform: translateY(-100%);
 }
 
 .circle-text-wrapper {
@@ -999,7 +1048,7 @@ body {
   line-height: 130%;
 }
 
-#circle-loading.circle-loading {
+.circle-arc-svg {
   position: absolute;
   width: 101%;
   height: 101%;
@@ -1007,44 +1056,46 @@ body {
   pointer-events: none;
 }
 
-#circle-loading.circle-loading svg {
-  width: 100% !important;
-  height: 100% !important;
-}
-
 /* -----------------------------------------------
    Timeline / Construction progress
    ----------------------------------------------- */
 
+/* Outer section: 300vh tall to create scroll space for pinning effect */
 .timeline-section {
-  overflow: hidden;
-}
-
-.timeline-wrapper {
   position: relative;
+  height: 400vh;
+  padding: 0;
 }
 
+/* Sticky container: pins to viewport while user scrolls through 300vh */
+.timeline-wrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* Inner layout: centers content with 3D perspective for rotateX animation */
 .timeline-main {
   perspective: 5000px;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   position: relative;
   overflow: hidden;
 }
 
+/* Background image: starts small (50% x 60%), JS expands to 100% x 100% on scroll */
 .timeline-background-image {
   justify-content: center;
   align-items: center;
   width: 50%;
-  height: 70%;
+  height: 60%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   position: relative;
   overflow: hidden;
-  clip-path: inset(50%);  /* Start fully clipped -- JS scroll handler expands */
 }
 
 .timeline-image {
@@ -1055,6 +1106,8 @@ body {
   height: 100%;
   display: block;
   object-fit: cover;
+  /* Initial scale 1.2, JS animates to 1.0 on scroll */
+  transform: scale(1.2);
 }
 
 .timeline-image-overlay {
@@ -1063,6 +1116,7 @@ body {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
+/* Purple content overlay: positioned absolute over background image */
 .timeline-content-wrap {
   perspective: 3000px;
   justify-content: center;
@@ -1072,6 +1126,7 @@ body {
   display: flex;
 }
 
+/* Purple panel: starts translated down and rotated, JS animates into view */
 .timeline-content.texture-purple {
   background-color: var(--color-purple);
   justify-content: center;
@@ -1080,8 +1135,9 @@ body {
   max-width: 100rem;
   padding: 7rem 2rem 6rem;
   display: flex;
-  transform-origin: top center;
-  /* Initial state for scroll-linked animation -- opacity and rotateX controlled by JS */
+  /* Initial state: hidden below + rotated edge-on (invisible at 90deg) */
+  /* transform-origin defaults to center center — matches Webflow */
+  transform: translateY(150%) rotateX(90deg);
 }
 
 .timeline-progress-wrap {
@@ -1107,22 +1163,26 @@ body {
   color: var(--color-white);
 }
 
+/* Progress line track: cream background, contains the sliding fill */
 .progress-line {
-  background-color: var(--color-bg);
+  background-color: rgba(255, 255, 255, 0.15);
   align-self: stretch;
   height: 1.5px;
-  display: flex;
   position: relative;
   top: 1.5px;
+  overflow: hidden;
 }
 
+/* Progress line fill: white, slides in via translateX (scroll-linked) */
 .progress-line-fill {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
-  background-color: var(--color-accent);
-  transition: width 1s ease;
+  background-color: #fff;
+  /* Initial state: fully hidden left -- JS scroll handler moves it */
+  transform: translateX(-100%);
 }
 
 .timeline-grid {
@@ -1147,7 +1207,7 @@ body {
 
 .timeline-quarter {
   font-family: var(--font-body);
-  font-size: 1.125rem;
+  font-size: var(--font-size-h5);
   font-weight: 500;
   color: var(--color-white);
   margin-bottom: 0.5rem;
@@ -1361,7 +1421,7 @@ body {
 .agent-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 24px;
+  font-size: var(--font-size-h5);
   line-height: 100%;
   letter-spacing: -0.02em;
   color: var(--color-accent);
@@ -1373,9 +1433,9 @@ body {
   display: block;
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 1.125rem;
-  line-height: 150%;
-  letter-spacing: -0.0225rem;
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  letter-spacing: var(--letter-spacing-h5);
   color: var(--color-text);
   text-decoration: none;
   margin-bottom: 0;
@@ -1389,9 +1449,9 @@ body {
 .agent-email {
   display: block;
   font-family: var(--font-body);
-  font-size: 1.0625rem;
-  line-height: 156%;
-  letter-spacing: -0.02125rem;
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  letter-spacing: var(--letter-spacing-h6);
   color: var(--color-text-light);
   text-decoration: none;
   transition: color 0.3s ease;

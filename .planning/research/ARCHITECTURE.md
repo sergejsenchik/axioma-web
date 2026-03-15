@@ -182,7 +182,7 @@ The Webflow export uses these brand values (found in inline styles and CSS):
   /* Extract the actual color from the Webflow CSS for this class */
 
   /* Typography */
-  --font-heading: 'Inter', sans-serif;  /* Webflow uses "Inter Tight" + "Metal" -- map to "Inter" */
+  --font-heading: 'EB Garamond', 'Inter Tight', serif;  /* Display font for h1-h4; h5-h6 use Inter Tight */
   --font-body: 'Inter', sans-serif;
 
   /* Status colors (already defined, keep as-is) */

@@ -7,8 +7,8 @@ Marketing website for a residential complex in Lithuania. I build HTML/CSS/JS; a
 - Bootstrap 5.3+ for grid and layout
 - jQuery 3.x + jQuery UI 1.13.1 for all JS interactions (datepicker with Lithuanian locale)
 - Fancybox for lightbox, LightSlider for gallery thumbnails
-- Font Awesome 6 for icons
-- Google Fonts for typography
+- Font Awesome 6 + Lucide for icons
+- Google Fonts: EB Garamond (display headings h1-h4), Inter Tight (body text, h5-h6)
 - Google Maps JS API v3 with custom markers for location pages
 - jQuery UI via CDN: `https://code.jquery.com/ui/1.13.1/jquery-ui.js`
 

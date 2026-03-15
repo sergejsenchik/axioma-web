@@ -34,7 +34,7 @@ HTML/CSS architecture (Bootstrap 5 boilerplate, CSS custom properties, 940px con
 
 ### Brand typography
 - **Body font**: Inter Tight (Google Fonts) — replaces "Inter" from CLAUDE.md to match Webflow design
-- **Display font**: Metal (Google Fonts) — used for hero headings AND all main section headings
+- **Display font**: EB Garamond (Google Fonts) — used for hero headings and main section headings (h1-h4); h5-h6 use Inter Tight
 - Font weights: Claude's discretion based on what the Webflow design actually uses
 
 ### Brand colors
@@ -65,7 +65,7 @@ HTML/CSS architecture (Bootstrap 5 boilerplate, CSS custom properties, 940px con
 ## Existing Code Insights
 
 ### Reusable Assets
-- `index.html`: Full HTML boilerplate with all CDN links (Bootstrap 5.3.3, jQuery 3.7.1, jQuery UI, Font Awesome 6, Fancybox, LightSlider) — needs font update from Inter to Inter Tight + Metal
+- `index.html`: Full HTML boilerplate with all CDN links (Bootstrap 5.3.3, jQuery 3.7.1, jQuery UI, Font Awesome 6, Fancybox, LightSlider, Lucide) — uses Inter Tight + EB Garamond (400 Italic) via Google Fonts
 - `static/css/override.css`: CSS custom properties skeleton with `:root {}` — needs color values replaced with Webflow palette
 - `static/js/script.js`: jQuery document.ready pattern, Lithuanian datepicker locale, Fancybox init — hero slider JS will be added here
 - `static/css/iphone.css` and `static/css/ipad.css`: Empty responsive files with correct `media` attribute loading in HTML head

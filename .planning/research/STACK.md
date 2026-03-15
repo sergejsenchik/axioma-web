@@ -20,15 +20,15 @@
 | Technology | Version | Purpose | Why |
 |------------|---------|---------|-----|
 | Google Fonts: Inter | Variable/400-700 | Body text, UI elements | Already defined in `override.css` as `--font-primary`. "Inter" replaces Webflow's "Inter Tight" — both share identical glyph shapes but "Inter" is the actively maintained general-purpose version while "Inter Tight" is a frozen variant originally made for Google Workspace. |
-| Google Fonts: Metal | 400 | Display headings (h1-h6) | Webflow export uses `Metal` as `--_font-details---font-family--display`. This is a decorative/display Khmer-inspired font on Google Fonts. Must be added as a second `--font-display` custom property. If the client's design actually uses a different display font (the "Metal" name may be a Webflow template artifact), verify against the live Webflow site before committing. |
+| Google Fonts: EB Garamond | 400 Italic | Display headings (h1-h4) | Replaces "Metal" from Webflow export. EB Garamond is a serif display font, always used as 400 Italic. Smaller headings (h5-h6) use Inter Tight. |
 
-**Confidence: MEDIUM** — "Inter" mapping is solid. "Metal" font needs visual verification against the Webflow preview; the name appears in the Webflow template CSS but may be a template default rather than the client's actual choice. If Metal is confirmed, load it via Google Fonts CDN alongside Inter.
+**Confidence: HIGH** — Font choice confirmed by user. EB Garamond for h1-h4, Inter Tight for body and h5-h6.
 
 **Font loading approach:**
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Metal&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 ```
 
 Do NOT use WebFont.load() (Webflow's approach). The Google Fonts `<link>` tag with `display=swap` is simpler, has no JS dependency, and matches the backend developer's pattern.
@@ -362,7 +362,7 @@ No npm. All libraries loaded via CDN or local files.
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Metal&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,500&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 ```
 
 ### CDN Resources (add before `</body>`)
@@ -407,7 +407,7 @@ Based on the Webflow export's `:root` variables, add these to `override.css`:
 
   /* Typography */
   --font-primary: 'Inter', sans-serif;
-  --font-display: 'Metal', sans-serif;
+  --font-display: 'EB Garamond', 'Inter Tight', serif;
 
   /* Spacing (from Webflow) */
   --section-gap: 8.125rem;
@@ -452,7 +452,7 @@ Specific animations found in the Webflow export that need recreation:
 - [Video background optimization](https://designtlc.com/how-to-optimize-a-silent-background-video-for-your-websites-hero-area/) — 720p-1080p, MP4+WebM
 - [IntersectionObserver scroll animations](https://dev.to/ljcdev/introduction-to-scroll-animations-with-intersection-observer-d05) — Pattern reference
 - [Inter Tight vs Inter on Google Fonts](https://github.com/googlefonts/inter-gf-tight) — Inter Tight is a frozen fork of Inter with tighter spacing
-- [Metal font on Google Fonts](https://fonts.google.com/specimen/Metal) — Khmer-inspired display font
+- [EB Garamond on Google Fonts](https://fonts.google.com/specimen/EB+Garamond) — Serif display font for h1-h4 headings
 
 ---
 

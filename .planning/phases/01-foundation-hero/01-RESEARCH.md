@@ -8,7 +8,7 @@
 
 This phase establishes the project's HTML/CSS foundation and builds a 3-slide full-screen hero section. The existing codebase already has a working `index.html` boilerplate with all CDN links, `override.css` with a `:root` skeleton, and `script.js` with jQuery patterns -- these need to be updated rather than built from scratch. The Webflow export provides exact design tokens (colors, typography sizes, spacing) and hero structure that must be faithfully translated into clean Bootstrap 5 + jQuery code.
 
-The primary technical challenge is building a custom jQuery slider to replace Webflow's proprietary `w-slider` runtime. The Webflow slider uses `display: inline-block` slides inside an `overflow: hidden` mask with JavaScript-driven translateX transforms. This needs to be reimplemented as a crossfade or similar transition using jQuery and CSS. A secondary challenge is the "Metal" display font from Google Fonts, which is a Khmer-script font that has basic Latin glyphs (A-Z, a-z) but lacks Lithuanian special characters -- this must be documented as a known limitation requiring a fallback strategy.
+The primary technical challenge is building a custom jQuery slider to replace Webflow's proprietary `w-slider` runtime. The Webflow slider uses `display: inline-block` slides inside an `overflow: hidden` mask with JavaScript-driven translateX transforms. This needs to be reimplemented as a crossfade or similar transition using jQuery and CSS. The original Webflow template used the "Metal" display font which lacked Lithuanian characters. This has been replaced with "EB Garamond" (400 Italic) which has full Latin Extended support including all Lithuanian diacritics.
 
 **Primary recommendation:** Update the existing boilerplate files with Webflow design tokens, build a custom jQuery crossfade slider (3 slides, 6s auto-advance, no external slider library), and copy required assets (video, images, logos) from the Webflow export into the project's file structure.
 
@@ -29,7 +29,7 @@ The primary technical challenge is building a custom jQuery slider to replace We
 - Scroll-down text: "Slinkite zemyn" (Lithuanian) with down-arrow icon
 - Scroll-down animation: static with fade-in after hero loads -- no repeating bounce
 - Body font: Inter Tight (Google Fonts) -- replaces "Inter" from CLAUDE.md
-- Display font: Metal (Google Fonts) -- for hero headings and all main section headings
+- Display font: EB Garamond 400 Italic (Google Fonts) -- for headings h1-h4; h5-h6 use Inter Tight
 - Brand colors extracted from Webflow: --color-primary #0B2641, --color-accent #e07f60, --color-purple #5e186e, --color-bg #fefaf9, --color-dark #15151F
 - Keep existing status colors (available/reserved/sold) in override.css
 - No navbar in Phase 1
@@ -51,7 +51,7 @@ None -- discussion stayed within phase scope
 
 | ID | Description | Research Support |
 |----|-------------|-----------------|
-| FOUN-01 | HTML boilerplate uses Bootstrap 5.3.3, jQuery 3.7.1, and all required CDN/local dependencies | Existing index.html already has correct CDN links; needs font update from Inter to Inter Tight + Metal |
+| FOUN-01 | HTML boilerplate uses Bootstrap 5.3.3, jQuery 3.7.1, and all required CDN/local dependencies | Existing index.html has correct CDN links; uses EB Garamond (400 Italic) + Inter Tight via Google Fonts |
 | FOUN-02 | CSS custom properties extracted from Webflow defined in :root in override.css | Full Webflow :root variables extracted -- see Design Tokens section below |
 | FOUN-03 | Bootstrap container overridden to match Webflow 940px content width | Webflow uses `max-width: 940px` on `.w-layout-blockcontainer` -- override Bootstrap `.container` to match |
 | FOUN-04 | Clean semantic HTML with no Webflow data-* attributes or w-* classes | Webflow hero HTML structure analyzed -- clean translation patterns documented |
@@ -72,7 +72,7 @@ None -- discussion stayed within phase scope
 | jQuery | 3.7.1 | DOM manipulation, slider logic | CDN already in index.html |
 | Font Awesome | 6.5.1 | Icons (scroll-down arrow alternative) | CDN already in index.html |
 | Inter Tight | Google Fonts | Body text font | Replaces "Inter" in current boilerplate |
-| Metal | Google Fonts | Display/heading font | See Font Warning below |
+| EB Garamond | Google Fonts | Display/heading font (400 Italic, h1-h4) | Replaces original "Metal" font; full Lithuanian character support |
 
 ### Assets to Copy from Webflow Export
 | Asset | Source Path | Target Path | Purpose |
@@ -344,7 +344,7 @@ Note: Bootstrap 5.3.3 CDN container defaults are 540px (sm), 720px (md), 960px (
 :root {
   /* Font families */
   --font-body: 'Inter Tight', sans-serif;
-  --font-display: 'Metal', sans-serif;
+  --font-display: 'EB Garamond', 'Inter Tight', serif;
 
   /* Heading 1 (hero headings) */
   --font-size-h1: 4.5rem;         /* 72px */
@@ -464,11 +464,9 @@ Note: Bootstrap 5.3.3 CDN container defaults are 540px (sm), 720px (md), 960px (
 **How to avoid:** Provide a `.jpg` fallback. Either convert the AVIF to JPG during asset copy, or use CSS `image-set()` / `<picture>` in the background. Simplest: convert to JPG and use that as the primary format for Phase 1.
 **Warning signs:** Blank slide 3 background in Safari testing.
 
-### Pitfall 2: Metal Font Lacks Lithuanian Characters
-**What goes wrong:** The "Metal" Google Font is a Khmer-script font. It has basic Latin A-Z/a-z glyphs (52 characters confirmed via font file analysis) but has ZERO Lithuanian-specific characters (no ą, č, ę, ė, į, š, ų, ū, ž).
-**Why it happens:** The Webflow template uses English text where Latin-only coverage suffices. Lithuanian text with special characters will show tofu (missing glyph boxes) or fall back to the `sans-serif` generic fallback.
-**How to avoid:** Accept that Metal will render the Latin portions of Lithuanian text and the sans-serif fallback (likely system sans-serif or Inter Tight if stacked) will render special characters. The font-family declaration `'Metal', 'Inter Tight', sans-serif` will cause the browser to use Metal for Latin glyphs and fall back to Inter Tight for Lithuanian special characters. This produces a mixed-font appearance in headings.
-**Warning signs:** Lithuanian headings with characters like "ą" or "ž" rendering in a visibly different style/weight than surrounding Latin characters. Flag this to the user -- they may want to use Inter Tight for all headings instead, or find a Latin Extended display font.
+### Pitfall 2: Display Font Lithuanian Characters — RESOLVED
+**Original issue:** The Webflow template used "Metal" (Khmer-script font) which lacked Lithuanian characters (ą, č, ę, ė, į, š, ų, ū, ž).
+**Resolution:** Replaced with "EB Garamond" (400 Italic) which has full Latin Extended support including all Lithuanian diacritics. Used for h1-h4 headings; h5-h6 use Inter Tight.
 
 ### Pitfall 3: Portrait Video Cropping on Desktop
 **What goes wrong:** The hero video is 1080x1920 (portrait/9:16). On a typical desktop viewport (16:9), `object-fit: cover` will crop the left and right sides significantly -- approximately 70% of the width is hidden.
@@ -498,13 +496,13 @@ Note: Bootstrap 5.3.3 CDN container defaults are 540px (sm), 720px (md), 960px (
 
 ### Google Fonts Link (replacing current Inter-only)
 ```html
-<!-- Google Fonts: Inter Tight + Metal -->
+<!-- Google Fonts: EB Garamond (400 Italic) + Inter Tight -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Metal&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,400&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 ```
 
-Note: Metal on Google Fonts only has weight 400. The Webflow template requests `"Metal:300,400,500,600,700"` but the font only ships with regular (400). The `font-weight: 400` in Webflow CSS confirms this -- all heading weights are 400.
+Note: EB Garamond is loaded as 400 Italic only. Used for display headings (h1-h4) with `font-style: italic; font-weight: 400`. Smaller headings (h5-h6) use Inter Tight.
 
 ### Video Element with Poster Fallback
 ```html
@@ -598,10 +596,10 @@ The Webflow button has two text elements (`.rt-in` visible, `.rt-out` hidden bel
 
 ## Open Questions
 
-1. **Metal Font Lithuanian Character Rendering**
-   - What we know: Metal (Google Fonts) has Latin A-Z but no Lithuanian special characters (ą, č, ę, ė, į, š, ų, ū, ž = 0 of 9 present). It will fall back to sans-serif for these.
-   - What's unclear: Whether the mixed-font rendering (Metal for Latin + fallback for Lithuanian) looks acceptable or jarring. This needs visual testing.
-   - Recommendation: Implement with `font-family: 'Metal', 'Inter Tight', sans-serif` for headings. If the result looks poor, the user may want to switch display headings to Inter Tight with a heavier weight or find a Latin Extended display font. **Flag this to user after Phase 1 is visually testable.**
+1. **Display Font — RESOLVED**
+   - Original "Metal" font replaced with "EB Garamond" (400 Italic). Full Lithuanian character support confirmed.
+   - CSS: `font-family: 'EB Garamond', 'Inter Tight', serif; font-style: italic; font-weight: 400;`
+   - Used for h1-h4 headings. h5-h6 use Inter Tight (body font).
 
 2. **Slide 3 AVIF to JPG Conversion**
    - What we know: The slide 3 background (Crownd--Hanselmayergasse--.avif, 551KB) is AVIF only in the export.
@@ -653,8 +651,7 @@ None -- this is a static HTML project with no test framework. Validation is manu
 - Existing project files: `index.html`, `static/css/override.css`, `static/js/script.js` -- current boilerplate state
 
 ### Secondary (MEDIUM confidence)
-- Google Fonts Metal font file analysis (downloaded and inspected via fontTools) -- confirmed 52 Latin, 0 Lithuanian characters
-- [Metal - Google Fonts](https://fonts.google.com/specimen/Metal) -- Khmer-script font
+- [EB Garamond - Google Fonts](https://fonts.google.com/specimen/EB+Garamond) -- serif display font, replaces original "Metal"
 - [Bootstrap 5 Containers documentation](https://getbootstrap.com/docs/5.0/layout/containers/) -- container max-width override patterns
 
 ### Tertiary (LOW confidence)

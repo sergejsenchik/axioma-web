@@ -57,7 +57,7 @@ The homepage must faithfully reproduce the Webflow design using the backend deve
 
 - **Webflow export location**: `webflow-export/index.html` (880 lines, reference for design)
 - **Webflow CSS**: Custom Webflow classes (rt-*, w-*) need complete replacement with Bootstrap equivalents
-- **Fonts**: Webflow uses "Inter Tight" and "Metal" via WebFont loader; production uses Google Fonts "Inter" family
+- **Fonts**: "EB Garamond" for display headings (h1-h4), "Inter Tight" for body text and smaller headings (h5-h6), loaded via Google Fonts CDN
 - **Backend developer's reference sites**: portofranko.lt (primary), riverland.lt, romeoirdziuljeta.lt — same patterns expected
 - **Building info**: 1 building (details TBD for apartment pages)
 - **Video assets**: Hero background video files (MP4 + WebM) included in webflow-export/videos/

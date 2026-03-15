@@ -173,18 +173,11 @@ This is by far the most complex visual element in the export. It requires:
 
 **Phase relevance:** About section build phase. Flag for deeper implementation research.
 
-### Pitfall 8: Font Substitution -- "Inter Tight" and "Metal" Are Not "Inter"
+### Pitfall 8: Font Substitution -- RESOLVED
 
-**What goes wrong:** The Webflow design uses two fonts: "Inter Tight" (body text) and "Metal" (headings/display). The project spec says to use Google Fonts "Inter" family. While "Inter Tight" and "Inter" share the same glyph shapes, "Inter Tight" has tighter letter-spacing baked into the font metrics. "Metal" is a display font with no relationship to Inter at all.
+**Original issue:** Webflow used "Metal" (Khmer-inspired display font) for headings, which lacked Lithuanian characters.
 
-Swapping "Inter Tight" for "Inter" means all body text will appear slightly wider/looser. Headings using "Metal" will look completely different with "Inter" -- the design's visual identity depends heavily on the display font for headings.
-
-**Prevention:**
-- Verify with stakeholders: is "Metal" the intended production font for headings, or was it a Webflow design placeholder? If it is the real font, it must be sourced (Google Fonts does host "Metal" -- check availability).
-- If using "Inter" instead of "Inter Tight": apply negative `letter-spacing` to body text via CSS custom properties to approximate the tighter spacing. The Webflow CSS already defines these values in its `:root` block -- extract them.
-- Both "Inter Tight" and "Metal" are available on Google Fonts. Using them directly avoids substitution issues. Verify with the backend developer whether portofranko.lt or other reference sites use "Inter" or "Inter Tight".
-
-**Detection:** Compare heading typography side-by-side with the Webflow version. If headings look generic/corporate instead of distinctive, the display font was not carried over.
+**Resolution:** "Metal" replaced with "EB Garamond" — a serif display font with full Latin Extended support (including Lithuanian characters ą, č, ę, ė, į, š, ų, ū, ž). Used for h1-h4 headings. Smaller headings (h5-h6) use Inter Tight. Body text uses Inter Tight throughout.
 
 **Phase relevance:** CSS architecture phase (font loading setup in `<head>`).
 

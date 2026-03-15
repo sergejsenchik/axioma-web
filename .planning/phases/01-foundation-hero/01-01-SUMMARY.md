@@ -7,7 +7,7 @@ tags: [bootstrap, google-fonts, css-custom-properties, webflow-migration]
 # Dependency graph
 requires: []
 provides:
-  - "HTML boilerplate with Bootstrap 5.3, jQuery 3.7, Inter Tight + Metal fonts"
+  - "HTML boilerplate with Bootstrap 5.3, jQuery 3.7, Inter Tight + EB Garamond fonts"
   - "CSS design tokens (colors, typography, spacing) in :root custom properties"
   - "Bootstrap container override capped at 940px"
   - "Hero assets in static/img/ (video, poster, slide images, logos, arrow)"
@@ -16,7 +16,7 @@ affects: [01-02, content-sections, nav-animations, responsive-handoff]
 
 # Tech tracking
 tech-stack:
-  added: [Inter Tight font, Metal font]
+  added: [Inter Tight font, EB Garamond font]
   patterns: [css-custom-properties-for-design-tokens, bootstrap-container-override, webflow-to-bootstrap-migration]
 
 key-files:
@@ -40,7 +40,7 @@ key-decisions:
 patterns-established:
   - "Design tokens: All Webflow brand values as CSS custom properties in :root"
   - "Container width: 940px override at every Bootstrap breakpoint"
-  - "Font stack: --font-body for Inter Tight, --font-display for Metal headings"
+  - "Font stack: --font-body for Inter Tight, --font-display for EB Garamond 400 Italic headings (h1-h4)"
   - "PHP markers: <!-- PHP: description --> for every dynamic content area"
 
 requirements-completed: [FOUN-01, FOUN-02, FOUN-03, FOUN-04, FOUN-05]
@@ -52,7 +52,7 @@ completed: 2026-03-13
 
 # Phase 1 Plan 01: Foundation + Assets Summary
 
-**HTML/CSS foundation with Inter Tight + Metal fonts, Webflow design tokens as CSS custom properties, 940px Bootstrap container override, and 8 hero assets migrated from Webflow export**
+**HTML/CSS foundation with Inter Tight + EB Garamond fonts, Webflow design tokens as CSS custom properties, 940px Bootstrap container override, and 8 hero assets migrated from Webflow export**
 
 ## Performance
 
@@ -64,7 +64,7 @@ completed: 2026-03-13
 
 ## Accomplishments
 - Migrated 8 hero assets from webflow-export to static/img/ with clean filenames (including AVIF to JPG conversion)
-- Updated HTML boilerplate with Inter Tight + Metal Google Fonts, removed placeholder navbar, added hero-section and #about anchors
+- Updated HTML boilerplate with Inter Tight + EB Garamond Google Fonts, removed placeholder navbar, added hero-section and #about anchors
 - Populated CSS :root with complete Webflow design tokens (9 brand colors, full typography scale, spacing tokens)
 - Overrode Bootstrap container to 940px at every breakpoint for Webflow design fidelity
 - Preserved all existing status badge and SVG polygon styles for future apartment pages

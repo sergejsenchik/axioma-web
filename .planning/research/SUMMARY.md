@@ -49,7 +49,7 @@ Based on research, suggested phase structure:
 
 **Research flags for phases:**
 - Phase 1: Video orientation is portrait (1080x1920) — may need landscape versions for desktop hero. Flag for client clarification.
-- Phase 1: "Metal" display font needs visual verification against Webflow preview — may be template artifact.
+- Phase 1: Display font changed from "Metal" to "EB Garamond" (h1-h4 headings; h5-h6 use Inter Tight). Resolved.
 - Phase 3: Lottie JSON files (circle_loader.json, confetti) need testing with lottie-player to confirm rendering.
 
 ## Confidence Assessment
@@ -59,11 +59,11 @@ Based on research, suggested phase structure:
 | Stack | HIGH | Core stack is fixed. Only 2 new additions (Animate.css, lottie-player), both well-established. |
 | Features | HIGH | All 14 animations inventoried from Webflow source. Implementation patterns identified for each. |
 | Architecture | HIGH | Rewrite approach is standard for Webflow-to-framework conversions. No novel technical challenges. |
-| Pitfalls | MEDIUM | Container width mismatch and font uncertainty are the main risks. Video orientation may need client input. |
+| Pitfalls | MEDIUM | Container width updated to wider layout. Font resolved (EB Garamond). Video orientation may need client input. |
 
 ## Gaps to Address
 
-- **"Metal" font verification** — Need visual confirmation that this is the intended display font, not a Webflow template default
+- ~~**"Metal" font verification**~~ — Resolved: replaced with "EB Garamond" for h1-h4 headings
 - **Video orientation** — The hero video is portrait (1080x1920). Need to confirm if landscape versions will be provided or if the current portrait videos should be cropped via object-fit:cover
 - **Confetti Lottie JSON** — The Webflow export references a confetti effect on the popup but no JSON file is included in the export. May need to source or create this animation.
 - **Exact animation timings** — Webflow IX2 timing data is embedded in the webflow.js runtime and cannot be easily extracted. Implementation will approximate from visual observation.

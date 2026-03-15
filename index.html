@@ -37,8 +37,22 @@
     <div class="container navbar-container">
       <div class="navbar-left">
         <!-- PHP: menu links -->
-        <span class="navbar-menu-text">Meniu</span>
-        <a href="#" class="navbar-link">Rinktis butą</a><!-- PHP: link to apartments page -->
+        <button class="btn-cta btn-cta-light navbar-menu-btn" type="button">
+          <span class="btn-text-wrap">
+            <span class="btn-text btn-text-in">Meniu</span>
+            <span class="btn-text btn-text-out">Meniu</span>
+          </span>
+          <span class="navbar-burger-icon">
+            <span class="navbar-burger-line"></span>
+            <span class="navbar-burger-line"></span>
+          </span>
+        </button>
+        <a href="#" class="navbar-link"><!-- PHP: link to apartments page -->
+          <span class="btn-text-wrap">
+            <span class="btn-text btn-text-in">Rinktis butą</span>
+            <span class="btn-text btn-text-out">Rinktis butą</span>
+          </span>
+        </a>
       </div>
       <div class="navbar-center">
         <a href="/" class="navbar-logo-link">
@@ -422,15 +436,12 @@
                   <h6 class="location-h6 location-first-item">IKI</h6>
                 </div>
                 <!-- Line 2: rotating second word pairs -->
-                <div class="heading-mask horizontal-flex">
-                  <h6 class="location-h6">&nbsp;</h6>
-                  <div class="heading-mask width-applied">
+                <div class="heading-mask width-applied">
                     <h6 class="location-text-item active" data-step="0">PARKO</h6>
                     <h6 class="location-text-item" data-step="1">MIESTO CENTRO</h6>
                     <h6 class="location-text-item" data-step="2">ARTIMIAUSIO</h6>
                     <h6 class="location-text-item" data-step="3">GIMNAZIJOS</h6>
                     <h6 class="location-text-item" data-step="4">ORO UOSTO</h6>
-                  </div>
                 </div>
                 <!-- Line 3: rotating third line -->
                 <div class="heading-mask width-applied-2">
@@ -443,14 +454,10 @@
               </div>
             </div>
             <!-- Number circles: 5, 8, 10, 15, 20 minutes -->
+            <!-- PHP: walking/driving times may need verification -->
             <div class="circle-numbers-wrapper">
-              <!-- PHP: walking/driving times may need verification -->
-              <div class="circle-numbers-inner">
-                <div class="circle-number active" data-step="0">5</div>
-              </div>
-              <div class="circle-numbers-inner">
-                <div class="circle-number" data-step="1">8</div>
-              </div>
+              <div class="circle-number active" data-step="0">5</div>
+              <div class="circle-number" data-step="1">8</div>
               <div class="circle-number" data-step="2">10</div>
               <div class="circle-number" data-step="3">15</div>
               <div class="circle-number" data-step="4">20</div>
@@ -459,8 +466,13 @@
             <div class="circle-text-wrapper">
               <div class="circle-text">MINUČIŲ PĖSČIOMIS IKI<br>ARTIMIAUSIO TAŠKO</div>
             </div>
-            <!-- Lottie container -->
-            <div id="circle-loading" class="circle-loading"></div>
+            <!-- SVG circle arc (replaces Lottie) -->
+            <svg class="circle-arc-svg" viewBox="0 0 698 698" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle class="circle-arc-track" cx="349" cy="349" r="340" stroke="#e07f604a" stroke-width="2" fill="none"/>
+              <circle class="circle-arc-fill" cx="349" cy="349" r="327" stroke="#e07f60" stroke-width="24" fill="none"
+                stroke-linecap="butt" stroke-dasharray="2054.87" stroke-dashoffset="2054.87"
+                transform="rotate(-90 349 349)"/>
+            </svg>
           </div>
         </div>
       </div>
@@ -482,8 +494,8 @@
                   <div class="timeline-progress-header">
                     <h2 class="scroll-reveal-simple">Statybų<br>eiga</h2>
                   </div>
-                  <!-- Progress line: animated width based on current date -->
-                  <!-- PHP: construction progress percentage -->
+                  <!-- Progress line: scroll-linked translateX animation -->
+                  <!-- PHP: construction progress percentage (adjust JS translateX stop value) -->
                   <div class="progress-line">
                     <div class="progress-line-fill"></div>
                   </div>
@@ -727,9 +739,6 @@
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
-  <!-- Lottie (for location section animation) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
 
   <!-- Project Scripts -->
   <script src="static/js/script.js"></script>
