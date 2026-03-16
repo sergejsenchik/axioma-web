@@ -293,6 +293,17 @@ $(document).ready(function () {
     $(window).on('resize', cacheTimelinePositions);
     cacheTimelinePositions();
 
+    // Mobile detection: disable scroll-linked animation on <=900px
+    var isMobile = window.innerWidth <= 900;
+
+    if (isMobile) {
+      // On mobile, CSS handles static layout -- set elements to final state
+      $timelineBg.css({ 'width': '100%', 'height': '250px' });
+      $timelineImg.css('transform', 'none');
+      $timelineContent.css('transform', 'none');
+      $progressFill.css('transform', 'translateX(-58%)');
+    }
+
     // Linear interpolation helper
     function lerp(a, b, t) {
       return a + (b - a) * t;
@@ -306,62 +317,66 @@ $(document).ready(function () {
     }
 
     var timelineRafId = null;
-    $(window).on('scroll.timeline', function() {
-      if (!timelineCached) return;
-      if (timelineRafId) return;
 
-      timelineRafId = requestAnimationFrame(function() {
-        timelineRafId = null;
-        var scrollY = window.pageYOffset;
-        var viewH = window.innerHeight;
+    // Only bind scroll-linked animation on desktop (>900px)
+    if (!isMobile) {
+      $(window).on('scroll.timeline', function() {
+        if (!timelineCached) return;
+        if (timelineRafId) return;
 
-        // Progress matches Webflow SCROLLING_IN_VIEW (startsEntering: true):
-        // 0% = section top enters viewport from bottom
-        // 100% = section bottom exits viewport from top
-        var start = timelineCached.top - viewH;
-        var end = timelineCached.top + timelineCached.height;
+        timelineRafId = requestAnimationFrame(function() {
+          timelineRafId = null;
+          var scrollY = window.pageYOffset;
+          var viewH = window.innerHeight;
 
-        if (scrollY < start || scrollY > end) return;
+          // Progress matches Webflow SCROLLING_IN_VIEW (startsEntering: true):
+          // 0% = section top enters viewport from bottom
+          // 100% = section bottom exits viewport from top
+          var start = timelineCached.top - viewH;
+          var end = timelineCached.top + timelineCached.height;
 
-        var progress = (scrollY - start) / (end - start);
-        progress = Math.max(0, Math.min(1, progress));
+          if (scrollY < start || scrollY > end) return;
 
-        // Convert to Webflow's 0-100 scroll percentage scale
-        var pct = progress * 100;
+          var progress = (scrollY - start) / (end - start);
+          progress = Math.max(0, Math.min(1, progress));
 
-        // --- 1. Background image size + scale (32-60%) ---
-        var bgT = rangeProgress(pct, 32, 60);
-        var bgW = lerp(50, 100, bgT);
-        var bgH = lerp(60, 100, bgT);
-        $timelineBg.css({ 'width': bgW + '%', 'height': bgH + '%' });
-        $timelineImg.css('transform', 'scale(' + lerp(1.2, 1.0, bgT) + ')');
+          // Convert to Webflow's 0-100 scroll percentage scale
+          var pct = progress * 100;
 
-        // --- 2. Purple overlay animation (54-62%) ---
-        // translateY 150→0% + rotateX 90→0deg simultaneously
-        if (pct <= 54) {
-          $timelineContent.css('transform', 'translateY(150%) rotateX(90deg)');
-        } else if (pct <= 62) {
-          var t2 = rangeProgress(pct, 54, 62);
-          $timelineContent.css('transform', 'translateY(' + lerp(150, 0, t2) + '%) rotateX(' + lerp(90, 0, t2) + 'deg)');
-        } else {
-          $timelineContent.css('transform', 'translateY(0%) rotateX(0deg)');
-        }
+          // --- 1. Background image size + scale (32-60%) ---
+          var bgT = rangeProgress(pct, 32, 60);
+          var bgW = lerp(50, 100, bgT);
+          var bgH = lerp(60, 100, bgT);
+          $timelineBg.css({ 'width': bgW + '%', 'height': bgH + '%' });
+          $timelineImg.css('transform', 'scale(' + lerp(1.2, 1.0, bgT) + ')');
 
-        // --- 3. Progress line fill animation (62-76%) ---
-        // PHP: backend sets progressTarget (42% done = translateX(-58%))
-        var progressTarget = -58;
-        var progressTranslateX;
-        if (pct <= 62) {
-          progressTranslateX = -100;
-        } else if (pct <= 76) {
-          progressTranslateX = lerp(-100, progressTarget, rangeProgress(pct, 62, 76));
-        } else {
-          progressTranslateX = progressTarget;
-        }
+          // --- 2. Purple overlay animation (54-62%) ---
+          // translateY 150→0% + rotateX 90→0deg simultaneously
+          if (pct <= 54) {
+            $timelineContent.css('transform', 'translateY(150%) rotateX(90deg)');
+          } else if (pct <= 62) {
+            var t2 = rangeProgress(pct, 54, 62);
+            $timelineContent.css('transform', 'translateY(' + lerp(150, 0, t2) + '%) rotateX(' + lerp(90, 0, t2) + 'deg)');
+          } else {
+            $timelineContent.css('transform', 'translateY(0%) rotateX(0deg)');
+          }
 
-        $progressFill.css('transform', 'translateX(' + progressTranslateX + '%)');
+          // --- 3. Progress line fill animation (62-76%) ---
+          // PHP: backend sets progressTarget (42% done = translateX(-58%))
+          var progressTarget = -58;
+          var progressTranslateX;
+          if (pct <= 62) {
+            progressTranslateX = -100;
+          } else if (pct <= 76) {
+            progressTranslateX = lerp(-100, progressTarget, rangeProgress(pct, 62, 76));
+          } else {
+            progressTranslateX = progressTarget;
+          }
+
+          $progressFill.css('transform', 'translateX(' + progressTranslateX + '%)');
+        });
       });
-    });
+    }
   }
 
   // -----------------------------------------------
