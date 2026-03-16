@@ -14,16 +14,28 @@ $(document).ready(function () {
       $introLoader.remove();
     } else {
       sessionStorage.setItem('axioma-intro-shown', '1');
-      // Start with page content slightly scaled/blurred
-      $('main, .site-navbar').addClass('page-revealing');
+
+      // Hide hero elements before loader finishes
+      $('.hero-heading-wrap').addClass('hero-reveal-hidden');
+      $('.site-navbar').addClass('navbar-reveal-hidden');
+      $('.hero-scroll-down, .hero-nav').addClass('hero-ui-reveal-hidden');
+
       setTimeout(function () {
-        // Curtain lift: loader slides up, page scales to full
-        $introLoader.addClass('reveal');
-        $('main, .site-navbar').removeClass('page-revealing').addClass('page-revealed');
+        // Fade out loader
+        $introLoader.addClass('fade-out');
+
+        // Sequence: bg visible → heading+CTA → navbar → scroll/arrows
+        setTimeout(function () { $('.hero-heading-wrap').addClass('hero-revealed'); }, 200);
+        setTimeout(function () { $('.site-navbar').addClass('hero-revealed'); }, 500);
+        setTimeout(function () { $('.hero-scroll-down, .hero-nav').addClass('hero-revealed'); }, 800);
+
         setTimeout(function () {
           $introLoader.remove();
-          $('main, .site-navbar').removeClass('page-revealed');
-        }, 1100);
+          // Clean up classes
+          $('.hero-heading-wrap').removeClass('hero-reveal-hidden hero-revealed');
+          $('.site-navbar').removeClass('navbar-reveal-hidden hero-revealed');
+          $('.hero-scroll-down, .hero-nav').removeClass('hero-ui-reveal-hidden hero-revealed');
+        }, 1500);
       }, 2500);
     }
   }
