@@ -24,19 +24,40 @@ $(document).ready(function () {
   }
 
   // -----------------------------------------------
-  // Hero Slider -- Crossfade, 6s auto-advance
+  // Hero Slider -- Crossfade, 9s auto-advance, slow zoom
   // -----------------------------------------------
   var $heroSlides = $('.hero-slide');
   if ($heroSlides.length > 1) {
     var slideCount = $heroSlides.length;
     var currentSlide = 0;
-    var slideInterval = 6000;
+    var slideInterval = 9000;
     var heroTimer;
 
+    function startZoom($slide) {
+      var $bg = $slide.find('.hero-slide-bg-img');
+      if ($bg.length) {
+        $bg.css({ transform: 'scale(1)', transition: 'none' });
+        // Force reflow then start zoom
+        $bg[0].offsetHeight;
+        $bg.css({ transform: 'scale(1.4)', transition: 'transform ' + (slideInterval / 1000) + 's ease-out' });
+      }
+    }
+
+    function resetZoom($slide) {
+      var $bg = $slide.find('.hero-slide-bg-img');
+      if ($bg.length) {
+        $bg.css({ transform: 'scale(1)', transition: 'none' });
+      }
+    }
+
     function goToSlide(index) {
-      $heroSlides.eq(currentSlide).removeClass('active');
+      var $prev = $heroSlides.eq(currentSlide);
+      $prev.removeClass('active');
+      resetZoom($prev);
       currentSlide = index % slideCount;
-      $heroSlides.eq(currentSlide).addClass('active');
+      var $next = $heroSlides.eq(currentSlide);
+      $next.addClass('active');
+      startZoom($next);
     }
 
     function nextSlide() {
@@ -64,6 +85,8 @@ $(document).ready(function () {
       startHeroAutoplay();
     });
 
+    // Start zoom on first active slide
+    startZoom($heroSlides.eq(currentSlide));
     startHeroAutoplay();
   }
 

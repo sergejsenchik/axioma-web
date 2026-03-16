@@ -107,7 +107,7 @@ body {
 }
 
 .intro-logo {
-  width: clamp(120px, 25vw, 200px);
+  width: clamp(240px, 50vw, 400px);
   height: auto;
 }
 
