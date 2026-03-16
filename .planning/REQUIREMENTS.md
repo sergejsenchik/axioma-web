@@ -80,12 +80,12 @@ Requirements for homepage milestone. Each maps to roadmap phases.
 
 ### Responsive
 
-- [ ] **RESP-01**: Desktop layout matches Webflow design (faithful adaptation via Bootstrap grid)
-- [ ] **RESP-02**: Tablet styles in ipad.css (768-1024px) -- loaded via media attribute in HTML
-- [ ] **RESP-03**: Mobile styles in iphone.css (<=900px) -- loaded via media attribute in HTML
-- [ ] **RESP-04**: No media queries inside override.css -- all responsive rules in separate files
-- [ ] **RESP-05**: Video background disabled on mobile, replaced with poster image
-- [ ] **RESP-06**: All interactive elements touch-friendly on mobile
+- [x] **RESP-01**: Desktop layout matches Webflow design (faithful adaptation via Bootstrap grid)
+- [x] **RESP-02**: Tablet styles in ipad.css (768-1024px) -- loaded via media attribute in HTML
+- [x] **RESP-03**: Mobile styles in iphone.css (<=900px) -- loaded via media attribute in HTML
+- [x] **RESP-04**: No media queries inside override.css -- all responsive rules in separate files
+- [x] **RESP-05**: Video background disabled on mobile, replaced with poster image
+- [x] **RESP-06**: All interactive elements touch-friendly on mobile
 
 ### Localization
 
@@ -177,12 +177,12 @@ Deferred to future phases of this milestone or future milestones.
 | ANIM-02 | Phase 3 | Pending |
 | ANIM-03 | Phase 3 | Complete |
 | ANIM-04 | Phase 3 | Pending |
-| RESP-01 | Phase 4 | Pending |
-| RESP-02 | Phase 4 | Pending |
-| RESP-03 | Phase 4 | Pending |
-| RESP-04 | Phase 4 | Pending |
-| RESP-05 | Phase 4 | Pending |
-| RESP-06 | Phase 4 | Pending |
+| RESP-01 | Phase 4 | Complete |
+| RESP-02 | Phase 4 | Complete |
+| RESP-03 | Phase 4 | Complete |
+| RESP-04 | Phase 4 | Complete |
+| RESP-05 | Phase 4 | Complete |
+| RESP-06 | Phase 4 | Complete |
 | LANG-01 | Phase 4 | Pending |
 | LANG-02 | Phase 4 | Pending |
 | LANG-03 | Phase 4 | Pending |
