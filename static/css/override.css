@@ -1488,7 +1488,7 @@ h2 {
   letter-spacing: -0.02em;
   color: var(--color-accent);
   margin-top: 32px;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
 }
 
 .agent-phone {
