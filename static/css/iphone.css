@@ -10,6 +10,12 @@
   --gutter: 1rem;
   --section-gap: 3.5rem;
   --section-gap-small: 3rem;
+  --font-size-h1: clamp(3.25rem, 1.65rem + 3.63vw, 6rem);
+  --font-size-h2: clamp(2.6rem, 1.17rem + 3.54vw, 5.4rem);
+  --font-size-h3: clamp(2rem, 1.09rem + 1.76vw, 3.2rem);
+  --font-size-h4: clamp(1.65rem, 1.01rem + 1.04vw, 2.25rem);
+  --font-size-h5: clamp(1.3rem, 0.88rem + 0.52vw, 1.5rem);
+  --font-size-h6: clamp(1.125rem, 0.81rem + 0.26vw, 1.125rem);
 }
 
 /* -----------------------------------------------
@@ -48,7 +54,7 @@
 }
 
 .hero-scroll-down {
-  display: none;
+  padding-bottom: 2rem;
 }
 
 .hero-nav-btn {
@@ -75,7 +81,7 @@
 }
 
 .about-paragraph-wrap {
-  padding: 2rem 1.5rem 0;
+  padding: 2rem 1.5rem;
 }
 
 .about-text-wrap > .divider-vertical {
@@ -148,16 +154,21 @@
 }
 
 /* -----------------------------------------------
-   Location section -- scale circle, reduce scroll height
+   Location section -- scale circle, text below circle
    ----------------------------------------------- */
 
 .location-section {
   height: 200vh;
 }
 
+.location-wrapper {
+  justify-content: flex-start;
+  padding-top: 15vh;
+}
+
 .location-circle-wrapper {
-  width: min(36em, 90vw);
-  height: min(36em, 90vw);
+  width: min(36em, 85vw);
+  height: min(36em, 85vw);
 }
 
 .circle-number {
@@ -170,28 +181,40 @@
 }
 
 .location-heading-wrapper {
-  position: relative;
-  inset: auto;
-  margin-bottom: 1rem;
+  position: absolute;
+  top: calc(100% + 1.5rem);
+  left: 0;
+  right: 0;
+  bottom: auto;
   align-items: center;
 }
 
 .location-heading-inner {
   align-items: center;
+  width: 100%;
+}
+
+.heading-mask {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .heading-mask.width-applied,
 .heading-mask.width-applied-2 {
-  width: 250px;
+  width: 100%;
   justify-content: center;
 }
 
-.heading-mask {
-  justify-content: center;
+.location-text-item,
+.location-text-item-2 {
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 /* -----------------------------------------------
-   Timeline -- horizontal scroll, simplified animation
+   Timeline -- vertical layout with scroll-linked progress
    ----------------------------------------------- */
 
 .timeline-section {
@@ -207,6 +230,8 @@
 .timeline-main {
   perspective: none;
   flex-direction: column;
+  align-items: stretch;
+  overflow: visible;
 }
 
 .timeline-background-image {
@@ -230,22 +255,55 @@
   padding: 3rem 1.5rem 2rem;
 }
 
+.timeline-progress-wrap {
+  position: relative;
+  padding-left: 2rem;
+}
+
 .timeline-grid {
   display: flex;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-snap-type: x mandatory;
+  flex-direction: column;
+  overflow: visible;
   grid-template-columns: none;
 }
 
 .timeline-card {
-  flex: 0 0 75vw;
-  scroll-snap-align: start;
-  padding-right: 1.5rem;
+  flex: none;
+  width: 100%;
+  scroll-snap-align: none;
+  padding-right: 0;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-top: none;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.timeline-card.revealed {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .timeline-progress-header {
   padding-bottom: 2rem;
+}
+
+.timeline-quarter {
+  margin-bottom: 1rem;
+}
+
+.progress-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1.5px;
+  height: auto;
+}
+
+.progress-line-fill {
+  transform: translateY(-100%);
 }
 
 /* -----------------------------------------------
@@ -271,12 +329,16 @@
   grid-template-columns: 1fr;
 }
 
+.form-submit-wrap {
+  margin-bottom: 3rem;
+}
+
 .form-input {
   padding: 32px 0 16px 0;
 }
 
 /* -----------------------------------------------
-   Agent cards -- vertical stack
+   Agent cards -- vertical stack, larger photos
    ----------------------------------------------- */
 
 .agent-cards-wrap {
@@ -298,7 +360,7 @@
 }
 
 .agent-photo {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 /* -----------------------------------------------
@@ -320,7 +382,12 @@
 }
 
 .footer-main {
+  flex-direction: column;
   gap: 2rem;
+}
+
+.footer-partner-row {
+  justify-content: center;
 }
 
 .footer-bottom {
