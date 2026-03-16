@@ -100,6 +100,7 @@ None yet.
 | 260316-kb5 | Hero slider: remove video, 9s interval, slow zoom, bigger loader logo | 2026-03-16 | 956c77d | - |
 | 260316-kb6 | Premium curtain-lift loader transition, revert 6s interval | 2026-03-16 | 14c1d81 | - |
 | 260316-kb7 | Loader fade-out with sequenced hero reveal | 2026-03-16 | ec77a5c | - |
+| 260316-kb8 | Scroll animations: image wipe, divider grow, agent reveal | 2026-03-16 | cf511e0 | - |
 
 ### Blockers/Concerns
 
