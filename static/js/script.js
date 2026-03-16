@@ -6,6 +6,24 @@
 $(document).ready(function () {
 
   // -----------------------------------------------
+  // Intro loader screen (homepage only, once per session)
+  // -----------------------------------------------
+  var $introLoader = $('#intro-loader');
+  if ($introLoader.length) {
+    if (sessionStorage.getItem('axioma-intro-shown')) {
+      $introLoader.remove();
+    } else {
+      sessionStorage.setItem('axioma-intro-shown', '1');
+      setTimeout(function () {
+        $introLoader.addClass('fade-out');
+        setTimeout(function () {
+          $introLoader.remove();
+        }, 600);
+      }, 2500);
+    }
+  }
+
+  // -----------------------------------------------
   // Hero Slider -- Crossfade, 6s auto-advance
   // -----------------------------------------------
   var $heroSlides = $('.hero-slide');
@@ -293,15 +311,49 @@ $(document).ready(function () {
     $(window).on('resize', cacheTimelinePositions);
     cacheTimelinePositions();
 
-    // Mobile detection: disable scroll-linked animation on <=900px
-    var isMobile = window.innerWidth <= 900;
+    // Mobile/tablet detection for vertical timeline layout
+    var isTabletOrMobile = window.innerWidth <= 1024;
 
-    if (isMobile) {
-      // On mobile, CSS handles static layout -- set elements to final state
-      $timelineBg.css({ 'width': '100%', 'height': '250px' });
+    if (isTabletOrMobile) {
+      // Static layout for background and content
+      $timelineBg.css({ 'width': '100%', 'height': '' });
       $timelineImg.css('transform', 'none');
       $timelineContent.css('transform', 'none');
-      $progressFill.css('transform', 'translateX(-58%)');
+
+      // Timeline card reveal animation (slide in from left)
+      var $timelineCards = $timelineSection.find('.timeline-card');
+      var cardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            $(entry.target).addClass('revealed');
+            cardObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      $timelineCards.each(function() {
+        cardObserver.observe(this);
+      });
+
+      // Vertical progress line scroll-linked animation
+      var $timelineGrid = $timelineSection.find('.timeline-grid');
+      var verticalRafId = null;
+      $(window).on('scroll.timeline-vertical', function() {
+        if (verticalRafId) return;
+        verticalRafId = requestAnimationFrame(function() {
+          verticalRafId = null;
+          var scrollY = window.pageYOffset;
+          var viewH = window.innerHeight;
+          var gridOffset = $timelineGrid.offset();
+          if (!gridOffset) return;
+          var gridTop = gridOffset.top;
+          var gridHeight = $timelineGrid.outerHeight();
+          var progress = (scrollY + viewH - gridTop) / gridHeight;
+          progress = Math.max(0, Math.min(1, progress));
+          // Target: 42% fill (construction progress, same as desktop -58%)
+          var translateY = -100 + 42 * progress;
+          $progressFill.css('transform', 'translateY(' + translateY + '%)');
+        });
+      });
     }
 
     // Linear interpolation helper
@@ -318,8 +370,8 @@ $(document).ready(function () {
 
     var timelineRafId = null;
 
-    // Only bind scroll-linked animation on desktop (>900px)
-    if (!isMobile) {
+    // Only bind scroll-linked animation on desktop (>1024px)
+    if (!isTabletOrMobile) {
       $(window).on('scroll.timeline', function() {
         if (!timelineCached) return;
         if (timelineRafId) return;

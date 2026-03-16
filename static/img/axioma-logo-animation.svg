@@ -1,0 +1,48 @@
+<svg width="149" height="96" viewBox="0 0 149 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes draw {
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .sign-path {
+      stroke: #E08061;
+      stroke-width: 1.7;
+      fill: none;
+      animation: draw 0.8s ease-out forwards;
+    }
+    .text-path {
+      opacity: 0;
+      fill: #E08061;
+      animation: fadeIn 0.6s ease-in forwards;
+    }
+
+    #circle  { stroke-dasharray: 180; stroke-dashoffset: 180; animation-delay: 0.3s; }
+    #zigzag  { stroke-dasharray: 275; stroke-dashoffset: 275; animation-delay: 0.5s; }
+    #a-shape { stroke-dasharray: 130; stroke-dashoffset: 130; animation-delay: 0.7s; }
+    #v-line  { stroke-dasharray: 60;  stroke-dashoffset: 60;  animation-delay: 0.9s; }
+    #h-line  { stroke-dasharray: 30;  stroke-dashoffset: 30;  animation-delay: 1.0s; }
+
+    .text-path { animation-delay: 1.4s; }
+  </style>
+
+  <g id="axioma-sign">
+    <circle id="circle" class="sign-path" cx="74.5" cy="29.5" r="28.65"/>
+    <path id="zigzag" class="sign-path" d="M45.5 58V2L103.5 58V2L45.5 58Z" stroke-linejoin="bevel"/>
+    <path id="a-shape" class="sign-path" d="M45.5 58L74.5 0.5L103.5 58" stroke-linejoin="bevel"/>
+    <path id="v-line" class="sign-path" d="M74.5 0.5V58.5" stroke-linejoin="bevel"/>
+    <path id="h-line" class="sign-path" d="M60 30H89" stroke-linejoin="bevel"/>
+  </g>
+
+  <g id="axioma-text">
+    <path class="text-path" d="M9.8 77.89L6.12 86.64H13.49L9.81 77.89H9.8ZM0 95.18L8.8 74.59H10.94L19.74 95.18H17.08L14.45 88.98H5.12L2.52 95.18H0Z"/>
+    <path class="text-path" d="M44.25 74.7L37 84.76L44.52 95.18H41.56L35.36 86.66L29.19 95.18H26.27L33.78 84.76L26.59 74.7H29.51L35.45 82.89L41.3 74.7H44.25Z"/>
+    <path class="text-path" d="M57.1 74.7H54.61V95.17H57.1V74.7Z"/>
+    <path class="text-path" d="M72.9499 90.79C74.4399 92.34 76.3099 93.13 78.5099 93.13C80.8199 93.13 82.6899 92.34 84.1299 90.79C85.5899 89.24 86.3199 87.28 86.3199 84.94C86.3199 82.6 85.5599 80.64 84.0699 79.09C82.5799 77.54 80.7099 76.75 78.5099 76.75C76.3099 76.75 74.4099 77.51 72.9199 79.06C71.4299 80.61 70.6999 82.57 70.6999 84.94C70.6999 87.31 71.4599 89.21 72.9499 90.79ZM71.0199 77.45C72.9799 75.43 75.4999 74.41 78.5099 74.41C81.5199 74.41 84.0099 75.41 85.9699 77.37C87.9599 79.33 88.9499 81.87 88.9499 84.94C88.9499 88.01 87.9599 90.47 85.9699 92.49C83.9799 94.48 81.4899 95.47 78.5099 95.47C75.5299 95.47 73.0099 94.48 71.0199 92.52C69.0599 90.56 68.0699 88.01 68.0699 84.94C68.0699 81.87 69.0599 79.47 71.0199 77.45Z"/>
+    <path class="text-path" d="M99.33 95.18V74.7H101.85L109.54 85.2L116.91 74.7H119.28V95.18H116.79V78.62L109.54 88.8H109.16L101.82 78.71V95.18H99.33Z"/>
+    <path class="text-path" d="M138.44 77.89L134.76 86.64H142.13L138.45 77.89H138.44ZM128.64 95.18L137.44 74.59H139.58L148.38 95.18H145.72L143.09 88.98H133.76L131.16 95.18H128.64Z"/>
+  </g>
+</svg>

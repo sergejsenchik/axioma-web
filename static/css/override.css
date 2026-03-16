@@ -88,6 +88,29 @@ body {
   background-color: var(--color-bg);
 }
 
+/* -----------------------------------------------
+   Intro loader screen
+   ----------------------------------------------- */
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.6s ease;
+}
+
+.intro-loader.fade-out {
+  opacity: 0;
+}
+
+.intro-logo {
+  width: clamp(120px, 25vw, 200px);
+  height: auto;
+}
+
 h2 {
   margin-bottom: 1.5rem;
 }
