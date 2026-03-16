@@ -1788,6 +1788,7 @@ h2 {
   transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.image-reveal.revealed {
+.image-reveal.revealed,
+.revealed .image-reveal {
   clip-path: inset(0 0 0 0);
 }
