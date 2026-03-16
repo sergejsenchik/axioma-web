@@ -77,11 +77,11 @@ Plans:
   2. On mobile, the video background is replaced with a poster image, the hamburger menu works, and all interactive elements are touch-friendly
   3. All visible text is in Lithuanian with correct special characters; the HTML lang attribute is set to "lt"
   4. Every dynamic content area has a PHP marker comment; form action URLs use placeholder paths; image paths follow the uploads/ convention; no JS conflicts with the backend developer's stack
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [ ] 04-01-PLAN.md -- Tablet (ipad.css) + mobile (iphone.css) responsive styles with JS touch adjustments
+- [ ] 04-02-PLAN.md -- Lithuanian localization verification + PHP handoff markers + visual checkpoint
 
 ## Progress
 
