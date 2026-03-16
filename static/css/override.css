@@ -1779,18 +1779,15 @@ h2 {
 /* Footer entrance animation */
 .footer-block.scroll-reveal-simple { transition-delay: 0s; }
 
-/* Image reveal from left — reusable preset
-   Container clips the image; image slides in from left on scroll.
+/* Image reveal (mask resize) — reusable preset
+   Mask expands from left to right, unveiling a stationary image.
+   Image stays in final position; only the visible area grows.
    Usage: add class "image-reveal" to the image wrapper. */
 .image-reveal {
-  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.image-reveal > img {
-  transform: translateX(-100%);
-  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.image-reveal.revealed > img {
-  transform: translateX(0);
+.image-reveal.revealed {
+  clip-path: inset(0 0 0 0);
 }
