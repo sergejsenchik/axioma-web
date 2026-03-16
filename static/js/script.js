@@ -14,11 +14,16 @@ $(document).ready(function () {
       $introLoader.remove();
     } else {
       sessionStorage.setItem('axioma-intro-shown', '1');
+      // Start with page content slightly scaled/blurred
+      $('main, .site-navbar').addClass('page-revealing');
       setTimeout(function () {
-        $introLoader.addClass('fade-out');
+        // Curtain lift: loader slides up, page scales to full
+        $introLoader.addClass('reveal');
+        $('main, .site-navbar').removeClass('page-revealing').addClass('page-revealed');
         setTimeout(function () {
           $introLoader.remove();
-        }, 600);
+          $('main, .site-navbar').removeClass('page-revealed');
+        }, 1100);
       }, 2500);
     }
   }
@@ -30,7 +35,7 @@ $(document).ready(function () {
   if ($heroSlides.length > 1) {
     var slideCount = $heroSlides.length;
     var currentSlide = 0;
-    var slideInterval = 9000;
+    var slideInterval = 6000;
     var heroTimer;
 
     function startZoom($slide) {
