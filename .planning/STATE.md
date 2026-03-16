@@ -98,6 +98,7 @@ None yet.
 | 260316-ii7 | Footer: replace projects with developer/sales rep | 2026-03-16 | f4fa280 | - |
 | 260316-kb4 | Intro loader screen with logo animation | 2026-03-16 | 0c89139 | - |
 | 260316-kb5 | Hero slider: remove video, 9s interval, slow zoom, bigger loader logo | 2026-03-16 | 956c77d | - |
+| 260316-kb6 | Premium curtain-lift loader transition, revert 6s interval | 2026-03-16 | 14c1d81 | - |
 
 ### Blockers/Concerns
 
