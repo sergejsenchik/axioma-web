@@ -1747,7 +1747,7 @@ h2 {
 .agent-card:nth-child(9) .scroll-reveal { transition-delay: 0.4s; }
 
 /* About section stagger delays */
-.about-heading h3.scroll-reveal-simple { transition-delay: 0s; }
+.about-heading h3.scroll-reveal { transition-delay: 0s; }
 .about-paragraph-wrap p:nth-child(1).scroll-reveal-simple { transition-delay: 0.1s; }
 .about-paragraph-wrap p:nth-child(2).scroll-reveal-simple { transition-delay: 0.2s; }
 .about-cta-wrap.scroll-reveal-simple { transition-delay: 0.3s; }
@@ -1778,3 +1778,34 @@ h2 {
 
 /* Footer entrance animation */
 .footer-block.scroll-reveal-simple { transition-delay: 0s; }
+
+/* Divider line grow animation */
+.divider-reveal {
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.divider-reveal.revealed {
+  transform: scaleX(1);
+}
+
+/* Discover image 2-layer wipe reveal on scroll */
+.discover-card-image-wrap .rt-imagr-appearance-layer-one,
+.discover-card-image-wrap .rt-imagr-appearance-layer-two {
+  transform: translateX(-101%);
+}
+
+.discover-card.revealed .rt-imagr-appearance-layer-one {
+  animation: wipeReveal 0.5s ease forwards 0.2s;
+}
+
+.discover-card.revealed .rt-imagr-appearance-layer-two {
+  animation: wipeReveal 0.5s ease forwards 0.35s;
+}
+
+@keyframes wipeReveal {
+  0%   { transform: translateX(-101%); }
+  50%  { transform: translateX(0); }
+  100% { transform: translateX(101%); }
+}

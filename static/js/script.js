@@ -154,7 +154,7 @@ $(document).ready(function () {
   // Scroll-triggered reveal animations
   // Replicates Webflow IX2 fade-in-on-scroll behavior
   // -----------------------------------------------
-  var $scrollRevealElements = $('.scroll-reveal, .scroll-reveal-simple');
+  var $scrollRevealElements = $('.scroll-reveal, .scroll-reveal-simple, .divider-reveal');
   if ($scrollRevealElements.length) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
