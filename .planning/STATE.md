@@ -102,6 +102,7 @@ None yet.
 | 260316-kb7 | Loader fade-out with sequenced hero reveal | 2026-03-16 | ec77a5c | - |
 | 260316-kb8 | Scroll animations: image wipe, divider grow, agent reveal | 2026-03-16 | cf511e0 | - |
 | 260316-kb9 | Image-reveal preset, remove wipe/divider, heading reveals | 2026-03-16 | 0414430 | - |
+| 260316-kba | Image-reveal: mask resize effect (clip-path) | 2026-03-16 | 83e89a1 | - |
 
 ### Blockers/Concerns
 
