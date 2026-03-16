@@ -154,7 +154,7 @@ $(document).ready(function () {
   // Scroll-triggered reveal animations
   // Replicates Webflow IX2 fade-in-on-scroll behavior
   // -----------------------------------------------
-  var $scrollRevealElements = $('.scroll-reveal, .scroll-reveal-simple, .image-reveal');
+  var $scrollRevealElements = $('.scroll-reveal, .scroll-reveal-simple');
   if ($scrollRevealElements.length) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -167,6 +167,24 @@ $(document).ready(function () {
 
     $scrollRevealElements.each(function () {
       revealObserver.observe(this);
+    });
+  }
+
+  // Image reveal — separate observer with bottom margin
+  // so animation starts only when image is well into viewport
+  var $imageRevealElements = $('.image-reveal');
+  if ($imageRevealElements.length) {
+    var imageRevealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          $(entry.target).addClass('revealed');
+          imageRevealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -15% 0px', threshold: 0 });
+
+    $imageRevealElements.each(function () {
+      imageRevealObserver.observe(this);
     });
   }
 
