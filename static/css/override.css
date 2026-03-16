@@ -1764,7 +1764,7 @@ h2 {
 .discover-card:nth-child(3).scroll-reveal-simple { transition-delay: 0.3s; }
 
 /* Timeline section stagger delays */
-.timeline-progress-header h2.scroll-reveal-simple { transition-delay: 0s; }
+.timeline-progress-header h2.scroll-reveal { transition-delay: 0s; }
 .timeline-card:nth-child(1) p.scroll-reveal-simple { transition-delay: 0.1s; }
 .timeline-card:nth-child(2) p.scroll-reveal-simple { transition-delay: 0.2s; }
 .timeline-card:nth-child(3) p.scroll-reveal-simple { transition-delay: 0.3s; }
@@ -1779,33 +1779,18 @@ h2 {
 /* Footer entrance animation */
 .footer-block.scroll-reveal-simple { transition-delay: 0s; }
 
-/* Divider line grow animation */
-.divider-reveal {
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Image reveal from left — reusable preset
+   Container clips the image; image slides in from left on scroll.
+   Usage: add class "image-reveal" to the image wrapper. */
+.image-reveal {
+  overflow: hidden;
 }
 
-.divider-reveal.revealed {
-  transform: scaleX(1);
+.image-reveal > img {
+  transform: translateX(-100%);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Discover image 2-layer wipe reveal on scroll */
-.discover-card-image-wrap .rt-imagr-appearance-layer-one,
-.discover-card-image-wrap .rt-imagr-appearance-layer-two {
-  transform: translateX(-101%);
-}
-
-.discover-card.revealed .rt-imagr-appearance-layer-one {
-  animation: wipeReveal 0.5s ease forwards 0.2s;
-}
-
-.discover-card.revealed .rt-imagr-appearance-layer-two {
-  animation: wipeReveal 0.5s ease forwards 0.35s;
-}
-
-@keyframes wipeReveal {
-  0%   { transform: translateX(-101%); }
-  50%  { transform: translateX(0); }
-  100% { transform: translateX(101%); }
+.image-reveal.revealed > img {
+  transform: translateX(0);
 }
