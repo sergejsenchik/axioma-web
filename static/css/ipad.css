@@ -1,2 +1,201 @@
 /* Axioma — Tablet styles (768px - 1024px) */
 /* Loaded via <link media="screen and (min-width:768px) and (max-width:1024px)"> */
+/* No media queries in this file -- the entire file IS the breakpoint */
+
+/* -----------------------------------------------
+   Spacing/layout variable overrides
+   ----------------------------------------------- */
+
+:root {
+  --gutter: 0.9375rem;
+  --section-gap: 4.375rem;
+  --section-gap-small: 4.0625rem;
+}
+
+/* -----------------------------------------------
+   Navbar
+   ----------------------------------------------- */
+
+.navbar-container {
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar-logo {
+  width: 6rem;
+}
+
+.navbar-left {
+  gap: 1.5rem;
+}
+
+/* -----------------------------------------------
+   Hero
+   ----------------------------------------------- */
+
+.hero-heading-wrap {
+  max-width: 32rem;
+}
+
+.hero-scroll-down {
+  padding-bottom: 3rem;
+}
+
+/* -----------------------------------------------
+   About section
+   ----------------------------------------------- */
+
+.about-heading-wrap.texture-purple {
+  padding: 4rem 2.5rem;
+  row-gap: 2rem;
+}
+
+.about-paragraph-wrap {
+  padding-top: 4rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+/* -----------------------------------------------
+   Counter cards
+   ----------------------------------------------- */
+
+.counter-digit,
+.counter-suffix {
+  font-size: 2.5rem;
+}
+
+.counter-box {
+  height: 2.5rem;
+}
+
+.counter-card {
+  padding: 2rem 0.5rem 2.5rem;
+}
+
+/* -----------------------------------------------
+   Discover cards -- stack vertically
+   ----------------------------------------------- */
+
+.discover-card-content {
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.discover-card-image-wrap {
+  max-width: 100%;
+  max-height: 300px;
+  width: 100%;
+}
+
+.discover-card {
+  padding: 1.5rem 0;
+}
+
+/* -----------------------------------------------
+   Location section -- scale circle
+   ----------------------------------------------- */
+
+.location-circle-wrapper {
+  width: min(36em, 85vw);
+  height: min(36em, 85vw);
+}
+
+.circle-number {
+  font-size: 100px;
+}
+
+.location-heading-wrapper {
+  inset: 0% auto 0% calc(-45% - 60px);
+}
+
+/* -----------------------------------------------
+   Timeline -- horizontal scroll strip
+   ----------------------------------------------- */
+
+.timeline-grid {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  grid-template-columns: none;
+}
+
+.timeline-card {
+  flex: 0 0 45%;
+  scroll-snap-align: start;
+  padding-right: 1.5rem;
+}
+
+.timeline-content.texture-purple {
+  padding: 4rem 1.5rem 3rem;
+}
+
+/* -----------------------------------------------
+   Contact form -- side-by-side but narrower
+   ----------------------------------------------- */
+
+.contact-form-main {
+  height: auto;
+  padding-right: 2rem;
+  gap: 2rem;
+}
+
+.contact-form-left {
+  max-width: 350px;
+}
+
+/* -----------------------------------------------
+   Agent cards -- 2+2+1 grid
+   ----------------------------------------------- */
+
+.agent-cards-wrap {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.agent-card {
+  flex: 0 0 calc(50% - 1px);
+  padding: 2rem 1.5rem;
+}
+
+.agent-cards-wrap > .divider-vertical {
+  display: none;
+}
+
+.agent-border {
+  display: none;
+}
+
+/* -----------------------------------------------
+   Footer
+   ----------------------------------------------- */
+
+.footer-top {
+  gap: 3rem;
+}
+
+.footer-main {
+  gap: 3rem;
+}
+
+.footer-links-container {
+  flex-direction: column;
+}
+
+.footer-links-container > .divider-vertical {
+  display: none;
+}
+
+.footer-project-logo {
+  width: 4rem;
+}
+
+/* -----------------------------------------------
+   Scroll reveal -- smoother tablet animation
+   ----------------------------------------------- */
+
+.scroll-reveal {
+  transform: translateY(30px);
+  filter: blur(3px);
+}
