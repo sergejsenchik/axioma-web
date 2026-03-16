@@ -376,6 +376,11 @@ h2 {
   font-family: var(--font-display);
   font-size: var(--font-size-sub);
   color: var(--color-bg);
+  transition: color 0.3s ease;
+}
+
+.scroll-down-link:hover .scroll-down-text {
+  color: var(--color-accent);
 }
 
 .scroll-down-arrow {
