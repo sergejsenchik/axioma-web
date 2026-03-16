@@ -1609,11 +1609,15 @@ h2 {
   display: flex;
 }
 
-.footer-projects-wrap {
+.footer-partner-row {
   display: flex;
-  gap: 3rem;
-  justify-content: center;
   align-items: center;
+  gap: 2rem;
+}
+
+.footer-partner-logo {
+  height: 2.5rem;
+  width: auto;
 }
 
 .footer-project-logo {
