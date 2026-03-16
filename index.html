@@ -202,25 +202,25 @@
         <div class="divider-horizontal"></div>
         <!-- Counter cards row: 3 counters separated by vertical dividers -->
         <div class="counter-cards-wrap">
-          <!-- Counter 1: "60+" residences -->
+          <!-- Counter 1: "70+" residences -->
           <div class="counter-card scroll-reveal-simple">
             <div class="counter-box">
-              <!-- Tens digit: train 7,1,2,3,4,5,6 -> target index 6 (lands on "6") -->
+              <!-- Tens digit: train 8,1,2,3,4,5,6,7 -> target index 7 (lands on "7") -->
               <div class="counter-train-wrap">
-                <div class="counter-train" data-target="6">
-                  <div class="counter-digit">7</div>
+                <div class="counter-train" data-target="7">
+                  <div class="counter-digit">8</div>
                   <div class="counter-digit">1</div>
                   <div class="counter-digit">2</div>
                   <div class="counter-digit">3</div>
                   <div class="counter-digit">4</div>
                   <div class="counter-digit">5</div>
                   <div class="counter-digit">6</div>
+                  <div class="counter-digit">7</div>
                 </div>
               </div>
-              <!-- Ones digit: train 0,1,...,9 -> target 9 to spin full cycle (lands on "0" via visual wrap) -->
+              <!-- Ones digit: train 1,2,...,9,0 -> target index 9 (lands on "0") -->
               <div class="counter-train-wrap">
                 <div class="counter-train" data-target="9">
-                  <div class="counter-digit">0</div>
                   <div class="counter-digit">1</div>
                   <div class="counter-digit">2</div>
                   <div class="counter-digit">3</div>
@@ -238,10 +238,10 @@
             <div class="counter-label">Apgalvoto dizaino rezidencijos</div>
           </div>
           <div class="divider-vertical d-none d-lg-block"></div>
-          <!-- Counter 2: "1205" area m2 -->
+          <!-- Counter 2: "125" area m2 -->
           <div class="counter-card scroll-reveal-simple">
             <div class="counter-box">
-              <!-- Thousands digit "1": train 1,2,3 -> target 0 (stays on "1") -->
+              <!-- Hundreds digit "1": train 3,2,1 -> target 2 (lands on "1") -->
               <div class="counter-train-wrap">
                 <div class="counter-train" data-target="2">
                   <div class="counter-digit">3</div>
@@ -249,7 +249,7 @@
                   <div class="counter-digit">1</div>
                 </div>
               </div>
-              <!-- Hundreds digit "2": train 0,1,2 -> target 2 (lands on "2") -->
+              <!-- Tens digit "2": train 0,1,2 -> target 2 (lands on "2") -->
               <div class="counter-train-wrap">
                 <div class="counter-train" data-target="2">
                   <div class="counter-digit">0</div>
@@ -257,15 +257,7 @@
                   <div class="counter-digit">2</div>
                 </div>
               </div>
-              <!-- Tens digit "0": train 2,1,0 -> target 2 (lands on "0") -->
-              <div class="counter-train-wrap">
-                <div class="counter-train" data-target="2">
-                  <div class="counter-digit">2</div>
-                  <div class="counter-digit">1</div>
-                  <div class="counter-digit">0</div>
-                </div>
-              </div>
-              <!-- Ones digit "5": train 5,4,3,2,1 -> target 4 (lands on "1", animates through to "5") -->
+              <!-- Ones digit "5": train 1,2,3,4,5 -> target 4 (lands on "5") -->
               <div class="counter-train-wrap">
                 <div class="counter-train" data-target="4">
                   <div class="counter-digit">1</div>
@@ -304,21 +296,22 @@
                   <div class="counter-digit">0</div>
                 </div>
               </div>
-              <!-- Digit "2": train 0,1 -> target 1 (lands on value at index 1) -->
+              <!-- Digit "2": train 0,1,2 -> target 2 (lands on "2") -->
               <div class="counter-train-wrap">
-                <div class="counter-train" data-target="1">
+                <div class="counter-train" data-target="2">
                   <div class="counter-digit">0</div>
                   <div class="counter-digit">1</div>
+                  <div class="counter-digit">2</div>
                 </div>
               </div>
-              <!-- Digit "5": train 5,4,3,2,1 -> target 4 (lands on "1" at end of spin) -->
+              <!-- Digit "5": train 1,2,3,4,5 -> target 4 (lands on "5") -->
               <div class="counter-train-wrap">
                 <div class="counter-train" data-target="4">
-                  <div class="counter-digit">5</div>
-                  <div class="counter-digit">4</div>
-                  <div class="counter-digit">3</div>
-                  <div class="counter-digit">2</div>
                   <div class="counter-digit">1</div>
+                  <div class="counter-digit">2</div>
+                  <div class="counter-digit">3</div>
+                  <div class="counter-digit">4</div>
+                  <div class="counter-digit">5</div>
                 </div>
               </div>
             </div>
@@ -344,14 +337,10 @@
                 <div class="discover-card-content">
                   <div class="discover-card-heading-wrap">
                     <div class="sub-text">01</div>
-                    <h4>Matematinis erdvės komfortas</h4>
+                    <h3>Matematinis erdvės komfortas</h3>
                   </div>
                   <div class="discover-card-image-wrap">
                     <img src="static/img/discover-01.jpg" alt="" class="discover-card-image">
-                    <div class="rt-image-overlay">
-                      <div class="rt-imagr-appearance-layer-one"></div>
-                      <div class="rt-imagr-appearance-layer-two"></div>
-                    </div>
                   </div>
                   <div class="discover-card-paragraph-wrap">
                     <p>Planų skaičiavimai maksimaliai išnaudoja natūralią šviesą ir erdvę, kuriant aplinką, kuri jaučiasi intuityviai teisinga.</p>
@@ -370,14 +359,10 @@
                 <div class="discover-card-content">
                   <div class="discover-card-heading-wrap">
                     <div class="sub-text">02</div>
-                    <h4>Inžinerija kaip konstanta</h4>
+                    <h3>Inžinerija kaip konstanta</h3>
                   </div>
                   <div class="discover-card-image-wrap">
                     <img src="static/img/discover-02.jpg" alt="" class="discover-card-image">
-                    <div class="rt-image-overlay">
-                      <div class="rt-imagr-appearance-layer-one"></div>
-                      <div class="rt-imagr-appearance-layer-two"></div>
-                    </div>
                   </div>
                   <div class="discover-card-paragraph-wrap">
                     <p>Naudojame aukštos kokybės medžiagas ir tikslius techninius sprendimus, užtikrinančius pastato ilgaamžiškumą ir konstrukcinį vientisumą.</p>
@@ -396,14 +381,10 @@
                 <div class="discover-card-content">
                   <div class="discover-card-heading-wrap">
                     <div class="sub-text">03</div>
-                    <h4>Vietos aksioma</h4>
+                    <h3>Vietos aksioma</h3>
                   </div>
                   <div class="discover-card-image-wrap">
                     <img src="static/img/discover-03.jpg" alt="" class="discover-card-image">
-                    <div class="rt-image-overlay">
-                      <div class="rt-imagr-appearance-layer-one"></div>
-                      <div class="rt-imagr-appearance-layer-two"></div>
-                    </div>
                   </div>
                   <div class="discover-card-paragraph-wrap">
                     <p>Artumas esminei infrastruktūrai yra ne prabanga, o pagrindinis šiuolaikinio profesionalo reikalavimas.</p>
@@ -566,7 +547,7 @@
             <div class="contact-form-heading">
               <h3 class="scroll-reveal">Susisiekite – pasikalbėsime</h3>
             </div>
-            <form method="post" action="#">
+            <form method="post" action="/submit-form.php">
               <!-- PHP: form action URL -->
               <input type="text" name="name" class="form-input" placeholder="Jūsų vardas*" required>
               <div class="row form-row-2col">
