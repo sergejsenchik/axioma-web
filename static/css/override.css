@@ -1483,7 +1483,7 @@ h2 {
 .agent-name {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: var(--font-size-h5);
+  font-size: var(--font-size-h4);
   line-height: 100%;
   letter-spacing: -0.02em;
   color: var(--color-accent);
@@ -1505,7 +1505,7 @@ h2 {
 }
 
 .agent-phone:hover {
-  color: var(--color-accent);
+  color: var(--color-purple);
 }
 
 .agent-email {
@@ -1514,13 +1514,13 @@ h2 {
   font-size: var(--font-size-h6);
   line-height: var(--line-height-h6);
   letter-spacing: var(--letter-spacing-h6);
-  color: var(--color-text-light);
+  color: var(--color-accent);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .agent-email:hover {
-  color: var(--color-accent);
+  color: var(--color-purple);
 }
 
 .agent-border {
