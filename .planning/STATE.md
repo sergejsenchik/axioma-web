@@ -101,6 +101,7 @@ None yet.
 | 260316-kb6 | Premium curtain-lift loader transition, revert 6s interval | 2026-03-16 | 14c1d81 | - |
 | 260316-kb7 | Loader fade-out with sequenced hero reveal | 2026-03-16 | ec77a5c | - |
 | 260316-kb8 | Scroll animations: image wipe, divider grow, agent reveal | 2026-03-16 | cf511e0 | - |
+| 260316-kb9 | Image-reveal preset, remove wipe/divider, heading reveals | 2026-03-16 | 0414430 | - |
 
 ### Blockers/Concerns
 
