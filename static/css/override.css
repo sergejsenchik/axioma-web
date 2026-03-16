@@ -1784,7 +1784,7 @@ h2 {
    Image stays in final position; only the visible area grows.
    Usage: add class "image-reveal" to the image wrapper. */
 .image-reveal {
-  clip-path: inset(0 100% 0 0);
+  clip-path: inset(0 100% 100% 0);
   transition: clip-path 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
