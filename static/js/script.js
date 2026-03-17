@@ -126,28 +126,18 @@ $(document).ready(function () {
   });
 
   // -----------------------------------------------
-  // Smart header: hide on scroll down, show on scroll up
+  // Navbar: transparent at top, purple on scroll
   // -----------------------------------------------
-  var lastScrollY = 0;
-  var scrollThreshold = 50;
+  var navbarScrollThreshold = 50;
 
   $(window).on('scroll', function () {
     var currentScrollY = window.pageYOffset;
 
-    if (currentScrollY > scrollThreshold) {
-      if (currentScrollY > lastScrollY) {
-        // Scrolling down -- hide navbar
-        $('.site-navbar').addClass('navbar-hidden');
-      } else {
-        // Scrolling up -- show navbar
-        $('.site-navbar').removeClass('navbar-hidden');
-      }
+    if (currentScrollY > navbarScrollThreshold) {
+      $('.site-navbar').addClass('navbar-scrolled');
     } else {
-      // At top of page -- always show
-      $('.site-navbar').removeClass('navbar-hidden');
+      $('.site-navbar').removeClass('navbar-scrolled');
     }
-
-    lastScrollY = currentScrollY;
   });
 
   // -----------------------------------------------
