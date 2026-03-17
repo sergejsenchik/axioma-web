@@ -19,22 +19,42 @@
 }
 
 /* -----------------------------------------------
-   Navbar -- mobile swap: hide desktop nav, show hamburger
+   Navbar -- mobile: burger left, logo center, CTA right
    ----------------------------------------------- */
 
-.navbar-left,
-.navbar-right {
+.navbar-left {
+  display: flex;
+  width: auto;
+}
+
+/* Hide "Meniu" text and "Rinktis butą" link on mobile */
+.navbar-menu-btn .btn-text-wrap,
+.navbar-left .navbar-link {
   display: none;
 }
 
 .navbar-center {
   width: auto;
-  flex: 1;
-  justify-content: flex-start;
+  flex: none;
+  justify-content: center;
+}
+
+.navbar-right {
+  display: flex;
+  width: auto;
+}
+
+/* Show short CTA text, hide full text on mobile */
+.navbar-cta .btn-text-wrap {
+  display: none;
+}
+
+.navbar-cta-short {
+  display: inline;
 }
 
 .navbar-hamburger {
-  display: flex;
+  display: none;
 }
 
 .navbar-container {
