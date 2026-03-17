@@ -75,7 +75,7 @@
   --letter-spacing-nav: 0.0875rem;
 
   /* Spacing */
-  --gutter: clamp(2rem, 1rem + 1.5vw, 2.5rem);
+  --gutter: clamp(2rem, 1rem + 3vw, 5rem);
   --section-gap: 8.125rem;
   --section-gap-small: 7.5rem;
 }
@@ -153,7 +153,7 @@ h2 {
 
 /* Container system — override Bootstrap .container to match Webflow rt-container (120rem / 1920px) */
 .container {
-  max-width: 120rem;
+  max-width: 105rem;
   padding-left: var(--gutter);
   padding-right: var(--gutter);
 }
@@ -431,6 +431,7 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 2rem;
+  max-width: none;
 }
 
 .navbar-left {
@@ -1573,6 +1574,9 @@ h2 {
 
 .footer-block {
   padding-top: 4rem;
+  max-width: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .footer-top {
