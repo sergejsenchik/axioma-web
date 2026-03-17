@@ -402,18 +402,31 @@ h2 {
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: transparent;
-  transition: background-color 0.4s ease, background-image 0.4s ease;
 }
 
-.site-navbar.navbar-scrolled {
+.site-navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10rem;
   background-color: var(--color-purple);
   background-image: url('../img/texture-purple.jpg');
   background-position: 0 0;
   background-size: 200px;
+  transition: width 0.4s ease;
+  z-index: 0;
+}
+
+.site-navbar.navbar-scrolled::before {
+  width: 100%;
 }
 
 .navbar-container {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -433,19 +446,6 @@ h2 {
   display: flex;
   justify-content: center;
   padding: 0.5rem 1.25rem;
-  border-radius: 0 0 1rem 1rem;
-  background-color: var(--color-purple);
-  background-image: url('../img/texture-purple.jpg');
-  background-position: 0 0;
-  background-size: 200px;
-  transition: background-color 0.4s ease, padding 0.4s ease, border-radius 0.4s ease;
-}
-
-.site-navbar.navbar-scrolled .navbar-center {
-  background-color: transparent;
-  background-image: none;
-  border-radius: 0;
-  padding: 0.5rem 0;
 }
 
 .navbar-right {
