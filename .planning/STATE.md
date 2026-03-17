@@ -4,8 +4,8 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Completed 04-01 Responsive Styles
-last_updated: "2026-03-17T13:27:46Z"
-last_activity: 2026-03-17 -- Completed quick task 260317-jyo
+last_updated: "2026-03-17T13:48:41Z"
+last_activity: 2026-03-17 -- Completed quick task 260317-k9t
 progress:
   total_phases: 4
   completed_phases: 2
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-13)
 Phase: 4 of 4 (Responsive + Polish + Handoff)
 Plan: 2 of 2 in current phase (1 done)
 Status: In Progress
-Last activity: 2026-03-17 -- Completed quick task 260317-jyo: Header transparent initially with purple pill
+Last activity: 2026-03-17 -- Completed quick task 260317-k9t: Header purple bg straight corners + mobile navbar layout
 
 Progress: [████████░░] 78%
 
@@ -78,6 +78,7 @@ Recent decisions affecting current work:
 - [Phase 02]: Footer logo and project logos use CSS filter brightness(0) invert(1) for white-on-purple
 - [Phase 03]: Navbar uses purple texture at all times (no transparent-to-solid transition) -- SUPERSEDED by quick-260317-jyo
 - [Quick 260317-jyo]: Navbar transparent initially with purple logo pill, transitions to full purple on scroll (always sticky)
+- [Quick 260317-k9t]: Navbar purple bg via ::before expanding mask (10rem to 100%), straight corners, mobile 3-col layout (burger|logo|CTA)
 - [Phase 03]: Logo stays white (axioma-logo-white.svg) -- no swap needed on always-purple bg
 - [Phase 03]: Meniu text is non-clickable span, modal menu deferred to future milestone
 - [Phase 03]: Text-swap hover is pure CSS (0.35s ease), no JavaScript needed
@@ -105,6 +106,7 @@ None yet.
 | 260316-kb9 | Image-reveal preset, remove wipe/divider, heading reveals | 2026-03-16 | 0414430 | - |
 | 260316-kba | Image-reveal: mask resize effect (clip-path) | 2026-03-16 | 83e89a1 | - |
 | 260317-jyo | Header transparent initially with purple logo pill | 2026-03-17 | f5d2c83 | [260317-jyo-header-transparent-initially-with-purple](./quick/260317-jyo-header-transparent-initially-with-purple/) |
+| 260317-k9t | Header purple bg straight corners + mobile navbar layout | 2026-03-17 | fe104b5 | [260317-k9t-header-purple-bg-straight-corners-full-h](./quick/260317-k9t-header-purple-bg-straight-corners-full-h/) |
 
 ### Blockers/Concerns
 
@@ -114,6 +116,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-17T13:27:46Z
-Stopped at: Completed quick task 260317-jyo
-Resume file: .planning/quick/260317-jyo-header-transparent-initially-with-purple/260317-jyo-SUMMARY.md
+Last session: 2026-03-17T13:48:41Z
+Stopped at: Completed quick task 260317-k9t
+Resume file: .planning/quick/260317-k9t-header-purple-bg-straight-corners-full-h/260317-k9t-SUMMARY.md
