@@ -25,6 +25,7 @@
 .navbar-left {
   display: flex;
   width: auto;
+  flex: 1;
 }
 
 /* Hide "Meniu" text and "Rinktis butą" link on mobile */
@@ -42,6 +43,8 @@
 .navbar-right {
   display: flex;
   width: auto;
+  flex: 1;
+  justify-content: flex-end;
 }
 
 /* Show short CTA text, hide full text on mobile */
@@ -63,6 +66,11 @@
 
 .navbar-logo {
   width: 5.5rem;
+}
+
+/* Shrink ::before purple bg to match mobile logo area */
+.site-navbar::before {
+  width: 7.5rem;
 }
 
 /* -----------------------------------------------
@@ -440,7 +448,7 @@
 .btn-cta,
 .btn-cta-light,
 .btn-cta-dark {
-  padding: 0.75rem 2.2rem;
+  padding: 0.625rem 1.1rem;
   min-height: 44px;
 }
 
