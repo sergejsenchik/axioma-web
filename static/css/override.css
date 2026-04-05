@@ -1061,7 +1061,8 @@ h2 {
   inset: auto;
   opacity: 0;
   transform: translateY(100%);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease 0.12s, transform 0.4s ease 0.12s;
+  will-change: transform, opacity;
 }
 
 .location-text-item.active,
@@ -1070,11 +1071,20 @@ h2 {
   transform: translateY(0);
 }
 
-/* Slide up and out (counter effect) */
+/* Slide up and out (scrolling down) */
 .location-text-item.prev,
 .location-text-item-2.prev {
   opacity: 0;
   transform: translateY(-100%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Slide down and out (scrolling up — reverse) */
+.location-text-item.prev-down,
+.location-text-item-2.prev-down {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .circle-numbers-wrapper {
@@ -1099,13 +1109,15 @@ h2 {
   font-family: var(--font-body);
   font-size: 140px;
   font-weight: 300;
+  font-variant-numeric: tabular-nums;
   line-height: 100%;
   display: flex;
   position: absolute;
   inset: 0%;
   opacity: 0;
   transform: translateY(100%);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 0.4s ease 0.12s, transform 0.4s ease 0.12s;
+  will-change: transform, opacity;
 }
 
 .circle-number.active {
@@ -1113,10 +1125,18 @@ h2 {
   transform: translateY(0);
 }
 
-/* Slide up and out (counter effect) */
+/* Slide up and out (scrolling down) */
 .circle-number.prev {
   opacity: 0;
   transform: translateY(-100%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* Slide down and out (scrolling up — reverse) */
+.circle-number.prev-down {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .circle-text-wrapper {

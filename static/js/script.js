@@ -237,35 +237,41 @@ $(document).ready(function () {
       { arc: 1.00 }   // Step 4: Airport / With car (20 min)
     ];
 
-    // Scroll keyframes (% of section scroll progress) — proportional to arc delta
-    // Deltas: 25, 15, 10, 25, 25 (total 100) → same % of scroll
+    // Scroll keyframes (% of section scroll progress) — equal duration per step
     var stepRanges = [
-      { start: 0.00, end: 0.25 },  // Step 0: 25% (arc +25%)
-      { start: 0.25, end: 0.40 },  // Step 1: 15% (arc +15%)
-      { start: 0.40, end: 0.50 },  // Step 2: 10% (arc +10%)
-      { start: 0.50, end: 0.75 },  // Step 3: 25% (arc +25%)
-      { start: 0.75, end: 1.00 }   // Step 4: 25% (arc +25%)
+      { start: 0.00, end: 0.20 },  // Step 0: Park (5 min)
+      { start: 0.20, end: 0.40 },  // Step 1: City center (8 min)
+      { start: 0.40, end: 0.60 },  // Step 2: Shopping mall (10 min)
+      { start: 0.60, end: 0.80 },  // Step 3: Highschool (15 min)
+      { start: 0.80, end: 1.00 }   // Step 4: Airport (20 min)
     ];
 
     function setLocationStep(stepIndex) {
       if (stepIndex === locationActiveStep) return;
       var prevStep = locationActiveStep;
       locationActiveStep = stepIndex;
+      var forward = stepIndex > prevStep; // scroll direction
+
+      var $allItems = $('.location-text-item, .location-text-item-2, .circle-number');
+      var $nextItems = $allItems.filter('[data-step="' + stepIndex + '"]');
 
       // Remove all states
-      $('.location-text-item, .location-text-item-2, .circle-number').removeClass('active prev');
+      $allItems.removeClass('active prev prev-down');
 
-      // Mark previous step items as .prev (slide up and out)
+      // Place entering items at correct starting position (no transition)
+      var enterFrom = forward ? 'translateY(100%)' : 'translateY(-100%)';
+      $nextItems.css({ transition: 'none', transform: enterFrom, opacity: 0 });
+      $nextItems[0] && $nextItems[0].offsetHeight; // force reflow
+
+      // Re-enable CSS transitions and activate
+      $nextItems.css({ transition: '', transform: '', opacity: '' });
+      $nextItems.addClass('active');
+
+      // Exit previous items in matching direction
       if (prevStep >= 0) {
-        $('.location-text-item[data-step="' + prevStep + '"]').addClass('prev');
-        $('.location-text-item-2[data-step="' + prevStep + '"]').addClass('prev');
-        $('.circle-number[data-step="' + prevStep + '"]').addClass('prev');
+        var $prevItems = $allItems.filter('[data-step="' + prevStep + '"]');
+        $prevItems.addClass(forward ? 'prev' : 'prev-down');
       }
-
-      // Mark current step items as .active (slide in from below)
-      $('.location-text-item[data-step="' + stepIndex + '"]').addClass('active');
-      $('.location-text-item-2[data-step="' + stepIndex + '"]').addClass('active');
-      $('.circle-number[data-step="' + stepIndex + '"]').addClass('active');
     }
 
     function updateLocationArc(progress) {
@@ -319,8 +325,6 @@ $(document).ready(function () {
         var viewH = window.innerHeight;
         var start = locationCached.top;
         var end = locationCached.top + locationCached.height - viewH;
-
-        if (scrollY < start || scrollY > end) return;
 
         var progress = (scrollY - start) / (end - start);
         progress = Math.max(0, Math.min(1, progress));
