@@ -228,23 +228,23 @@ $(document).ready(function () {
     var locationActiveStep = -1;
 
     // Steps: scroll ranges map to destination + arc percentage
-    // Arc percentages match Webflow: 20%, 30%, 40%, 60%, 100%
+    // Arc percentages proportional to minutes: 5/20, 8/20, 10/20, 15/20, 20/20
     var locationSteps = [
-      { arc: 0.20 },  // Step 0: Park / By the river (5 min)
-      { arc: 0.30 },  // Step 1: City center / On foot (8 min)
-      { arc: 0.40 },  // Step 2: Shopping mall (10 min)
-      { arc: 0.60 },  // Step 3: Highschool campus (15 min)
+      { arc: 0.25 },  // Step 0: Park / By the river (5 min)
+      { arc: 0.40 },  // Step 1: City center / On foot (8 min)
+      { arc: 0.50 },  // Step 2: Shopping mall (10 min)
+      { arc: 0.75 },  // Step 3: Highschool campus (15 min)
       { arc: 1.00 }   // Step 4: Airport / With car (20 min)
     ];
 
-    // Scroll keyframes (% of section scroll progress) matching Webflow
-    // Each step has a "hold" range and a "transition" range
+    // Scroll keyframes (% of section scroll progress) — proportional to arc delta
+    // Deltas: 25, 15, 10, 25, 25 (total 100) → same % of scroll
     var stepRanges = [
-      { start: 0.00, end: 0.20 },  // Step 0: 0-20%
-      { start: 0.20, end: 0.38 },  // Step 1: 20-38%
-      { start: 0.38, end: 0.56 },  // Step 2: 38-56%
-      { start: 0.56, end: 0.74 },  // Step 3: 56-74%
-      { start: 0.74, end: 1.00 }   // Step 4: 74-100%
+      { start: 0.00, end: 0.25 },  // Step 0: 25% (arc +25%)
+      { start: 0.25, end: 0.40 },  // Step 1: 15% (arc +15%)
+      { start: 0.40, end: 0.50 },  // Step 2: 10% (arc +10%)
+      { start: 0.50, end: 0.75 },  // Step 3: 25% (arc +25%)
+      { start: 0.75, end: 1.00 }   // Step 4: 25% (arc +25%)
     ];
 
     function setLocationStep(stepIndex) {
@@ -332,12 +332,12 @@ $(document).ready(function () {
 
   // -----------------------------------------------
   // Timeline -- Scroll-linked pinned animation
-  // Section is 400vh tall with sticky inner container (pinned for 300vh).
-  // Keyframes are scaled to fit within the pinned range (unpin at 80%).
+  // Section is 250vh tall with sticky inner container (pinned for 150vh).
+  // Keyframes are scaled to fit within the pinned range.
   //
-  // 1. Background image: grows 50%/60% → 100%/100%, scale 1.2→1.0 (32-60%)
-  // 2. Purple overlay: translateY 150→0% + rotateX 90→0deg (54-62%)
-  // 3. Progress line: translateX slides in to construction progress (62-76%)
+  // 1. Background image: grows 50%/60% → 100%/100%, scale 1.2→1.0 (0-23%)
+  // 2. Purple overlay: translateY 150→0% + rotateX 90→0deg (35-48%)
+  // 3. Progress line: translateX slides in to construction progress (48-70%)
   //
   // Webflow ref: a-249 "Discover Image Animation", a-282 "Progress line"
   // -----------------------------------------------
@@ -443,32 +443,32 @@ $(document).ready(function () {
           // Convert to Webflow's 0-100 scroll percentage scale
           var pct = progress * 100;
 
-          // --- 1. Background image size + scale (32-60%) ---
-          var bgT = rangeProgress(pct, 32, 60);
+          // --- 1. Background image size + scale (0-23%) ---
+          var bgT = rangeProgress(pct, 0, 23);
           var bgW = lerp(50, 100, bgT);
           var bgH = lerp(60, 100, bgT);
           $timelineBg.css({ 'width': bgW + '%', 'height': bgH + '%' });
           $timelineImg.css('transform', 'scale(' + lerp(1.2, 1.0, bgT) + ')');
 
-          // --- 2. Purple overlay animation (54-62%) ---
+          // --- 2. Purple overlay animation (35-48%) ---
           // translateY 150→0% + rotateX 90→0deg simultaneously
-          if (pct <= 54) {
+          if (pct <= 35) {
             $timelineContent.css('transform', 'translateY(150%) rotateX(90deg)');
-          } else if (pct <= 62) {
-            var t2 = rangeProgress(pct, 54, 62);
+          } else if (pct <= 48) {
+            var t2 = rangeProgress(pct, 35, 48);
             $timelineContent.css('transform', 'translateY(' + lerp(150, 0, t2) + '%) rotateX(' + lerp(90, 0, t2) + 'deg)');
           } else {
             $timelineContent.css('transform', 'translateY(0%) rotateX(0deg)');
           }
 
-          // --- 3. Progress line fill animation (62-76%) ---
+          // --- 3. Progress line fill animation (48-70%) ---
           // PHP: backend sets progressTarget (42% done = translateX(-58%))
           var progressTarget = -58;
           var progressTranslateX;
-          if (pct <= 62) {
+          if (pct <= 48) {
             progressTranslateX = -100;
-          } else if (pct <= 76) {
-            progressTranslateX = lerp(-100, progressTarget, rangeProgress(pct, 62, 76));
+          } else if (pct <= 70) {
+            progressTranslateX = lerp(-100, progressTarget, rangeProgress(pct, 48, 70));
           } else {
             progressTranslateX = progressTarget;
           }

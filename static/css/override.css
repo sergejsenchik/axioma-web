@@ -721,7 +721,7 @@ h2 {
 .counter-digit {
   font-family: var(--font-body);
   font-size: 3.4375rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 118.18%;
   color: var(--color-text);
 }
@@ -729,7 +729,7 @@ h2 {
 .counter-suffix {
   font-family: var(--font-body);
   font-size: 3.4375rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 118.18%;
   color: var(--color-text);
 }
@@ -1150,11 +1150,11 @@ h2 {
 /* Outer section: 300vh tall to create scroll space for pinning effect */
 .timeline-section {
   position: relative;
-  height: 400vh;
+  height: 250vh;
   padding: 0;
 }
 
-/* Sticky container: pins to viewport while user scrolls through 300vh */
+/* Sticky container: pins to viewport while user scrolls through 150vh */
 .timeline-wrapper {
   position: sticky;
   top: 0;
@@ -1771,10 +1771,10 @@ h2 {
 
 /* Stagger delays for agent cards (nth-child accounts for divider-vertical between cards) */
 .agent-card:nth-child(1) .image-reveal { transition-delay: 0s; }
-.agent-card:nth-child(3) .image-reveal { transition-delay: 0.3s; }
-.agent-card:nth-child(5) .image-reveal { transition-delay: 0.6s; }
-.agent-card:nth-child(7) .image-reveal { transition-delay: 0.9s; }
-.agent-card:nth-child(9) .image-reveal { transition-delay: 1.2s; }
+.agent-card:nth-child(3) .image-reveal { transition-delay: 0.15s; }
+.agent-card:nth-child(5) .image-reveal { transition-delay: 0.3s; }
+.agent-card:nth-child(7) .image-reveal { transition-delay: 0.45s; }
+.agent-card:nth-child(9) .image-reveal { transition-delay: 0.6s; }
 
 /* About section stagger delays */
 .about-heading h3.scroll-reveal { transition-delay: 0s; }
