@@ -1,5 +1,9 @@
 /* Axioma — Main Override Styles */
 
+html {
+  overscroll-behavior: none;
+}
+
 :root {
   /* Brand colors (extracted from Webflow) */
   --color-primary: #0B2641;
